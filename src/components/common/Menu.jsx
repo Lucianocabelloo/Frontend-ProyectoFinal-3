@@ -20,6 +20,7 @@ const Menu = () => {
         <Nav className='d-flex flex-row justify-content-evenly'>
         <Nav.Link href="#home">Register</Nav.Link>
           <Nav.Link href="#link">Login</Nav.Link>
+          <Nav.Link href="#link">Admin</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Container>
