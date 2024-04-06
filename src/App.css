@@ -1,17 +1,37 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mainContainer {
+  flex-grow: 1;
+}
+
 body{
-    width: 100vw;
+    display: block !important;
 }
 
-.container-nav{
-    margin: 0px 32px !important;
+.container-nav {
+  margin: 0px 32px !important;
 }
 
-a svg{
-    margin: 0px 8px;
+a svg {
+  margin: 0px 8px;
 }
 
-.bubble{
-    border-radius: 25px;
-    padding: 0px 8px;
-    background-color: #00000059;
+.bubble {
+  border-radius: 25px;
+  padding: 0px 8px;
+  background-color: #00000059;
+}
+
+.imgTabla {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.filaEmail {
+  max-width: 200px;
 }
