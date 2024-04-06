@@ -1,0 +1,17 @@
+body{
+    width: 100vw;
+}
+
+.container-nav{
+    margin: 0px 32px !important;
+}
+
+a svg{
+    margin: 0px 8px;
+}
+
+.bubble{
+    border-radius: 25px;
+    padding: 0px 8px;
+    background-color: #00000059;
+}
