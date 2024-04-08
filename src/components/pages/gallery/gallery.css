@@ -106,6 +106,12 @@ z-index: 999;
   }
   
 
+  .carousel-caption{
+    background-color: rgba(0, 0, 0, 0.493);
+    padding: 8px 16px;
+    border-radius: 25px;
+  }
+
   @media (max-width: 400px){
     .carousel-container {
         height: 30vh; 

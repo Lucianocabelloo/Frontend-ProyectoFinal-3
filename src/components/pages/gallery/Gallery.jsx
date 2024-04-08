@@ -6,6 +6,8 @@ import  img3 from "../../../assets/img/room3.jpg"
 import  img4 from "../../../assets/img/room4.jpg"
 import  img5 from "../../../assets/img/room5.jpg"
 import  img6 from "../../../assets/img/room6.jpg"
+import  img7 from "../../../assets/img/room7.jpg"
+import  img8 from "../../../assets/img/room8.jpg"
 import CarouselGalery from './CarouselGalery'
 import "./gallery.css"
 
@@ -19,6 +21,10 @@ const Gallery = () => {
         {
         id: 2,
         imgSrc: img2
+    },
+    {
+        id: 8,
+        imgSrc: img8
     },
     {
     id: 5,
@@ -35,7 +41,13 @@ const Gallery = () => {
         {
         id: 6,
         imgSrc: img6
-    }
+    },
+        {
+        id: 7,
+        imgSrc: img7
+    },
+
+    
 ]
 const [model, setModel] = useState(false)
 const [tempImgSrc, setTempImgSrc] = useState("")
