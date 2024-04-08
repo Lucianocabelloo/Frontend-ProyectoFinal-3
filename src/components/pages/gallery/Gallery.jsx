@@ -6,6 +6,7 @@ import  img3 from "../../../assets/img/room3.jpg"
 import  img4 from "../../../assets/img/room4.jpg"
 import  img5 from "../../../assets/img/room5.jpg"
 import  img6 from "../../../assets/img/room6.jpg"
+import CarouselGalery from './CarouselGalery'
 import "./gallery.css"
 
 const Gallery = () => {
@@ -45,6 +46,7 @@ const getImg = (imgSrc)=> {
 
   return (
     <Container fluid className='my-5'>
+        <CarouselGalery/>
         <div className={model? "model open": "model"}>
         <img src={tempImgSrc}></img>
             <svg onClick={() => setModel(false)} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">

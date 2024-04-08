@@ -87,3 +87,52 @@ z-index: 999;
     color: white ;
     cursor: pointer;
 }
+
+.carousel-container {
+    height: 60vh; 
+    overflow: hidden;
+  }
+  
+
+
+  .custom-carousel{
+    height: 100%;
+  }
+  
+  .custom-img {
+    width: 100%;
+    object-fit: cover; 
+    object-position: 0px ;
+  }
+  
+
+  @media (max-width: 400px){
+    .carousel-container {
+        height: 30vh; 
+        overflow: hidden;
+      }
+
+      .carousel-caption{
+        display: none;
+      }
+  }
+  @media (min-width: 900px){
+    .carousel-container {
+        height: 60vh; 
+      }
+
+      .custom-img {
+        height: 500px;
+        object-fit: cover;
+      }
+  }
+  @media (min-width: 1400px){
+    .carousel-container {
+        height: 70vh; 
+      }
+
+      .custom-img {
+        height: 600px;
+      }
+  }
+
