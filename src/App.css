@@ -41,10 +41,20 @@ a svg {
   max-width: 200px;
 }
 
-/* Home page STYLES  */
-.banner-container {
-  
+h1,h2,h3,h4,h5,h6 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
+p, button {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.kaushan-script {
+  font-family: "Kaushan Script", cursive;
+}
+
+/* Home page STYLES  */
+
 
 @media (min-width: 980px) and (max-width: 1200px) {
   bubble {
