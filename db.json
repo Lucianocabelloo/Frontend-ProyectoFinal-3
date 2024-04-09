@@ -1,4 +1,5 @@
 {
-    "rooms": [{
-    }]
+  "rooms": [{}],
+  "users": [{}],
+  "booking": [{}]
 }
