@@ -53,8 +53,39 @@ p, button {
   font-family: "Kaushan Script", cursive;
 }
 
-/* Home page STYLES  */
+.txt-light-customized{
+  color: #fefffc;
+}
 
+.txt-details-color{
+  color: #F0D78D;
+}
+
+.bg-color{
+  background: #08171e;
+}
+
+.bg-light-color{
+  background: #fffaed;
+}
+
+.btn-cutomized{
+
+}
+
+/* Home page STYLES  */
+.top{
+  display: flex;
+  align-items: end;
+  min-height: 75vh;
+  background: linear-gradient(0deg, #08171e, rgba(0,0,0,0.3))
+  ,url('./assets/img/banner.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.bottom{
+  height: 50vh;
+}
 
 @media (min-width: 980px) and (max-width: 1200px) {
   bubble {
