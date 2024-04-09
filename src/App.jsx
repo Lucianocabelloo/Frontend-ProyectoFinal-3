@@ -4,12 +4,13 @@ import "./App.css";
 import Footer from "./components/common/Footer";
 import Menu from "./components/common/Menu";
 import Gallery from "./components/pages/gallery/Gallery";
+import Home from "./components/pages/Home";
 
 function App() {
   return (
     <>
       <Menu />
-      <Gallery/>
+      <Home/>
       <Footer />
     </>
   );
