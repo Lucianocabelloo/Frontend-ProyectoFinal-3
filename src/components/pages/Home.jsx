@@ -1,12 +1,12 @@
 import Banner from "../Banner";
-import {Row, Col, Container } from "react-bootstrap";
+import Information from "../Information";
 
 const Home = () => {
     return (
-        <section className="mainContainer">
+        <div className="mainContainer">
             <Banner></Banner>
-            <Container></Container>
-        </section>
+            <Information></Information>
+        </div>
     );
 };
 

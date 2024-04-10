@@ -6,6 +6,7 @@
 
 .mainContainer {
   flex-grow: 1;
+  background: #fffaed;
 }
 
 body{
@@ -69,8 +70,12 @@ p {
   background: #fffaed;
 }
 
+.txt-bg-color{
+  color: #08171e;
+}
+
 .btn-cutomized{
-  background: transparent;
+  background: rgba(0,0,0,0.4);
   color: #fff;
   font-weight: 600;
   font-family: 'Montserrat', sans-serif;
@@ -90,8 +95,9 @@ p {
 .top{
   display: flex;
   align-items: end;
-  min-height: 75vh;
-  background: linear-gradient(0deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3))
+  height: 75vh;
+  max-height: 50rem;
+  background: linear-gradient(0deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3))
   ,url('./assets/img/banner.jpg') no-repeat center center;
   background-size: cover;
 }
@@ -104,10 +110,22 @@ p {
 }
 
 .img-banner-container{
-  height: 20rem;
-  width: 33rem;
+  max-height: 18rem;
+  max-width: 30rem;
   margin: 0 auto;
-  transform: translate(0,50%);
+  transform: translate(0,40%);
+}
+
+.pt-10-rem{
+  padding-top: 10rem;
+}
+
+.img-customized{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 3px;
+  border-top: 6px solid #F0D78D;
 }
 
 @media (min-width: 980px) and (max-width: 1200px) {

@@ -3,11 +3,11 @@ import imgBanner from "../assets/img/img-banner2.jpg";
 
 const Banner = () => {
   return (
-    <>
+    <section>
       <div className="top">
         <Container>
-          <Row className="pb-4">
-            <Col lg={7}>
+          <Row className="pb-5">
+            <Col md={12} lg={7} className="text-center text-lg-start">
               <p className="kaushan-script fs-2 mb-1 txt-details-color">
                 - Paradise Hotel Resort -
               </p>
@@ -30,7 +30,7 @@ const Banner = () => {
                 <br></br>Paradise Hotel Resort
               </h2>
             </Col>
-            <Col lg={7}>
+            <Col lg={7} className="pt-2 pt-lg-0">
               <p className="txt-light-customized">
                 Sumérgete en un mundo de opulencia y comodidad en nuestro hotel
                 de categoría mundial. Desde impecables suites hasta servicios
@@ -52,7 +52,7 @@ const Banner = () => {
           </Row>
         </Container>
       </div>
-    </>
+    </section>
   );
 };
 
