@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+.bgDark {
+  background-color: #08171f;
+}
+.bgLight {
+  background-color: #fffaed;
+}
+.myMain {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+}
+.myCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.myCard {
+  width: 80%;
+  border: none;
+  border-radius: 20px;
+}
+.myImage {
+  border-radius: 0 20px 20px 0;
+}
+.myCardBody {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.myTitle {
+  color: #0b1d26;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 20px;
+  margin: 5px;
+}
+.littleRect {
+  width: 120px;
+  height: 4px;
+  background-color: #212e34;
+  border-radius: 5px;
+}
+.myForm {
+  flex-grow: 1;
+  margin-top: 35px;
+  width: 75%;
+}
+.myLabel {
+  color: #0b1d26;
+  font-weight: bold;
+}
+.myInput {
+  background-color: #73737320;
+  border: 1px solid transparent;
+  padding: 12px;
+  border-radius: 0;
+}
+.textError {
+  color: #690606;
+}
+.buttonCont {
+  text-align: center;
+}
+.myButton {
+  color: #fffaed;
+  background-color: #0b1d26;
+  font-size: 20px;
+  font-family: inherit;
+  border-radius: 30px;
+  border: 1px solid transparent;
+  transition: all 250ms;
+  padding: calc(1.5rem - 2px) calc(3rem - 2px);
+  background-clip: padding-box;
+  line-height: 1.25;
+  box-shadow: #0d0d0d04 0 1px 3px 0;
+  box-sizing: border-box;
+  display: inline-flex;
+}
+.myButton:hover,
+.myButton:focus {
+  background-color: #123140;
+  box-shadow: #0d0d0d20 0 4px 12px;
+}
+.myButton:hover {
+  transform: translateY(-2px);
+}
+.myButton:active {
+  background-color: #1b465c;
+  box-shadow: #0d0d0d12 0 2px 4px;
+  transform: translateY(0);
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1399.9px) {
+  .myCard {
+    width: 95%;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199.9px) {
+  .myCard {
+    width: 100%;
+  }
+  .myCont {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .myForm {
+    width: 100%;
+  }
+}
