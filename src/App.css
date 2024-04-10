@@ -104,7 +104,7 @@ a svg {
   margin-bottom: 25px;
 }
 
-.card, .form-select{
+.card {
   background: transparent;
   border: 1px solid #d1d7d4;
   font-family: "Montserrat", sans-serif;
@@ -129,9 +129,17 @@ a svg {
   border: 1px solid #d1d7d4;
 }
 
-.form-select{
+.selectPersonalizado{
   background-color: #f0d78d;
   color: #08171e;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#descripcion{
+  resize: none;
 }
 
 @media (min-width: 980px) and (max-width: 1200px) {
