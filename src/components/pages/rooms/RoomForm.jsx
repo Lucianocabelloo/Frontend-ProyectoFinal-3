@@ -2,7 +2,7 @@ import { Container, Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
-const RoomForm = () => {
+const RoomForm = ({ editar, titulo }) => {
   const {
     register,
     handleSubmit,
@@ -12,12 +12,16 @@ const RoomForm = () => {
   } = useForm();
 
   const onSubmit = (room) => {
-    console.log(room);
+    if (editar) {
+      console.log("Aca se edita");
+    } else {
+      console.log(room);
+    }
   };
 
   return (
     <Container className="my-4 mainContainer">
-      <h1 className="mb-4">Crear Habitación</h1>
+      <h1 className="mb-4">{titulo} Habitación</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3 text-light" controlId="numero">
           <Form.Label>Número de Habitación:*</Form.Label>

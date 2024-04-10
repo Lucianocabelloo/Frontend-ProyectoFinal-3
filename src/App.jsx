@@ -22,7 +22,7 @@ function App() {
         ></Route>
         <Route
           path="/administrador/crear"
-          element={<RoomForm></RoomForm>}
+          element={<RoomForm editar={false} titulo="Crear"></RoomForm>}
         ></Route>
       </Routes>
     </BrowserRouter>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Table, Row, Col, Container, Form, Button } from "react-bootstrap";
 import UserItem from "./users/UserItem";
 import ItemRoom from "./rooms/ItemRoom";
+import { Link } from "react-router-dom";
 
 const Administrator = () => {
   const [tabla, setTabla] = useState("Habitaciones");
@@ -23,9 +24,9 @@ const Administrator = () => {
         </Col>
         <Col md="8" className="text-md-end text-center mb-3">
           {tabla === "Habitaciones" && (
-            <Button className="me-2">
+            <Link to="/administrador/crear" className="btn btn-primary me-2">
               <i className="bi bi-building-add"></i>
-            </Button>
+            </Link>
           )}
           {tabla === "Usuarios" && (
             <Button>
