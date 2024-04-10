@@ -1,11 +1,12 @@
 import { Container, Row, Col } from "react-bootstrap";
+import imgBanner from "../assets/img/img-banner2.jpg";
 
 const Banner = () => {
   return (
     <>
       <div className="top">
         <Container>
-          <Row>
+          <Row className="pb-4">
             <Col lg={7}>
               <p className="kaushan-script fs-2 mb-1 txt-details-color">
                 - Paradise Hotel Resort -
@@ -20,11 +21,10 @@ const Banner = () => {
       </div>
       <div className="bottom bg-color pt-5">
         <Container>
-          <hr className="text-warning" />
           <Row className="justify-content-center align-items-center">
             <Col lg={5}>
-              <h2 className="display-5 txt-details-color">
-                <span className="kaushan-script fs-2 txt-light-customized">
+              <h2 className="display-5 txt-details-color fw-bold">
+                <span className="kaushan-script fw-normal fs-2 txt-light-customized">
                   Bienvenido a
                 </span>
                 <br></br>Paradise Hotel Resort
@@ -39,6 +39,15 @@ const Banner = () => {
                 expectativas. Descubre la perfección en cada detalle y reserva
                 tu experiencia inolvidable hoy mismo.
               </p>
+            </Col>
+            <Col lg={12}>
+              <div className="img-banner-container">
+                <img
+                  src={imgBanner}
+                  alt="Imagen de la piscina del hotel"
+                  className="img-banner"
+                />
+              </div>
             </Col>
           </Row>
         </Container>

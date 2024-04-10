@@ -45,7 +45,7 @@ h1,h2,h3,h4,h5,h6 {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-p, button {
+p {
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -70,21 +70,44 @@ p, button {
 }
 
 .btn-cutomized{
-
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  border: 1px solid #fff;
+  padding: 10px 20px;
+  border-radius: 3px;
+  transition: background .3s, color .3s, border .3s;
 }
+.btn-cutomized:hover{
+  background: #F0D78D;
+  color: #000;
+  border: 1px solid #000;
+}
+
 
 /* Home page STYLES  */
 .top{
   display: flex;
   align-items: end;
   min-height: 75vh;
-  background: linear-gradient(0deg, #08171e, rgba(0,0,0,0.3))
+  background: linear-gradient(0deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3))
   ,url('./assets/img/banner.jpg') no-repeat center center;
   background-size: cover;
 }
 
-.bottom{
-  height: 50vh;
+.img-banner{
+  height: 100%; 
+  width: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.img-banner-container{
+  height: 20rem;
+  width: 33rem;
+  margin: 0 auto;
+  transform: translate(0,50%);
 }
 
 @media (min-width: 980px) and (max-width: 1200px) {
