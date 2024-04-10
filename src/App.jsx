@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Menu />
-      <Gallery/>
+      <Register/>
       <Footer />
     </>
   );
