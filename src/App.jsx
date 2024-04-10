@@ -6,6 +6,8 @@ import Gallery from "./components/pages/gallery/Gallery";
 import AboutUs from "./components/pages/aboutUs/AboutUs";
 import Administrador from "./components/pages/Administrador";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Rooms from "./components/pages/Rooms";
+
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         ></Route>
       </Routes>
     </BrowserRouter>
+      <Rooms></Rooms>
+    </>
   );
 }
 
