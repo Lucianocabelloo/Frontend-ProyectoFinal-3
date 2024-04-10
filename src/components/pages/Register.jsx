@@ -2,6 +2,7 @@ import { Container, Card, Row, Col, Form } from "react-bootstrap";
 import "./register.css";
 import registerImg from "../../assets/img/register.jpg";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const {
@@ -11,6 +12,21 @@ const Register = () => {
     reset,
   } = useForm();
   const onSubmit = async (user) => {
+  //   const answer = await createUserAPI(user);
+  //   if (answer.status === 201) {
+  //     Swal.fire({
+  //       title: "Su usuario a sido creado!",
+  //       text: `${user.nombreCompleto} has sido registrado correctamente`,
+  //       icon: "success",
+  //     });
+  //     reset();
+  //   } else {
+  //     Swal.fire({
+  //       title: "Ocurrio un error!",
+  //       text: `${user.nombreCompleto} no fue registrado, pruebe nuevamente en unos minutos`,
+  //       icon: "error",
+  //     });
+  //   }
   };
   return (
     <div className="myMain bgDark">
