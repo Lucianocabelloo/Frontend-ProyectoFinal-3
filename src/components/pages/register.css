@@ -22,6 +22,10 @@
   width: 80%;
   border: none;
   border-radius: 20px;
+  transition: all 250ms;
+}
+.myCard:hover {
+  transform: scale(1.05);
 }
 .myImage {
   border-radius: 0 20px 20px 0;
@@ -54,9 +58,15 @@
 }
 .myInput {
   background-color: #73737320;
-  border: 1px solid transparent;
   padding: 12px;
   border-radius: 0;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+  transition: all 250ms
+}
+.myInput:focus {
+  background-color: #73737320;
+  transform: scaleX(1.05);
 }
 .textError {
   color: #690606;
@@ -107,6 +117,20 @@
     margin-right: 0;
     padding-left: 0;
     padding-right: 0;
+  }
+  .myForm {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 575.9px){
+  .myCard {
+    width: 100%;
+  }
+  .myCont {
+    margin-left: 0;
+    margin-right:0;
+    padding-left: 4;
+    padding-right: 4;
   }
   .myForm {
     width: 100%;

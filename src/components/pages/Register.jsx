@@ -36,7 +36,7 @@ const Register = () => {
             <Col className="p-0">
               <Form
                 onSubmit={handleSubmit(onSubmit)}
-                className="myCardBody px-5 py-4"
+                className="myCardBody px-4 px-sm-5 py-4"
               >
                 <div>
                   <h4 className="myTitle">Registrarse</h4>
