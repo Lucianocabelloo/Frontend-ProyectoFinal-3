@@ -24,21 +24,21 @@ const Information = () => {
           lujo que te espera en nuestro refugio de indulgencia.
         </p>
         <Row className="pt-4">
-          <Col md={4}>
+          <Col md={4} className="mb-5 mb-md-0">
             <img
               src={room1}
               className="img-room"
               alt="Imagen de la habitacion"
             />
           </Col>
-          <Col md={4}>
+          <Col md={4} className="mb-5 mb-md-0">
             <img
               src={room2}
               className=" img-room"
               alt="Imagen de la habitacion"
             />
           </Col>
-          <Col md={4}>
+          <Col md={4} className="mb-5 mb-md-0">
             <img
               src={room3}
               className="img-room"
@@ -72,10 +72,11 @@ const Information = () => {
                 />
               </div>
               <div className="card-body p-2">
-                <h4 className="kaushan-script txt-details-color fs-2 pt-2">
+              <hr className="text-warning m-0" />
+                <h4 className="kaushan-script txt-details-color fs-1 pt-2">
                   Piscina
                 </h4>
-                <hr className="text-warning my-2"/>
+                <hr className="text-warning my-2" />
                 <p className="txt-light-customized">
                   Fresco oasis de relajación bajo el sol radiante: ¡tu escapada
                   perfecta te espera junto a nuestra piscina de ensueño!
@@ -87,19 +88,21 @@ const Information = () => {
             <div className="card-customized bg-color p-1">
               <div className="img-container">
                 <img
-                  src={pool}
+                  src={gym}
                   className="img-customized"
                   alt="Imagen de la piscina del hotel"
                 />
               </div>
               <div className="card-body p-2">
-                <h4 className="kaushan-script txt-details-color fs-2 pt-2">
-                  Piscina
+              <hr className="text-warning m-0" />
+                <h4 className="kaushan-script txt-details-color fs-1 pt-2">
+                  Gimnasio
                 </h4>
-                <hr className="text-warning my-2"/>
+                <hr className="text-warning my-2" />
                 <p className="txt-light-customized">
-                  Fresco oasis de relajación bajo el sol radiante: ¡tu escapada
-                  perfecta te espera junto a nuestra piscina de ensueño!
+                  Alcanza tus metas fitness en nuestro santuario de bienestar:
+                  ¡tu gimnasio de lujo te espera para desafiar tus límites y
+                  revitalizar tu cuerpo y mente!
                 </p>
               </div>
             </div>
@@ -108,19 +111,21 @@ const Information = () => {
             <div className="card-customized bg-color p-1">
               <div className="img-container">
                 <img
-                  src={pool}
+                  src={restaurant}
                   className="img-customized"
                   alt="Imagen de la piscina del hotel"
                 />
               </div>
               <div className="card-body p-2">
-                <h4 className="kaushan-script txt-details-color fs-2 pt-2">
-                  Piscina
+              <hr className="text-warning m-0" />
+                <h4 className="kaushan-script txt-details-color fs-1 pt-2">
+                  Restaurante
                 </h4>
-                <hr className="text-warning my-2"/>
+                <hr className="text-warning my-2" />
                 <p className="txt-light-customized">
-                  Fresco oasis de relajación bajo el sol radiante: ¡tu escapada
-                  perfecta te espera junto a nuestra piscina de ensueño!
+                  Saborea la excelencia culinaria en nuestro oasis gastronómico:
+                  ¡una experiencia sensorial única donde cada plato es una obra
+                  maestra!
                 </p>
               </div>
             </div>
@@ -129,19 +134,21 @@ const Information = () => {
             <div className="card-customized bg-color p-1">
               <div className="img-container">
                 <img
-                  src={pool}
+                  src={spa}
                   className="img-customized"
                   alt="Imagen de la piscina del hotel"
                 />
               </div>
               <div className="card-body p-2">
+              <hr className="text-warning m-0" />
                 <h4 className="kaushan-script txt-details-color fs-2 pt-2">
-                  Piscina
+                  SPA de Lujo
                 </h4>
-                <hr className="text-warning my-2"/>
+                <hr className="text-warning my-2" />
                 <p className="txt-light-customized">
-                  Fresco oasis de relajación bajo el sol radiante: ¡tu escapada
-                  perfecta te espera junto a nuestra piscina de ensueño!
+                  Sumérgete en un mundo de relajación y rejuvenecimiento en
+                  nuestro santuario de bienestar: ¡tu escape perfecto para
+                  renovar cuerpo, mente y espíritu!
                 </p>
               </div>
             </div>

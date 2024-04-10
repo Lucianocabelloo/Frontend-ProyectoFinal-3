@@ -141,23 +141,28 @@ p {
   height: 100%;
   object-fit: cover;
   border-radius: 3px;
-  border-top: 6px solid #F0D78D;
+  border-top: 4px solid #F0D78D;
 }
 
 .card-customized {
   width: 100%;
-  height: 30rem;
+  height: 32rem;
 }
 
 .img-customized{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform .9s;
 }
 
 .img-container{
-  height: 55%;
+  height: 52%;
   width: 100%;
+  overflow: hidden;
+}
+.img-customized:hover{
+  transform: scale(1.3);
 }
 
 
