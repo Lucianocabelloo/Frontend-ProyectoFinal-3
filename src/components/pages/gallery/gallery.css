@@ -122,6 +122,19 @@ z-index: 999;
         display: none;
       }
   }
+
+  
+  @media (min-width: 431px)  {
+    .carousel-container {
+    height: 100%; 
+  }
+
+  .custom-img {
+    height: 500px;
+    object-fit: cover;
+  }
+}
+
   @media (min-width: 900px){
     .carousel-container {
         height: 60vh; 
