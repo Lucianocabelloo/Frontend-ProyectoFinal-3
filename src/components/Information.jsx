@@ -1,7 +1,7 @@
 import { Row, Col, Container } from "react-bootstrap";
-import room1 from '../assets/img/room1.jpg';
-import room2 from '../assets/img/room2.jpg';
-import room3 from '../assets/img/room3.jpg';
+import room1 from "../assets/img/room1.jpg";
+import room2 from "../assets/img/room2.jpg";
+import room3 from "../assets/img/room3.jpg";
 
 const Information = () => {
   return (
@@ -20,15 +20,30 @@ const Information = () => {
           lujo que te espera en nuestro refugio de indulgencia.
         </p>
         <Row className="pt-4">
-            <Col md={4}>
-                <img src={room1} className="img-customized" alt="Imagen de la habitacion"/>
-            </Col>
-            <Col md={4}>
-                <img src={room2} className=" img-customized" alt="Imagen de la habitacion"/>
-            </Col>
-            <Col md={4}>
-                <img src={room3} className="img-customized" alt="Imagen de la habitacion"/>
-            </Col>
+          <Col md={4}>
+            <img
+              src={room1}
+              className="img-customized"
+              alt="Imagen de la habitacion"
+            />
+          </Col>
+          <Col md={4}>
+            <img
+              src={room2}
+              className=" img-customized"
+              alt="Imagen de la habitacion"
+            />
+          </Col>
+          <Col md={4}>
+            <img
+              src={room3}
+              className="img-customized"
+              alt="Imagen de la habitacion"
+            />
+          </Col>
+          <Col md={12} className="text-center mt-4">
+          <button className="btn-customized-2">Ver Habitaciones</button>
+          </Col>
         </Row>
       </section>
     </Container>

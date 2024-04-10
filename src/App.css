@@ -74,7 +74,7 @@ p {
   color: #08171e;
 }
 
-.btn-cutomized{
+.btn-customized{
   background: rgba(0,0,0,0.4);
   color: #fff;
   font-weight: 600;
@@ -84,10 +84,26 @@ p {
   border-radius: 3px;
   transition: background .3s, color .3s, border .3s;
 }
-.btn-cutomized:hover{
+.btn-customized:hover{
   background: #F0D78D;
   color: #000;
   border: 1px solid #000;
+}
+
+.btn-customized-2{
+  background: #08171e;
+  color: #fff;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  transition: background .3s, text-shadow .3s, letter-spacing .3s;
+}
+.btn-customized-2:hover{
+  background: #0d2531;
+  text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+  letter-spacing: 3px;
 }
 
 

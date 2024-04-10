@@ -14,7 +14,7 @@ const Banner = () => {
               <h1 className="txt-light-customized fw-bold pb-4">
                 Donde el lujo encuentra su hogar y tus sueños se hacen realidad
               </h1>
-              <button className="btn-cutomized">Ver Habitaciones</button>
+              <button className="btn-customized">Ver Habitaciones</button>
             </Col>
           </Row>
         </Container>
