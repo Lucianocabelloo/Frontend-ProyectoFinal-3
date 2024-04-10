@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 #root {
   display: flex;
   flex-direction: column;
@@ -8,8 +10,32 @@
   flex-grow: 1;
 }
 
-body{
-    display: block !important;
+body {
+  display: block !important;
+  background-color: #08171e;
+}
+
+h1,
+h2, h3 {
+  color: #fefffc;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+h4,
+h5,
+h6 {
+  font-family: "Kaushan Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+  color: #fefffc;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #fefffc;
 }
 
 .container-nav {
@@ -17,7 +43,7 @@ body{
   gap: 64px;
 }
 
-.navbar-brand{
+.navbar-brand {
   margin: 0px;
 }
 
@@ -41,8 +67,77 @@ a svg {
   max-width: 200px;
 }
 
+.container-nav {
+  gap: 0px;
+}
+
+.tituloPrincipal {
+  background-image: url("./assets/img/rooms.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 150px;
+  text-align: center;
+}
+
+.hrRoom {
+  color: #f0d78d;
+  border-width: 3px
+}
+
+.service{
+  padding: 15px;
+  border-left: 2px solid #f0d78d;
+  border-right: 2px solid #f0d78d;
+  height: 60px;
+}
+
+.imgIcon{
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+}
+
+.tituloHab{
+  font-family: "Kaushan Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 25px;
+}
+
+.card, .form-select{
+  background: transparent;
+  border: 1px solid #d1d7d4;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.card-title{
+  color: #fefffc;
+}
+
+.btnCardRoom{
+  background-color: transparent;
+  color: #fefffc;
+  border: 1px solid #f0d78d;
+}
+
+.btnCardRoom:hover {
+  background-color: #f0d78d;
+  color: #08171e;
+  border: 1px solid #d1d7d4;
+}
+
+.form-select{
+  background-color: #f0d78d;
+  color: #08171e;
+}
+
 @media (min-width: 980px) and (max-width: 1200px) {
   bubble {
     flex: none;
   }
 }
+
+
