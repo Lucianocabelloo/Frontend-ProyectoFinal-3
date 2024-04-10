@@ -46,3 +46,10 @@ a svg {
     flex: none;
   }
 }
+
+
+@media (max-width: 420px){
+  .container-nav{
+    gap: 0px;
+  }
+}

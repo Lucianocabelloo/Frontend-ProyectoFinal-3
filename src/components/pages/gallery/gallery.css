@@ -112,7 +112,7 @@ z-index: 999;
     border-radius: 25px;
   }
 
-  @media (max-width: 400px){
+  @media (max-width: 430px){
     .carousel-container {
         height: 30vh; 
         overflow: hidden;
