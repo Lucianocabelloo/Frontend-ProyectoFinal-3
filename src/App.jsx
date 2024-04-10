@@ -8,7 +8,6 @@ import Administrador from "./components/pages/Administrador";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Rooms from "./components/pages/Rooms";
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -22,8 +21,6 @@ function App() {
         ></Route>
       </Routes>
     </BrowserRouter>
-      <Rooms></Rooms>
-    </>
   );
 }
 
