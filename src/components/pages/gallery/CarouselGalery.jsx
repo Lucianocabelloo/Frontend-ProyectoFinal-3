@@ -42,7 +42,7 @@ function CarouselGalery() {
         {data.map((item, index) => (
           <Carousel.Item key={index}>
             <img
-              className="custom-img"
+              className="custom-img img-fluid"
               src={item.imgSrc}
               alt={`imagen ${index}`}
             />

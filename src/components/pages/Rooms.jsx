@@ -57,7 +57,7 @@ const Rooms = () => {
             <h2 className="tituloHab mt-4">Habitaciones</h2>
           </Col>
           <Col lg="4">
-            <Form.Select>
+            <Form.Select className="selectPersonalizado">
               <option value="">Todos</option>
               <option value="Standard">Standard</option>
               <option value="Deluxe">Deluxe</option>

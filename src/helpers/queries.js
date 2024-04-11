@@ -31,11 +31,28 @@ export const createRoomsAPI = async (newRoom) => {
   }
 };
 
+export const editRoomAPI = async (room, id) => {
+  try {
+    const answer = await fetch(`${URI_ROOM}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(room),
+    });
+    return answer;
+  } catch (error) {
+    console.error(
+      `El siguiente error ocurrio intentando editar la habitacion: ${error}`
+    );
+  }
+};
+
 export const deleteRoomAPI = async (id) => {
   try {
     const answer = await fetch(`${URI_ROOM}/${id}`, {
       method: "DELETE",
-    });
+      });
     return answer;
   } catch (error) {
     console.error(
