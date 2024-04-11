@@ -50,3 +50,16 @@ export const editRoomAPI = async (room, id) => {
     );
   }
 };
+
+export const deleteRoomAPI = async (id) => {
+  try {
+    const answer = await fetch(`${URI_ROOM}/${id}`, {
+      method: "DELETE",
+      });
+    return answer;
+  } catch (error) {
+    console.error(
+      `El siguiente error ocurrio al intentar borrar la habitacion: ${error}`
+    );
+  }
+};
