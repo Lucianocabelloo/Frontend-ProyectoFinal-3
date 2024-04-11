@@ -273,9 +273,20 @@ p {
 .icon-login{
   border: 2px solid #555;
   background: inherit;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 5px 10px;
   font-size: 25px;
+  transition: all .3s;
+}
+.icon-login:hover{
+  background: #08171e;
+  color: #f0d78d;
+  border: 2px solid #f0d78d;
+}
+
+.input-customized {
+  font-family: 'Montserrat', sans-serif;
+
 }
 
 @media (min-width: 980px) and (max-width: 1200px) {
