@@ -1,5 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import imgBanner from "../assets/img/img-banner2.jpg";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -14,7 +15,7 @@ const Banner = () => {
               <h1 className="txt-light-customized fw-bold pb-4">
                 Donde el lujo encuentra su hogar y tus sueños se hacen realidad
               </h1>
-              <button className="btn-customized">Ver Habitaciones</button>
+              <Link to="/habitaciones" className="btn-customized">Ver Habitaciones</Link>
             </Col>
           </Row>
         </Container>

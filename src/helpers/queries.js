@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const URI_ROOM = import.meta.env.VITE_API_ROOM;
 
 export const getRoomsAPI = async () => {
@@ -6,10 +8,11 @@ export const getRoomsAPI = async () => {
     console.log(response);
     return response;
   } catch (error) {
-    console.error(
-      "Se ha producido el siguiente error al intentar traer los cuartos",
-      error
-    );
+    Swal.fire({
+      title: "Servicio no disponible momentaneamente",
+      text: `Sucedio el error "${error}", intentelo nuevamente en unos minutos`,
+      icon: "error",
+    });
   }
 };
 

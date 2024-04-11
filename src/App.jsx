@@ -1,8 +1,17 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 import Home from "./components/pages/Home";
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faWaterLadder,faWifi,faUtensils, faDumbbell,faConciergeBell,faSnowflake,faTv,faParking } from '@fortawesome/free-solid-svg-icons';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faWaterLadder,
+  faWifi,
+  faUtensils,
+  faDumbbell,
+  faConciergeBell,
+  faSnowflake,
+  faTv,
+  faParking,
+} from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 import Menu from "./components/common/Menu";
 import Gallery from "./components/pages/gallery/Gallery";
@@ -14,22 +23,24 @@ import RoomForm from "./components/pages/rooms/RoomForm";
 import Register from "./components/pages/Register";
 import Login from "./components/pages/Login";
 
-library.add(faWaterLadder,faWifi,faUtensils, faDumbbell,faConciergeBell,faSnowflake,faTv,faParking);
 
 function App() {
   return (
     <BrowserRouter>
       <Menu />
       <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
-        <Route path="/nosotros" element={<AboutUs></AboutUs>}></Route>
-        <Route exact path="/registro" element={<Register/>}></Route>
-        <Route exact path="/iniciar-sesion" element={<Login/>}></Route>
+        <Route exact path="/" element={<Home></Home>}></Route>
+        <Route exact path="/nosotros" element={<AboutUs></AboutUs>}></Route>
+        <Route exact path="/habitaciones" element={<Rooms></Rooms>}></Route>
+        <Route exact path="/registro" element={<Register />}></Route>
+        <Route exact path="/galeria" element={<Gallery></Gallery>}></Route>
         <Route
+          exact
           path="/administrador"
           element={<Administrador></Administrador>}
         ></Route>
         <Route
+          exact
           path="/administrador/crear"
           element={<RoomForm editar={false} titulo="Crear"></RoomForm>}
         ></Route>
