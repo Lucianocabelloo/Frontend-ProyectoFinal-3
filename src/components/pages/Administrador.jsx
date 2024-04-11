@@ -12,7 +12,7 @@ const Administrator = () => {
   };
 
   return (
-    <Container className="my-4 mainContainer">
+    <Container className="my-4">
       <h1 className="display-3">Administrador</h1>
       <hr className="hrRoom" />
       <Row className="align-items-center justify-content-sm-center">
