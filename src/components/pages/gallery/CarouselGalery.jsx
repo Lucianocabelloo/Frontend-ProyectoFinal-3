@@ -9,12 +9,7 @@ import "./gallery.css"; // Importa tu archivo CSS donde aplicarás los estilos p
 
 function CarouselGalery() {
   const data = [
-    {
-      id: 1,
-      imgSrc: carrousel1,
-      text: "Piscina de afuera",
-      description: "Disfruta de la serenidad del aire libre con nuestra impresionante piscina exterior, rodeada de exuberante vegetación y el cálido resplandor del sol. Un oasis perfecto para relajarte y disfrutar del ambiente tranquilo."
-    },
+
     {
       id: 2,
       imgSrc: carrousel2,

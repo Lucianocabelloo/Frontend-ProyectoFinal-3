@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 #root {
   display: flex;
   flex-direction: column;
@@ -9,8 +11,9 @@
   background: #fffaed;
 }
 
-body{
-    display: block !important;
+body {
+  display: block !important;
+  background-color: #08171e;
 }
 
 .container-nav {
@@ -18,7 +21,7 @@ body{
   gap: 64px;
 }
 
-.navbar-brand{
+.navbar-brand {
   margin: 0px;
 }
 
@@ -44,14 +47,17 @@ a svg {
 
 h1,h2,h3,h4,h5,h6 {
   font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #fefffc;
 }
 
 p {
   font-family: 'Montserrat', sans-serif;
+  color: #fefffc;
 }
 
 .kaushan-script {
   font-family: "Kaushan Script", cursive;
+  color: #fefffc;
 }
 
 .txt-light-customized{
@@ -171,6 +177,73 @@ p {
 
 .icon{
   font-size: 40px;
+=======
+.container-nav {
+  gap: 0px;
+}
+
+.tituloPrincipal {
+  background-image: url("./assets/img/rooms.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 150px;
+  text-align: center;
+}
+
+.hrRoom {
+  color: #f0d78d;
+  border-width: 3px
+}
+
+.service{
+  padding: 15px;
+  border-left: 2px solid #f0d78d;
+  border-right: 2px solid #f0d78d;
+  height: 60px;
+}
+
+.imgIcon{
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+}
+
+.tituloHab{
+  font-family: "Kaushan Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 25px;
+}
+
+.card{
+  background: transparent;
+  border: 1px solid #d1d7d4;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.card-title{
+  color: #fefffc;
+}
+
+.btnCardRoom{
+  background-color: transparent;
+  color: #fefffc;
+  border: 1px solid #f0d78d;
+}
+
+.btnCardRoom:hover {
+  background-color: #f0d78d;
+  color: #08171e;
+  border: 1px solid #d1d7d4;
+}
+
+.form-select{
+  background-color: #f0d78d;
+  color: #08171e;
+  font-family: "Montserrat", sans-serif;
 }
 
 @media (min-width: 980px) and (max-width: 1200px) {
@@ -178,3 +251,5 @@ p {
     flex: none;
   }
 }
+
+
