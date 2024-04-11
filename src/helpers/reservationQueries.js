@@ -40,3 +40,23 @@ export const getReservationByNumber = async (number) => {
     });
   }
 };
+
+export const createReserve = async (newReserve) => {
+  try {
+    const respuesta = await (URI_Reservation,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newReserve),
+    });
+    return respuesta;
+  } catch (error) {
+    Swal.fire({
+      title: "Servicio no disponible momentaneamente",
+      text: `Sucedio el error "${error}", intentelo nuevamente en unos minutos`,
+      icon: "error",
+    });
+  }
+};
