@@ -2,10 +2,10 @@ import Swal from "sweetalert2";
 
 const URI_Reservation = import.meta.env.VITE_API_RESERV;
 
-export const getReservations = async () => {
+export const getReservationsAPI = async () => {
   try {
-    const respuesta = await fetch(URI_Reservation);
-    return respuesta;
+    const response = await fetch(URI_Reservation);
+    return response;
   } catch (error) {
     Swal.fire({
       title: "Servicio no disponible momentaneamente",
@@ -15,10 +15,10 @@ export const getReservations = async () => {
   }
 };
 
-export const getReservationById = async (id) => {
+export const getReservationByIdAPI = async (id) => {
   try {
-    const respuesta = await fetch(`${URI_Reservation}/${id}`);
-    return respuesta;
+    const response = await fetch(`${URI_Reservation}/${id}`);
+    return response;
   } catch (error) {
     Swal.fire({
       title: "Servicio no disponible momentaneamente",
@@ -28,10 +28,10 @@ export const getReservationById = async (id) => {
   }
 };
 
-export const getReservationByNumber = async (number) => {
+export const getReservationByNumberAPI = async (number) => {
   try {
-    const respuesta = await fetch(`${URI_Reservation}/${number}`);
-    return respuesta;
+    const response = await fetch(`${URI_Reservation}/${number}`);
+    return response;
   } catch (error) {
     Swal.fire({
       title: "Servicio no disponible momentaneamente",
@@ -41,17 +41,31 @@ export const getReservationByNumber = async (number) => {
   }
 };
 
-export const createReserve = async (newReserve) => {
+export const createReserveAPI = async (newReserve) => {
   try {
-    const respuesta = await (URI_Reservation,
-    {
+    const response = await fetch(URI_Reservation, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newReserve),
     });
-    return respuesta;
+    return response;
+  } catch (error) {
+    Swal.fire({
+      title: "Servicio no disponible momentaneamente",
+      text: `Sucedio el error "${error}", intentelo nuevamente en unos minutos`,
+      icon: "error",
+    });
+  }
+};
+
+export const deleteReservationAPI = async (id) => {
+  try {
+    const response = await fetch(`${URI_Reservation}/${id}`, {
+      method: "DELETE",
+    });
+    return response;
   } catch (error) {
     Swal.fire({
       title: "Servicio no disponible momentaneamente",
