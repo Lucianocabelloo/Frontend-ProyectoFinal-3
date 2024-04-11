@@ -22,6 +22,7 @@ const RoomForm = ({ editar, titulo }) => {
   return (
     <Container className="my-4 mainContainer">
       <h1 className="mb-4">{titulo} Habitación</h1>
+      <hr className="hrRoom"/>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3 text-light" controlId="numero">
           <Form.Label>Número de Habitación:*</Form.Label>
@@ -153,9 +154,12 @@ const RoomForm = ({ editar, titulo }) => {
             {errors.disponibilidad?.message}
           </Form.Text>
         </Form.Group>
+        <Form.Group className="mb-3 text-light">
+          <p>Los campos que tienen * son obligatorios.</p>
+        </Form.Group>
         <Form.Group className="mb-3">
           <Button variant="success me-2">Guardar</Button>
-          <Link to="/" className="btn btn-primary">
+          <Link to="/administrador" className="btn btn-primary">
             Volver
           </Link>
         </Form.Group>
