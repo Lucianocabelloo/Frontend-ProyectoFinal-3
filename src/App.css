@@ -93,6 +93,7 @@ p {
   padding: 10px 20px;
   border-radius: 3px;
   transition: background .3s, color .3s, border .3s;
+  text-decoration: none;
 }
 .btn-customized:hover{
   background: #F0D78D;
@@ -109,6 +110,7 @@ p {
   border: none;
   border-radius: 3px;
   transition: background .3s, text-shadow .3s, letter-spacing .3s;
+  text-decoration: none;
 }
 .btn-customized-2:hover{
   background: #0d2531;

@@ -39,15 +39,18 @@ function App() {
     <BrowserRouter>
       <Menu />
       <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
-        <Route path="/nosotros" element={<AboutUs></AboutUs>}></Route>
-        <Route path="/habitaciones" element={<Rooms></Rooms>}></Route>
+        <Route exact path="/" element={<Home></Home>}></Route>
+        <Route exact path="/nosotros" element={<AboutUs></AboutUs>}></Route>
+        <Route exact path="/habitaciones" element={<Rooms></Rooms>}></Route>
         <Route exact path="/registro" element={<Register />}></Route>
+        <Route exact path="/galeria" element={<Gallery></Gallery>}></Route>
         <Route
+          exact
           path="/administrador"
           element={<Administrador></Administrador>}
         ></Route>
         <Route
+          exact
           path="/administrador/crear"
           element={<RoomForm editar={false} titulo="Crear"></RoomForm>}
         ></Route>
