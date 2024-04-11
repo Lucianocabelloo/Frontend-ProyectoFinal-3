@@ -7,6 +7,7 @@ import AboutUs from "./components/pages/aboutUs/AboutUs";
 import Administrador from "./components/pages/Administrador";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Rooms from "./components/pages/Rooms";
+import Register from "./components/pages/Register";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Gallery></Gallery>}></Route>
         <Route path="/nosotros" element={<AboutUs></AboutUs>}></Route>
+        <Route exact path="/registro" element={<Register/>}></Route>
         <Route
           path="/administrador"
           element={<Administrador></Administrador>}
