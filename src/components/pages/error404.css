@@ -1,0 +1,10 @@
+.bgLight {
+    background-color: #fffaed;
+  }
+  .myMain {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+  }
