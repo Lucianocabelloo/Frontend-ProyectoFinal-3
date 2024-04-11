@@ -1,6 +1,17 @@
 import { Container, Row, Col, Form } from "react-bootstrap";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (usuario) => {
+    console.log(usuario);
+  }
+
   return (
     <div className="bg-login mainContainer">
       <Container>
@@ -26,38 +37,79 @@ const Login = () => {
                 </button>
               </div>
             </div>
-            <Form className="mt-4">
+            <Form className="mt-4" onSubmit={handleSubmit(onSubmit)}>
               <Form.Group
                 className="mb-3"
-                controlId="exampleForm.ControlInput1"
+                controlId="formEmail"
               >
                 <Form.Label className="txt-montserrat fw-semibold">
                   Ingrese el email
                 </Form.Label>
-                <Form.Control type="email" placeholder="pedro@example.com" className="input-customized"/>
+                <Form.Control
+                  type="email"
+                  placeholder="pedro@example.com"
+                  className="input-customized"
+                  {...register("email", {
+                    required: "El email es obligatorio",
+                    minLength: {
+                      value: 10,
+                      message: "El email debe contener al menos 10 caracteres",
+                    },
+                    maxLength: {
+                      value: 340,
+                      message:
+                        "El email debe contener como máximo 340 caracteres",
+                    },
+                    pattern: {
+                      value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+                      message:
+                        "Ingrese una dirección de correo electrónico válida",
+                    },
+                  })}
+                />
+                <Form.Text className="text-danger">
+                  {errors.email?.message}
+                </Form.Text>
               </Form.Group>
               <Form.Group
                 className="mb-3"
-                controlId="exampleForm.ControlTextarea1"
+                controlId="formPassword"
               >
                 <Form.Label className="txt-montserrat fw-semibold ">
                   Ingrese la contraseña
                 </Form.Label>
-                <Form.Control type="password" placeholder="*******" className="input-customized"/>
+                <Form.Control
+                  type="password"
+                  placeholder="*******"
+                  className="input-customized"
+                />
               </Form.Group>
-            <div className="text-center">
-              <a href="#" className="text-secondary fw-bold text-center text-decoration-none">
-                Olvidó su contraseña?
-              </a>
-              <button className="btn-customized-2 d-block m-auto mt-4 fs-5">Iniciar sesión</button>
-            </div>
+              <div className="text-center">
+                <a
+                  href="#"
+                  className="text-secondary fw-bold text-center text-decoration-none"
+                >
+                  Olvidó su contraseña?
+                </a>
+                <button
+                  type="submit"
+                  className="btn-customized-2 d-block m-auto mt-4 fs-5"
+                >
+                  Iniciar sesión
+                </button>
+              </div>
             </Form>
           </Col>
           <Col lg={6} className="bg-right-login py-5">
             <div className="text-center">
-            <h2 className="kaushan-script txt-details-color display-4">Hola amigo!</h2>
-            <p className="txt-light-customized mt-4">Regístrate ahora para acceder a ofertas exclusivas, descuentos especiales y una experiencia de reserva sin complicaciones.</p>
-            <button className="btn-customized mt-4 fs-5">Registrarse</button>
+              <h2 className="kaushan-script txt-details-color display-4">
+                Hola amigo!
+              </h2>
+              <p className="txt-light-customized mt-4">
+                Regístrate ahora para acceder a ofertas exclusivas, descuentos
+                especiales y una experiencia de reserva sin complicaciones.
+              </p>
+              <button className="btn-customized mt-4 fs-5">Registrarse</button>
             </div>
           </Col>
         </Row>
