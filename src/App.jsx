@@ -13,7 +13,9 @@ import AboutUs from "./components/pages/aboutUs/AboutUs";
 import Administrador from "./components/pages/Administrador";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Rooms from "./components/pages/Rooms";
+import RoomForm from "./components/pages/rooms/RoomForm";
 import Register from "./components/pages/Register";
+
 
 function App() {
   return (
@@ -26,6 +28,10 @@ function App() {
         <Route
           path="/administrador"
           element={<Administrador></Administrador>}
+        ></Route>
+        <Route
+          path="/administrador/crear"
+          element={<RoomForm editar={false} titulo="Crear"></RoomForm>}
         ></Route>
       </Routes>
     </BrowserRouter>

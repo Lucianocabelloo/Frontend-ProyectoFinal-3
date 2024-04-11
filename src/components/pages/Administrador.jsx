@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Table, Row, Col, Container, Form, Button } from "react-bootstrap";
 import UserItem from "./users/UserItem";
 import ItemRoom from "./rooms/ItemRoom";
+import { Link } from "react-router-dom";
 
 const Administrator = () => {
   const [tabla, setTabla] = useState("Habitaciones");
@@ -13,19 +14,19 @@ const Administrator = () => {
   return (
     <Container className="my-4 mainContainer">
       <h1 className="display-3">Administrador</h1>
-      <hr />
+      <hr className="hrRoom" />
       <Row className="align-items-center justify-content-sm-center">
         <Col md="4" className="mb-3">
-          <Form.Select onChange={handleOnChange}>
+          <Form.Select onChange={handleOnChange} className="selectPersonalizado">
             <option value="Habitaciones">Habitaciones</option>
             <option value="Usuarios">Usuarios</option>
           </Form.Select>
         </Col>
         <Col md="8" className="text-md-end text-center mb-3">
           {tabla === "Habitaciones" && (
-            <Button className="me-2">
+            <Link to="/administrador/crear" className="btn btn-primary me-2">
               <i className="bi bi-building-add"></i>
-            </Button>
+            </Link>
           )}
           {tabla === "Usuarios" && (
             <Button>
@@ -36,7 +37,7 @@ const Administrator = () => {
       </Row>
       {tabla === "Habitaciones" && (
         <Table responsive striped hover bordered className="my-4">
-          <thead className="text-center">
+          <thead className="text-center text-light">
             <th>Numero</th>
             <th>Tipo</th>
             <th>Categoria</th>
@@ -47,12 +48,13 @@ const Administrator = () => {
           </thead>
           <tbody>
             <ItemRoom></ItemRoom>
+            <ItemRoom></ItemRoom>
           </tbody>
         </Table>
       )}
       {tabla === "Usuarios" && (
         <Table responsive striped hover bordered className="my-4">
-          <thead className="text-center">
+          <thead className="text-center text-light">
             <th>Nombre Completo</th>
             <th>Email</th>
             <th>Rol</th>
