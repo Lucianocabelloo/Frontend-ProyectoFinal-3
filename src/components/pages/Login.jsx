@@ -82,7 +82,24 @@ const Login = () => {
                   type="password"
                   placeholder="*******"
                   className="input-customized"
+                  {...register("password", {
+                    required: "La contraseña es obligatoria",
+                    minLength: { 
+                        value: 8, 
+                        message: "el minimo es de 8 caracteres" },
+                    maxLength: {
+                      value: 24,
+                      message: "el maximo es de 24 caracteres",
+                    },
+                    pattern: {
+                      value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+                      message: "La contraseña debe contener al menos una letra mayúscula, una letra minúscula y un número",
+                    },
+                  })}
                 />
+                <Form.Text className="text-danger">
+                  {errors.password?.message}
+                </Form.Text>
               </Form.Group>
               <div className="text-center">
                 <a
