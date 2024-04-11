@@ -5,9 +5,9 @@ const Login = () => {
     <div className="bg-login mainContainer">
       <Container>
         <Row className="box-login">
-          <Col lg={6}>
+          <Col lg={6} className="py-5 px-4">
             <div className="text-center">
-              <h1 className="txt-bg-color txt-montserrat fw-bold mb-4">
+              <h1 className="txt-bg-color txt-montserrat fw-bold mb-4 display-5">
                 Iniciar sesión
               </h1>
               <hr />
@@ -46,14 +46,20 @@ const Login = () => {
                 <Form.Control type="password" placeholder="*******" className="input-customized"/>
               </Form.Group>
             <div className="text-center">
-              <a href="#" className="text-secondary fw-bold text-center">
+              <a href="#" className="text-secondary fw-bold text-center text-decoration-none">
                 Olvidó su contraseña?
               </a>
               <button className="btn-customized-2 d-block m-auto mt-4 fs-5">Iniciar sesión</button>
             </div>
             </Form>
           </Col>
-          <Col lg={6}></Col>
+          <Col lg={6} className="bg-right-login py-5">
+            <div className="text-center">
+            <h2 className="kaushan-script txt-details-color display-4">Hola amigo!</h2>
+            <p className="txt-light-customized mt-4">Regístrate ahora para acceder a ofertas exclusivas, descuentos especiales y una experiencia de reserva sin complicaciones.</p>
+            <button className="btn-customized mt-4 fs-5">Registrarse</button>
+            </div>
+          </Col>
         </Row>
       </Container>
     </div>
