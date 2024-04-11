@@ -21,9 +21,10 @@ function App() {
     <BrowserRouter>
       <Menu />
       <Routes>
-        <Route path="/" element={<Login></Login>}></Route>
+        <Route path="/" element={<Home></Home>}></Route>
         <Route path="/nosotros" element={<AboutUs></AboutUs>}></Route>
         <Route exact path="/registro" element={<Register/>}></Route>
+        <Route exact path="/iniciar-sesion" element={<Login/>}></Route>
         <Route
           path="/administrador"
           element={<Administrador></Administrador>}
