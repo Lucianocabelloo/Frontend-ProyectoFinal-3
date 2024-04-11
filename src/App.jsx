@@ -22,7 +22,7 @@ function App() {
     <BrowserRouter>
       <Menu />
       <Routes>
-        <Route path="/" element={<Gallery></Gallery>}></Route>
+        <Route path="/" element={<Register></Register>}></Route>
         <Route path="/nosotros" element={<AboutUs></AboutUs>}></Route>
         <Route exact path="/registro" element={<Register/>}></Route>
         <Route
