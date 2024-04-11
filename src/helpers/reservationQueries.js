@@ -14,3 +14,16 @@ export const getReservations = async () => {
     });
   }
 };
+
+export const getReservationById = async (id) => {
+  try {
+    const respuesta = await fetch(`${URI_Reservation}/${id}`);
+    return respuesta;
+  } catch (error) {
+    Swal.fire({
+      title: "Servicio no disponible momentaneamente",
+      text: `Sucedio el error "${error}", intentelo nuevamente en unos minutos`,
+      icon: "error",
+    });
+  }
+};
