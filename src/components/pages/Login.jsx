@@ -1,5 +1,6 @@
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const {
@@ -15,7 +16,7 @@ const Login = () => {
   return (
     <div className="bg-login mainContainer">
       <Container>
-        <Row className="box-login">
+        <Row className="box-login my-5">
           <Col lg={6} className="py-5 px-4">
             <div className="text-center">
               <h1 className="txt-bg-color txt-montserrat fw-bold mb-4 display-5">
@@ -122,11 +123,11 @@ const Login = () => {
               <h2 className="kaushan-script txt-details-color display-4">
                 Hola amigo!
               </h2>
-              <p className="txt-light-customized mt-4">
+              <p className="txt-light-customized mt-4 mb-5">
                 Regístrate ahora para acceder a ofertas exclusivas, descuentos
                 especiales y una experiencia de reserva sin complicaciones.
               </p>
-              <button className="btn-customized mt-4 fs-5">Registrarse</button>
+              <Link to={'/registro'} className="btn-customized fs-5 text-decoration-none">Registrarse</Link>
             </div>
           </Col>
         </Row>
