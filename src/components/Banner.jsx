@@ -31,7 +31,7 @@ const Banner = () => {
               </h2>
             </Col>
             <Col lg={7} className="pt-2 pt-lg-0">
-              <p className="txt-light-customized">
+              <p className="txt-gray">
                 Sumérgete en un mundo de opulencia y comodidad en nuestro hotel
                 de categoría mundial. Desde impecables suites hasta servicios
                 exclusivos, cada momento en nuestro refugio del lujo está

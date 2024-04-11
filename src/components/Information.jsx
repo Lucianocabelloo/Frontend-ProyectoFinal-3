@@ -6,7 +6,7 @@ import pool from "../assets/img/pool.jpg";
 import gym from "../assets/img/gym.jpg";
 import spa from "../assets/img/spa.jpg";
 import restaurant from "../assets/img/restaurant.jpg";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Information = () => {
   return (
@@ -82,7 +82,7 @@ const Information = () => {
                     Piscina
                   </h4>
                   <hr className="text-warning my-2" />
-                  <p className="txt-light-customized">
+                  <p className="txt-gray">
                     Fresco oasis de relajación bajo el sol radiante: ¡tu
                     escapada perfecta te espera junto a nuestra piscina de
                     ensueño!
@@ -105,7 +105,7 @@ const Information = () => {
                     Gimnasio
                   </h4>
                   <hr className="text-warning my-2" />
-                  <p className="txt-light-customized">
+                  <p className="txt-gray">
                     Alcanza tus metas fitness en nuestro santuario de bienestar:
                     ¡tu gimnasio de lujo te espera para desafiar tus límites y
                     revitalizar tu cuerpo y mente!
@@ -128,7 +128,7 @@ const Information = () => {
                     Restaurante
                   </h4>
                   <hr className="text-warning my-2" />
-                  <p className="txt-light-customized">
+                  <p className="txt-gray">
                     Saborea la excelencia culinaria en nuestro oasis
                     gastronómico: ¡una experiencia sensorial única donde cada
                     plato es una obra maestra!
@@ -151,7 +151,7 @@ const Information = () => {
                     SPA de Lujo
                   </h4>
                   <hr className="text-warning my-2" />
-                  <p className="txt-light-customized">
+                  <p className="txt-gray">
                     Sumérgete en un mundo de relajación y rejuvenecimiento en
                     nuestro santuario de bienestar: ¡tu escape perfecto para
                     renovar cuerpo, mente y espíritu!
@@ -163,16 +163,16 @@ const Information = () => {
         </Container>
       </section>
       <section className="my-5 bg-color">
-        <Container>
-          <Row className="py-5 justify-content-between align-items-center">
-            <Col md={5}>
+        <Container className="py-5">
+          <Row className="py-5 justify-content-between align-items-center text-center text-lg-start">
+            <Col lg={5}>
               <h3 className="txt-light-customized display-5 fw-semibold">
                 Lujos de calidad <br></br>que{" "}
                 <span className="txt-details-color">Ofrecemos</span>
               </h3>
             </Col>
-            <Col md={5}>
-              <p className="txt-light-customized">
+            <Col lg={5}>
+              <p className="txt-gray pt-3 pt-lg-0">
                 Nuestros servicios de lujo te brindan una experiencia
                 incomparable. Desde nuestras elegantes habitaciones hasta
                 servicios exclusivos, cada momento en nuestro hotel es una
@@ -180,42 +180,70 @@ const Information = () => {
               </p>
             </Col>
           </Row>
-          <Row>
-            <Col lg={2}>
-              <button className="btn-icons fs-1">
-              <FontAwesomeIcon icon="fa-solid fa-wifi" className="txt-details-color"/>
-              </button>
+          <Row className="justify-content-center align-items-center">
+            <Col xs={4} lg={3} className="text-center mb-5">
+              <FontAwesomeIcon
+                icon="fa-solid fa-wifi"
+                className="txt-details-color icon"
+              />
             </Col>
-            <Col lg={2}>
-              <button className="btn-icons fs-1">
-              <FontAwesomeIcon icon="fa-solid fa-water-ladder" className="txt-details-color"/>
-              </button>
+            <Col xs={4} lg={3} className="text-center mb-5">
+              <FontAwesomeIcon
+                icon="fa-solid fa-water-ladder"
+                className="txt-details-color icon"
+              />
             </Col>
-            <Col lg={2}>
-              <button className="btn-icons">
-                <i className="bi bi-wifi txt-details-color fs-1"></i>
-              </button>
-              <p className="kaushan-script txt-details-color pt-2 fs-4">Wifi</p>
+            <Col xs={4} lg={3} className="text-center mb-5">
+              <FontAwesomeIcon
+                icon="fa-solid fa-utensils"
+                className="txt-details-color icon"
+              />
             </Col>
-            <Col lg={2}>
-              <button className="btn-icons">
-                <i className="bi bi-wifi txt-details-color fs-1"></i>
-              </button>
-              <p className="kaushan-script txt-details-color pt-2 fs-4">Wifi</p>
+            <Col xs={4} lg={3} className="text-center mb-5">
+              <FontAwesomeIcon
+                icon="fa-solid fa-dumbbell"
+                className="txt-details-color icon"
+              />
             </Col>
-            <Col lg={2}>
-              <button className="btn-icons">
-                <i className="bi bi-wifi txt-details-color fs-1"></i>
-              </button>
-              <p className="kaushan-script txt-details-color pt-2 fs-4">Wifi</p>
+            <Col xs={4} lg={3} className="text-center mb-5">
+              <FontAwesomeIcon
+                icon="fa-solid fa-bell-concierge"
+                className="txt-details-color icon"
+              />
             </Col>
-            <Col lg={2}>
-              <button className="btn-icons">
-                <i className="bi bi-wifi txt-details-color fs-1"></i>
-              </button>
-              <p className="kaushan-script txt-details-color pt-2 fs-4">Wifi</p>
+            <Col xs={4} lg={3} className="text-center mb-5">
+              <FontAwesomeIcon
+                icon="fa-solid fa-snowflake"
+                className="txt-details-color icon"
+              />
+            </Col>
+            <Col xs={4} lg={3} className="text-center mb-5">
+              <FontAwesomeIcon
+                icon="fa-solid fa-tv"
+                className="txt-details-color icon"
+              />
+            </Col>
+            <Col xs={4} lg={3} className="text-center mb-5">
+              <FontAwesomeIcon
+                icon="fa-solid fa-square-parking"
+                className="txt-details-color icon"
+              />
             </Col>
           </Row>
+          <hr className="txt-details-color my-4"/>
+          <div className="text-center">
+          <h3 className="fs-1 fw-bold txt-light-customized">
+            Explora nuestra <span className="txt-details-color">galería</span>
+          </h3>
+          <p className="txt-gray pt-3">
+            Explora nuestra galería de imágenes y déjate cautivar por la
+            elegancia y el encanto de nuestro hotel. Cada fotografía captura la
+            esencia de nuestro oasis de lujo, desde nuestras exquisitas
+            habitaciones hasta nuestros espacios comunes meticulosamente
+            diseñados.
+          </p>
+          <button className="btn-customized mt-3">Ver Galería</button>
+          </div>
         </Container>
       </section>
     </>

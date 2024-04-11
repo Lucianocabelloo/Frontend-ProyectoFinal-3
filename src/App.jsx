@@ -5,10 +5,10 @@ import Menu from "./components/common/Menu";
 import Gallery from "./components/pages/gallery/Gallery";
 import Home from "./components/pages/Home";
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faWaterLadder,faWifi } from '@fortawesome/free-solid-svg-icons';
+import { faWaterLadder,faWifi,faUtensils, faDumbbell,faConciergeBell,faSnowflake,faTv,faParking } from '@fortawesome/free-solid-svg-icons';
 import "./App.css";
 
-library.add(faWaterLadder,faWifi);
+library.add(faWaterLadder,faWifi,faUtensils, faDumbbell,faConciergeBell,faSnowflake,faTv,faParking);
 
 function App() {
   return (
