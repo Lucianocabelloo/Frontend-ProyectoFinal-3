@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const URI_USER = import.meta.env.VITE_API_USER;
 
 export const readUsersAPI = async () => {
@@ -5,9 +7,11 @@ export const readUsersAPI = async () => {
     const answer = await fetch(URI_USER);
     return answer;
   } catch (error) {
-    console.error(
-      `El siguiente error ocurrio al intentar obtener los usuarios: ${error}`
-    );
+    Swal.fire({
+      title: "Servicio no disponible momentaneamente",
+      text: `Sucedio el error "${error}", intentelo nuevamente en unos minutos`,
+      icon: "error",
+    });
   }
 };
 
@@ -22,9 +26,11 @@ export const createUserAPI = async (user) => {
     });
     return answer;
   } catch (error) {
-    console.error(
-      `El siguiente error ocurrio al intentar crear el usuario: ${error}`
-    );
+    Swal.fire({
+      title: "Servicio no disponible momentaneamente",
+      text: `Sucedio el error "${error}", intentelo nuevamente en unos minutos`,
+      icon: "error",
+    });
   }
 };
 
@@ -40,6 +46,29 @@ export const editUserAPI = async (user,id) => {
     return answer;
 
   } catch (error) {
-    console.log(error);
+    Swal.fire({
+      title: "Servicio no disponible momentaneamente",
+      text: `Sucedio el error "${error}", intentelo nuevamente en unos minutos`,
+      icon: "error",
+    });
+  }
+}
+
+export const login = async (user) =>{
+  try {
+    const answer = await fetch(URI_USER,{
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(user)
+    })
+    return answer;
+  } catch (error) {
+    Swal.fire({
+      title: "Servicio no disponible momentaneamente",
+      text: `Sucedio el error "${error}", intentelo nuevamente en unos minutos`,
+      icon: "error",
+    });
   }
 }
