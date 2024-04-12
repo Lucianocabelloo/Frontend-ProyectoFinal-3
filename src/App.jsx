@@ -36,6 +36,7 @@ import Register from "./components/pages/Register";
 import UserForm from "./components/pages/users/UserForm";
 import Error404 from "./components/pages/Error404";
 import Login from "./components/pages/Login";
+import Contact from "./components/pages/contact/Contact";
 function App() {
   return (
     <BrowserRouter>
@@ -45,6 +46,7 @@ function App() {
         <Route exact path="/nosotros" element={<AboutUs></AboutUs>}></Route>
         <Route exact path="/habitaciones" element={<Rooms></Rooms>}></Route>
         <Route exact path="/registro" element={<Register />}></Route>
+        <Route exact path="/contacto" element={<Contact />}></Route>
         <Route exact path="/galeria" element={<Gallery></Gallery>}></Route>
         <Route
           exact
