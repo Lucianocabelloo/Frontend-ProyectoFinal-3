@@ -1,62 +1,60 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-
-.bgDark {
+.bgDarkR {
   background-color: #08171f;
 }
-.bgLight {
+.bgLightR {
   background-color: #fffaed;
 }
-.myMain {
+.myMainR {
   flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: "Montserrat", sans-serif;
 }
-.myCont {
+.myContR {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.myCard {
+.myCardR {
   width: 80%;
   border: none;
   border-radius: 20px;
   transition: all 250ms;
 }
-.myCard:hover {
+.myCardR:hover {
   transform: scale(1.05);
 }
-.myImage {
+.myImageR {
   border-radius: 0 20px 20px 0;
 }
-.myCardBody {
+.myCardBodyR {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
-.myTitle {
+.myTitleR {
   color: #0b1d26;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 20px;
   margin: 5px;
 }
-.littleRect {
+.littleRectR {
   width: 120px;
   height: 4px;
   background-color: #212e34;
   border-radius: 5px;
 }
-.myForm {
+.myFormR {
   flex-grow: 1;
   margin-top: 35px;
   width: 75%;
 }
-.myLabel {
+.myLabelR {
   color: #0b1d26;
   font-weight: bold;
 }
-.myInput {
+.myInputR {
   background-color: #73737320;
   padding: 12px;
   border-radius: 0;
@@ -64,17 +62,17 @@
   box-shadow: none !important;
   transition: all 250ms
 }
-.myInput:focus {
+.myInputR:focus {
   background-color: #73737320;
   transform: scaleX(1.05);
 }
-.textError {
+.textErrorR {
   color: #690606;
 }
-.buttonCont {
+.buttonContR {
   text-align: center;
 }
-.myButton {
+.myButtonR {
   color: #fffaed;
   background-color: #0b1d26;
   font-size: 20px;
@@ -89,50 +87,50 @@
   box-sizing: border-box;
   display: inline-flex;
 }
-.myButton:hover,
-.myButton:focus {
+.myButtonR:hover,
+.myButtonR:focus {
   background-color: #123140;
   box-shadow: #0d0d0d20 0 4px 12px;
 }
-.myButton:hover {
+.myButtonR:hover {
   transform: translateY(-2px);
 }
-.myButton:active {
+.myButtonR:active {
   background-color: #1b465c;
   box-shadow: #0d0d0d12 0 2px 4px;
   transform: translateY(0);
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1399.9px) {
-  .myCard {
+  .myCardR {
     width: 95%;
   }
 }
 @media screen and (min-width: 992px) and (max-width: 1199.9px) {
-  .myCard {
+  .myCardR {
     width: 100%;
   }
-  .myCont {
+  .myContR {
     margin-left: 0;
     margin-right: 0;
     padding-left: 0;
     padding-right: 0;
   }
-  .myForm {
+  .myFormR {
     width: 100%;
   }
 }
 @media screen and (max-width: 575.9px){
-  .myCard {
+  .myCardR {
     width: 100%;
   }
-  .myCont {
+  .myContR {
     margin-left: 0;
     margin-right:0;
     padding-left: 4;
     padding-right: 4;
   }
-  .myForm {
+  .myFormR {
     width: 100%;
   }
 }

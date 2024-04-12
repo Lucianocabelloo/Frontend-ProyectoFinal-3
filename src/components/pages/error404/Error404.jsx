@@ -5,21 +5,21 @@ import { Link } from "react-router-dom";
 
 const Error404 = () => {
   return (
-    <Link className="myMain" to="/">
-      <Container className="myCont">
+    <Link className="myMainE" to="/">
+      <Container className="myContE">
         <img
           src={image404}
           alt="Imagen representativa del error 404"
-          className="myImg img-fluid"
+          className="myImgE img-fluid"
         />
-        <p className="mt-4 text-center">
+        <p className="mt-4 text-center myTextE">
           <b>
             Lo sentimos, pero la dirección web que has ingresado no está
             disponible.
           </b>
         </p>
-        <div className="littleRect"></div>
-        <p className="mt-2 text-center">
+        <div className="littleRectE"></div>
+        <p className="mt-2 text-center myTextE">
           Haz click en cualquier lado para volver al inicio
         </p>
       </Container>
