@@ -1,0 +1,55 @@
+.myMainC {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+}
+.mySection {
+  padding-bottom: 300px;
+}
+.bgLightC {
+  padding-top: 300px;
+  padding-bottom: 100px;
+  background-color: #fffaed;
+  flex-grow: 1;
+}
+.myTitleC {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #fefffc;
+  font-size: 48px;
+}
+.titleDifC {
+  color: #f0d78d;
+}
+.mySubtC {
+  color: #f0d78d;
+  font-family: "Kaushan Script", cursive;
+  font-size: 20px;
+}
+.planeTextC {
+  color: #fefffc;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+.myIconsC {
+  color: #fefffc;
+  font-size: 50px;
+}
+.myOTitleC {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #0b1d26;
+  font-size: 48px;
+}
+.oTitleDifC {
+  font-style: italic;
+  font-weight: 600;
+}
+@media screen and (max-width: 575.9px) {
+  .myTitleC {
+    font-size: 40px;
+  }
+  .myOTitleC {
+    font-size: 40px;
+  }
+
+}
