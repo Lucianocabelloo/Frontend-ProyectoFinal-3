@@ -130,7 +130,7 @@ const Register = () => {
               </Form>
             </Col>
             <Col className="p-0 d-none d-lg-block">
-              <Card.Img src={registerImg} className="img-fluid myImage" />
+              <Card.Img src={registerImg} className="img-fluid myImage" alt="Imagen representativa de bienvenida" />
             </Col>
           </Row>
         </Card>
