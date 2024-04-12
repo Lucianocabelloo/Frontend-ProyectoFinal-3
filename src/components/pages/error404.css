@@ -16,9 +16,13 @@ a {
   justify-content: center;
   align-items: center;
   font-family: "Montserrat", sans-serif;
+  transition: all 400ms;
 }
 .myImg {
   width: 75%;
+}
+.myCont:hover {
+  transform: scale(1.05);
 }
 p {
   color: #0b1d26;
