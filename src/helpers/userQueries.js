@@ -27,3 +27,19 @@ export const createUserAPI = async (user) => {
     );
   }
 };
+
+export const editUserAPI = async (user,id) => {
+  try {
+    const answer = await fetch(`${URI_USER}/${id}`,{
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    });
+    return answer;
+
+  } catch (error) {
+    console.log(error);
+  }
+}
