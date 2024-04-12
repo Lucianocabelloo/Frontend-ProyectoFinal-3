@@ -93,6 +93,7 @@ p {
   padding: 10px 20px;
   border-radius: 3px;
   transition: background .3s, color .3s, border .3s;
+  text-decoration: none;
 }
 .btn-customized:hover{
   background: #F0D78D;
@@ -109,6 +110,7 @@ p {
   border: none;
   border-radius: 3px;
   transition: background .3s, text-shadow .3s, letter-spacing .3s;
+  text-decoration: none;
 }
 .btn-customized-2:hover{
   background: #0d2531;
@@ -246,14 +248,87 @@ p {
   font-family: "Montserrat", sans-serif;
 }
 
+
 #descripcion{
   resize: none;
 }
+
+/* LOGIN STYLES  */
+.txt-montserrat{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.bg-login{
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffaed;
+  background-image: linear-gradient(90deg, #fffaed 0%, #f1f1ff 100%);  
+}
+
+.box-login{
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  border-radius: 20px;
+  background: #fffaed;
+}
+
+.icon-login{
+  border: 2px solid #555;
+  background: inherit;
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 25px;
+  transition: all .3s;
+}
+.icon-login:hover{
+  background: #08171e;
+  color: #f0d78d;
+  border: 2px solid #f0d78d;
+}
+
+.input-customized {
+  font-family: 'Montserrat', sans-serif;
+}
+.input-customized:focus{
+  outline: 4px solid #ecdaa3;
+  border: none;
+}
+
+.bg-right-login{
+  background: #08171e;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation-name: borderAnimation;
+  animation-duration: 2.5s;
+  animation-delay: .6s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes borderAnimation {
+  from {border-radius: 20px;}
+  to {border-radius: 150px 20px 20px 100px;}
+}
+
+
 
 @media (min-width: 980px) and (max-width: 1200px) {
   bubble {
     flex: none;
   }
+}
+
+@media (max-width: 992px ) {
+  .bg-right-login{
+    border-radius: 20px;
+    animation: none;
+  }
+.icon-login{
+  font-size: 20px;
+}
+
 }
 
 

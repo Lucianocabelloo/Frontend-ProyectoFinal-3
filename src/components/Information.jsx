@@ -7,6 +7,7 @@ import gym from "../assets/img/gym.jpg";
 import spa from "../assets/img/spa.jpg";
 import restaurant from "../assets/img/restaurant.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 const Information = () => {
   return (
@@ -49,7 +50,7 @@ const Information = () => {
               />
             </Col>
             <Col md={12} className="text-center my-4 ">
-              <button className="btn-customized-2">Ver Habitaciones</button>
+              <Link to="/habitaciones" className="btn-customized-2">Ver Habitaciones</Link>
             </Col>
           </Row>
         </Container>
@@ -242,7 +243,7 @@ const Information = () => {
             habitaciones hasta nuestros espacios comunes meticulosamente
             diseñados.
           </p>
-          <button className="btn-customized mt-3">Ver Galería</button>
+          <Link to="/galeria" className="btn-customized mt-3">Ver Galería</Link>
           </div>
         </Container>
       </section>

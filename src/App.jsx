@@ -13,18 +13,6 @@ import {
   faParking,
 } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
-
-library.add(
-  faWaterLadder,
-  faWifi,
-  faUtensils,
-  faDumbbell,
-  faConciergeBell,
-  faSnowflake,
-  faTv,
-  faParking
-);
-import "./App.css";
 import Menu from "./components/common/Menu";
 import Gallery from "./components/pages/gallery/Gallery";
 import AboutUs from "./components/pages/aboutUs/AboutUs";
@@ -34,20 +22,24 @@ import Rooms from "./components/pages/Rooms";
 import RoomForm from "./components/pages/rooms/RoomForm";
 import Register from "./components/pages/Register";
 import Error404 from "./components/pages/Error404";
-
+import Login from "./components/pages/Login";
 function App() {
   return (
     <BrowserRouter>
       <Menu />
       <Routes>
-        <Route path="/" element={<Gallery></Gallery>}></Route>
-        <Route path="/nosotros" element={<AboutUs></AboutUs>}></Route>
+        <Route exact path="/" element={<Home></Home>}></Route>
+        <Route exact path="/nosotros" element={<AboutUs></AboutUs>}></Route>
+        <Route exact path="/habitaciones" element={<Rooms></Rooms>}></Route>
         <Route exact path="/registro" element={<Register />}></Route>
+        <Route exact path="/galeria" element={<Gallery></Gallery>}></Route>
         <Route
+          exact
           path="/administrador"
           element={<Administrador></Administrador>}
         ></Route>
         <Route
+          exact
           path="/administrador/crear"
           element={<RoomForm editar={false} titulo="Crear"></RoomForm>}
         ></Route>

@@ -11,6 +11,7 @@ const RoomCard = () => {
         <Card.Body className="text-center">
           <Badge pill className="badgePosition">Standard</Badge>
           <Card.Title>Habitación 1</Card.Title>
+          <Card.Text>Indivudual</Card.Text>
           <Button className="btnCardRoom">Ver Habitación</Button>
         </Card.Body>
       </Card>

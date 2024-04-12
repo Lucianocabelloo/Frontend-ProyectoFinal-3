@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const URI_ROOM = import.meta.env.VITE_API_ROOM;
 
 export const getRoomsAPI = async () => {
@@ -6,10 +8,11 @@ export const getRoomsAPI = async () => {
     console.log(response);
     return response;
   } catch (error) {
-    console.error(
-      "Se ha producido el siguiente error al intentar traer los cuartos",
-      error
-    );
+    Swal.fire({
+      title: "Servicio no disponible momentaneamente",
+      text: `Sucedio el error "${error}", intentelo nuevamente en unos minutos`,
+      icon: "error",
+    });
   }
 };
 
@@ -44,6 +47,19 @@ export const editRoomAPI = async (room, id) => {
   } catch (error) {
     console.error(
       `El siguiente error ocurrio intentando editar la habitacion: ${error}`
+    );
+  }
+};
+
+export const deleteRoomAPI = async (id) => {
+  try {
+    const answer = await fetch(`${URI_ROOM}/${id}`, {
+      method: "DELETE",
+      });
+    return answer;
+  } catch (error) {
+    console.error(
+      `El siguiente error ocurrio al intentar borrar la habitacion: ${error}`
     );
   }
 };
