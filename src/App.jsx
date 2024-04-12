@@ -13,6 +13,18 @@ import {
   faParking,
 } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
+
+library.add(
+  faWaterLadder,
+  faWifi,
+  faUtensils,
+  faDumbbell,
+  faConciergeBell,
+  faSnowflake,
+  faTv,
+  faParking
+);
+import "./App.css";
 import Menu from "./components/common/Menu";
 import Gallery from "./components/pages/gallery/Gallery";
 import AboutUs from "./components/pages/aboutUs/AboutUs";
@@ -21,6 +33,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Rooms from "./components/pages/Rooms";
 import RoomForm from "./components/pages/rooms/RoomForm";
 import Register from "./components/pages/Register";
+import UserForm from "./components/pages/users/UserForm";
 import Error404 from "./components/pages/Error404";
 import Login from "./components/pages/Login";
 function App() {
@@ -42,6 +55,10 @@ function App() {
           exact
           path="/administrador/crear"
           element={<RoomForm editar={false} titulo="Crear"></RoomForm>}
+        ></Route>
+        <Route
+          path="/administrador/crearusuario"
+          element={<UserForm editar={false} titulo="Crear"></UserForm>}
         ></Route>
         <Route path="*" element={<Error404 />} />
       </Routes>

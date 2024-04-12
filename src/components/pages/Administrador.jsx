@@ -17,7 +17,10 @@ const Administrator = () => {
       <hr className="hrRoom" />
       <Row className="align-items-center justify-content-sm-center">
         <Col md="4" className="mb-3">
-          <Form.Select onChange={handleOnChange} className="selectPersonalizado">
+          <Form.Select
+            onChange={handleOnChange}
+            className="selectPersonalizado"
+          >
             <option value="Habitaciones">Habitaciones</option>
             <option value="Usuarios">Usuarios</option>
           </Form.Select>
@@ -36,34 +39,58 @@ const Administrator = () => {
         </Col>
       </Row>
       {tabla === "Habitaciones" && (
-        <Table responsive striped hover bordered className="my-4">
-          <thead className="text-center text-light">
-            <th>Numero</th>
-            <th>Tipo</th>
-            <th>Categoria</th>
-            <th>Precio</th>
-            <th>Imagen</th>
-            <th>Disponible</th>
-            <th>Opciones</th>
-          </thead>
-          <tbody>
-            <ItemRoom></ItemRoom>
-            <ItemRoom></ItemRoom>
-          </tbody>
-        </Table>
+        <div className="tableContainer">
+          <Form>
+            <Row className="justify-content-center align-items-center">
+              <Col md="8" className="text-center text-md-end">
+                <Form.Label className="text-dark">Buscar:</Form.Label>
+              </Col>
+              <Col md="4">
+                <Form.Control type="text"></Form.Control>
+              </Col>
+            </Row>
+          </Form>
+          <Table responsive striped hover bordered className="my-4" id="rooms">
+            <thead className="text-center">
+              <th>Número</th>
+              <th>Tipo</th>
+              <th>Categoria</th>
+              <th>Precio</th>
+              <th>Imagen</th>
+              <th>Disponible</th>
+              <th>Opciones</th>
+            </thead>
+            <tbody>
+              <ItemRoom></ItemRoom>
+              <ItemRoom></ItemRoom>
+            </tbody>
+          </Table>
+        </div>
       )}
       {tabla === "Usuarios" && (
-        <Table responsive striped hover bordered className="my-4">
-          <thead className="text-center text-light">
-            <th>Nombre Completo</th>
-            <th>Email</th>
-            <th>Rol</th>
-            <th>Opciones</th>
-          </thead>
-          <tbody>
-            <UserItem></UserItem>
-          </tbody>
-        </Table>
+        <div className="tableContainer">
+          <Form>
+            <Row className="justify-content-center align-items-center">
+              <Col md="8" className="text-center text-md-end">
+                <Form.Label className="text-dark">Buscar:</Form.Label>
+              </Col>
+              <Col md="4">
+                <Form.Control type="text"></Form.Control>
+              </Col>
+            </Row>
+          </Form>
+          <Table responsive striped hover bordered className="my-4" id="users">
+            <thead className="text-center">
+              <th>Nombre Completo</th>
+              <th>Email</th>
+              <th>Rol</th>
+              <th>Opciones</th>
+            </thead>
+            <tbody>
+              <UserItem></UserItem>
+            </tbody>
+          </Table>
+        </div>
       )}
     </Container>
   );
