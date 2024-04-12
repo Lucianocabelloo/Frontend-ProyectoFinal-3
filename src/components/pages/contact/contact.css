@@ -4,11 +4,8 @@
   flex-direction: column;
   font-family: "Montserrat", sans-serif;
 }
-.mySection {
-  padding-bottom: 300px;
-}
 .bgLightC {
-  padding-top: 300px;
+  padding-top: 250px;
   padding-bottom: 100px;
   background-color: #fffaed;
   flex-grow: 1;
@@ -17,6 +14,14 @@
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #fefffc;
   font-size: 48px;
+}
+.myColsC {
+  border-radius: 20px;
+  transition: all 250ms;
+}
+.myColsC:hover {
+  background-color: #0b1d26;
+  transform: scale(1.05);
 }
 .titleDifC {
   color: #f0d78d;
@@ -30,10 +35,15 @@
   color: #fefffc;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
+  text-decoration: none;
 }
 .myIconsC {
   color: #fefffc;
   font-size: 50px;
+}
+.myMapC {
+  border-radius: 40px;
+  transform: translateY(100px);
 }
 .myOTitleC {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -51,5 +61,7 @@
   .myOTitleC {
     font-size: 40px;
   }
-
+  .bgLightC {
+    padding-top: 50px;
+  }
 }

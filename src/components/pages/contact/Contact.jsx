@@ -7,6 +7,7 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
+import Iframe from "react-iframe";
 
 const Contact = () => {
   const {
@@ -31,12 +32,12 @@ const Contact = () => {
             </p>
           </Col>
         </Row>
-        <Row className="pt-5 justify-content-center gap-5 gap-lg-0">
+        <Row className="pt-5 justify-content-center gap-5 gap-lg-0 pb-5 pb-sm-0">
           <Col
             xs={12}
             md={6}
             lg={4}
-            className="d-flex flex-column align-items-center flex-md-row justify-content-sm-center gap-4"
+            className="d-flex flex-column align-items-center flex-md-row justify-content-sm-center gap-4 py-2 myColsC"
           >
             <FontAwesomeIcon icon={faEnvelope} className="myIconsC" />
             <p className="mySubtC">
@@ -48,19 +49,19 @@ const Contact = () => {
             xs={12}
             md={5}
             lg={4}
-            className="d-flex flex-column align-items-center flex-md-row justify-content-sm-center gap-4"
+            className="d-flex flex-column align-items-center flex-md-row justify-content-sm-center gap-4 py-2 myColsC"
           >
             <FontAwesomeIcon icon={faLocationDot} className="myIconsC" />
             <p className="mySubtC">
               Nuestra ubicaccion <br />
-              <span className="planeTextC">Encuentrala aqui abajo</span>
+              <span className="planeTextC">Puedes verla aqui.</span>
             </p>
           </Col>
           <Col
             xs={12}
             md={5}
             lg={4}
-            className="d-flex flex-column align-items-center flex-md-row justify-content-sm-center gap-4"
+            className="d-flex flex-column align-items-center flex-md-row justify-content-sm-center gap-4 py-2 myColsC"
           >
             <FontAwesomeIcon icon={faPhone} className="myIconsC" />
             <p className="mySubtC">
@@ -69,6 +70,18 @@ const Contact = () => {
             </p>
           </Col>
         </Row>
+        <div className="d-none d-sm-flex justify-content-center">
+          <Iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52240.77695956275!2d-59.63562782109828!3d13.299245730679836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c43e8a467531643%3A0xfa90798b5f8528fd!2sHarrison&#39;s%20Point%20Light%20House!5e0!3m2!1ses!2sar!4v1712950190775!5m2!1ses!2sar"
+            width="900"
+            height="400"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            className="myMapC"
+          ></Iframe>
+        </div>
       </Container>
       <div className="bgLightC">
         <Container>
