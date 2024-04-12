@@ -5,7 +5,6 @@ const URI_ROOM = import.meta.env.VITE_API_ROOM;
 export const getRoomsAPI = async () => {
   try {
     const response = await fetch(URI_ROOM);
-    console.log(response);
     return response;
   } catch (error) {
     Swal.fire({
@@ -22,6 +21,7 @@ export const createRoomsAPI = async (newRoom) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-token": JSON.parse(sessionStorage.getItem("usuarioHotel")).token,
       },
       body: JSON.stringify(newRoom),
     });
@@ -40,6 +40,7 @@ export const editRoomAPI = async (room, id) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        "x-token": JSON.parse(sessionStorage.getItem("usuarioHotel")).token,
       },
       body: JSON.stringify(room),
     });
@@ -55,7 +56,10 @@ export const deleteRoomAPI = async (id) => {
   try {
     const answer = await fetch(`${URI_ROOM}/${id}`, {
       method: "DELETE",
-      });
+      headers: {
+        "x-token": JSON.parse(sessionStorage.getItem("usuarioHotel")).token,
+      },
+    });
     return answer;
   } catch (error) {
     console.error(
