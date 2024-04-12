@@ -1,6 +1,6 @@
 import { Container, Card, Row, Col, Form } from "react-bootstrap";
 import "./register.css";
-import registerImg from "../../assets/img/register.jpg";
+import registerImg from "../../../assets/img/register.jpg";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { createUserAPI } from "../../../helpers/userQueries";

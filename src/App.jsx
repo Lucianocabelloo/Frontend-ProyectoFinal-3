@@ -32,9 +32,9 @@ import Administrador from "./components/pages/Administrador";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Rooms from "./components/pages/Rooms";
 import RoomForm from "./components/pages/rooms/RoomForm";
-import Register from "./components/pages/Register";
+import Register from "./components/pages/register/Register";
 import UserForm from "./components/pages/users/UserForm";
-import Error404 from "./components/pages/Error404";
+import Error404 from "./components/pages/error404/Error404";
 import Login from "./components/pages/Login";
 import Contact from "./components/pages/contact/Contact";
 function App() {
