@@ -16,6 +16,9 @@ const Contact = () => {
     formState: { errors },
     reset,
   } = useForm();
+  const onSubmit = async () => {
+    reset;
+  };
   return (
     <div className="myMainC pt-5">
       <Container className="mySection">
@@ -78,7 +81,7 @@ const Contact = () => {
             style="border:0;"
             allowfullscreen=""
             loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
+            referrerPolicy="no-referrer-when-downgrade"
             className="myMapC"
           ></Iframe>
         </div>
@@ -93,7 +96,7 @@ const Contact = () => {
               </h3>
             </Col>
             <Col xs={12} md={6}>
-              <Form>
+              <Form onSubmit={handleSubmit(onSubmit)}>
                 <Row>
                   <Col xs={12} sm={6}>
                     <Form.Group className="mb-3" controlId="formNombreCompleto">
