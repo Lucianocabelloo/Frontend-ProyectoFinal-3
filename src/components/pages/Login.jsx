@@ -1,17 +1,43 @@
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../../helpers/userQueries";
+import Swal from "sweetalert2";
+import { useState } from "react";
 
 const Login = () => {
+  const [usuarioLogueado, setUsuarioLogueado] = useState({});
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (usuario) => {
-    console.log(usuario);
-  }
+  const navigate = useNavigate();
+
+  const onSubmit = async (user) => {
+    const answer = await login(user);
+    if (answer.status === 200) {
+      Swal.fire("¡Bienvenido!", "Has iniciado sesión correctamente", "success");
+      const data = await answer.json();
+      sessionStorage.setItem(
+        "usuarioHotel",
+        JSON.stringify({ email: data.email, token: data.token })
+      );
+      setUsuarioLogueado(data);
+      if (data.rol === "Administrador") {
+        navigate("/administrador");
+      } else {
+        navigate("/");
+      }
+    } else {
+      Swal.fire(
+        "Ocurrio un error",
+        "Correo o contraseña incorrectos o usuario suspendido",
+        "error"
+      );
+    }
+  };
 
   return (
     <div className="bg-login mainContainer">
@@ -39,10 +65,7 @@ const Login = () => {
               </div>
             </div>
             <Form className="mt-4" onSubmit={handleSubmit(onSubmit)}>
-              <Form.Group
-                className="mb-3"
-                controlId="formEmail"
-              >
+              <Form.Group className="mb-3" controlId="formEmail">
                 <Form.Label className="txt-montserrat fw-semibold">
                   Ingrese el email
                 </Form.Label>
@@ -72,10 +95,7 @@ const Login = () => {
                   {errors.email?.message}
                 </Form.Text>
               </Form.Group>
-              <Form.Group
-                className="mb-3"
-                controlId="formPassword"
-              >
+              <Form.Group className="mb-3" controlId="formPassword">
                 <Form.Label className="txt-montserrat fw-semibold ">
                   Ingrese la contraseña
                 </Form.Label>
@@ -85,16 +105,18 @@ const Login = () => {
                   className="input-customized"
                   {...register("password", {
                     required: "La contraseña es obligatoria",
-                    minLength: { 
-                        value: 8, 
-                        message: "el minimo es de 8 caracteres" },
+                    minLength: {
+                      value: 8,
+                      message: "el minimo es de 8 caracteres",
+                    },
                     maxLength: {
                       value: 24,
                       message: "el maximo es de 24 caracteres",
                     },
                     pattern: {
                       value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
-                      message: "La contraseña debe contener al menos una letra mayúscula, una letra minúscula y un número",
+                      message:
+                        "La contraseña debe contener al menos una letra mayúscula, una letra minúscula y un número",
                     },
                   })}
                 />
@@ -127,7 +149,12 @@ const Login = () => {
                 Regístrate ahora para acceder a ofertas exclusivas, descuentos
                 especiales y una experiencia de reserva sin complicaciones.
               </p>
-              <Link to={'/registro'} className="btn-customized fs-5 text-decoration-none">Registrarse</Link>
+              <Link
+                to={"/registro"}
+                className="btn-customized fs-5 text-decoration-none"
+              >
+                Registrarse
+              </Link>
             </div>
           </Col>
         </Row>

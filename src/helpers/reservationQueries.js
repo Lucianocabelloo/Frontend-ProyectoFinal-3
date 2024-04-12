@@ -47,6 +47,7 @@ export const createReserveAPI = async (newReserve) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-token": JSON.parse(sessionStorage.getItem("usuarioHotel")).token,
       },
       body: JSON.stringify(newReserve),
     });
@@ -64,6 +65,9 @@ export const deleteReservationAPI = async (id) => {
   try {
     const response = await fetch(`${URI_Reservation}/${id}`, {
       method: "DELETE",
+      headers: {
+        "x-token": JSON.parse(sessionStorage.getItem("usuarioHotel")).token,
+      },
     });
     return response;
   } catch (error) {
