@@ -13,7 +13,9 @@ const Register = () => {
     reset,
   } = useForm();
   const onSubmit = async (user) => {
-  const answer = await createUserAPI(user);
+    user.rol = "Usuario";
+    user.activo = true;
+    const answer = await createUserAPI(user);
     if (answer.status === 201) {
       Swal.fire({
         title: "Su usuario a sido creado!",
@@ -102,7 +104,9 @@ const Register = () => {
                     </Form.Text>
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formPassword">
-                    <Form.Label className="myLabelR ps-3">Contraseña</Form.Label>
+                    <Form.Label className="myLabelR ps-3">
+                      Contraseña
+                    </Form.Label>
                     <Form.Control
                       className="myInputR"
                       type="password"
@@ -130,7 +134,11 @@ const Register = () => {
               </Form>
             </Col>
             <Col className="p-0 d-none d-lg-block">
-              <Card.Img src={registerImg} className="img-fluid myImageR" alt="Imagen representativa de bienvenida" />
+              <Card.Img
+                src={registerImg}
+                className="img-fluid myImageR"
+                alt="Imagen representativa de bienvenida"
+              />
             </Col>
           </Row>
         </Card>
