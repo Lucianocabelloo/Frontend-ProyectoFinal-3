@@ -1,0 +1,50 @@
+body {
+  background-color: #fffaed;
+}
+.myMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+}
+.myCont {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  transition: all 400ms;
+}
+.myImg {
+  width: 75%;
+}
+.myCont:hover {
+  transform: scale(1.05);
+}
+p {
+  color: #0b1d26;
+}
+.littleRect {
+  width: 70%;
+  height: 1px;
+  background-color: #212e34;
+  border-radius: 5px;
+}
+@media screen and (max-width: 991.9px) {
+  .myMain {
+    align-items: start;
+  }
+  .myCont {
+    margin-top: 2rem;
+    justify-content: start;
+  }
+  .littleRect {
+    width: 100%;
+  }
+  .myImg {
+    width: 100%;
+  }
+}

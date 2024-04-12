@@ -34,9 +34,8 @@ import Rooms from "./components/pages/Rooms";
 import RoomForm from "./components/pages/rooms/RoomForm";
 import Register from "./components/pages/Register";
 import UserForm from "./components/pages/users/UserForm";
+import Error404 from "./components/pages/Error404";
 import Login from "./components/pages/Login";
-
-
 function App() {
   return (
     <BrowserRouter>
@@ -61,6 +60,7 @@ function App() {
           path="/administrador/crearusuario"
           element={<UserForm editar={false} titulo="Crear"></UserForm>}
         ></Route>
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </BrowserRouter>
   );
