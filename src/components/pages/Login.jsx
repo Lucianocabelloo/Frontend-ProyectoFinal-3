@@ -66,7 +66,7 @@ const Login = () => {
             </div>
             <Form className="mt-4" onSubmit={handleSubmit(onSubmit)}>
               <Form.Group className="mb-3" controlId="formEmail">
-                <Form.Label className="txt-montserrat fw-semibold">
+                <Form.Label className="txt-montserrat fw-semibold txt-bg-color">
                   Ingrese el email
                 </Form.Label>
                 <Form.Control
@@ -96,7 +96,7 @@ const Login = () => {
                 </Form.Text>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formPassword">
-                <Form.Label className="txt-montserrat fw-semibold ">
+                <Form.Label className="txt-montserrat fw-semibold txt-bg-color">
                   Ingrese la contraseña
                 </Form.Label>
                 <Form.Control

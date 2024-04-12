@@ -44,6 +44,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home></Home>}></Route>
         <Route exact path="/nosotros" element={<AboutUs></AboutUs>}></Route>
+        <Route exact path="/iniciar-sesion" element={<Login></Login>}></Route>
         <Route exact path="/habitaciones" element={<Rooms></Rooms>}></Route>
         <Route exact path="/registro" element={<Register />}></Route>
         <Route exact path="/contacto" element={<Contact />}></Route>
