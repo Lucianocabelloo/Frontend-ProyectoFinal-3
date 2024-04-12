@@ -21,6 +21,7 @@ export const createUserAPI = async (user) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-token": JSON.parse(sessionStorage.getItem("usuarioHotel")).token,
       },
       body: JSON.stringify(user),
     });
@@ -34,17 +35,17 @@ export const createUserAPI = async (user) => {
   }
 };
 
-export const editUserAPI = async (user,id) => {
+export const editUserAPI = async (user, id) => {
   try {
-    const answer = await fetch(`${URI_USER}/${id}`,{
-      method: 'PUT',
+    const answer = await fetch(`${URI_USER}/${id}`, {
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
+        "x-token": JSON.parse(sessionStorage.getItem("usuarioHotel")).token,
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(user),
     });
     return answer;
-
   } catch (error) {
     Swal.fire({
       title: "Servicio no disponible momentaneamente",
@@ -52,17 +53,18 @@ export const editUserAPI = async (user,id) => {
       icon: "error",
     });
   }
-}
+};
 
-export const login = async (user) =>{
+export const suspendUserAPI = async (activo,id) => {
   try {
-    const answer = await fetch(URI_USER,{
-      method: "POST",
-      headers:{
-        "Content-Type": "application/json"
+    const answer = await fetch(`${URI_USER}/${id}`,
+    {
+      method: "PATCH",
+      headers: {
+        "x-token": JSON.parse(sessionStorage.getItem("usuarioHotel")).token,
       },
-      body: JSON.stringify(user)
-    })
+      body: JSON.stringify(activo),
+    });
     return answer;
   } catch (error) {
     Swal.fire({
@@ -71,4 +73,23 @@ export const login = async (user) =>{
       icon: "error",
     });
   }
-}
+};
+
+export const login = async (user) => {
+  try {
+    const answer = await fetch(URI_USER, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    return answer;
+  } catch (error) {
+    Swal.fire({
+      title: "Servicio no disponible momentaneamente",
+      text: `Sucedio el error "${error}", intentelo nuevamente en unos minutos`,
+      icon: "error",
+    });
+  }
+};

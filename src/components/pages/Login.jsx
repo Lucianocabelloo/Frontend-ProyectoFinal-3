@@ -30,6 +30,12 @@ const Login = () => {
       } else {
         navigate("/");
       }
+    } else {
+      Swal.fire(
+        "Ocurrio un error",
+        "Correo o contraseña incorrectos o usuario suspendido",
+        "error"
+      );
     }
   };
 
