@@ -1,0 +1,46 @@
+.myMainE {
+  background-color: #fffaed;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.myContE {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  transition: all 400ms;
+}
+.myImgE {
+  width: 75%;
+}
+.myContE:hover {
+  transform: scale(1.05);
+}
+.myTextE {
+  color: #0b1d26;
+}
+.littleRectE {
+  width: 70%;
+  height: 1px;
+  background-color: #212e34;
+  border-radius: 5px;
+}
+@media screen and (max-width: 991.9px) {
+  .myMainE {
+    align-items: start;
+  }
+  .myContE {
+    margin-top: 2rem;
+    justify-content: start;
+  }
+  .littleRectE {
+    width: 100%;
+  }
+  .myImgE {
+    width: 100%;
+  }
+}

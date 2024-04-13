@@ -1,4 +1,5 @@
 import { Col, Card, Button, Badge } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const RoomCard = () => {
   return (
@@ -11,7 +12,8 @@ const RoomCard = () => {
         <Card.Body className="text-center">
           <Badge pill className="badgePosition">Standard</Badge>
           <Card.Title>Habitación 1</Card.Title>
-          <Button className="btnCardRoom">Ver Habitación</Button>
+          <Card.Text>Indivudual</Card.Text>
+          <Link to={'/detalle-habitacion/:id'} className="btn btnCardRoom">Ver Habitación</Link>
         </Card.Body>
       </Card>
     </Col>

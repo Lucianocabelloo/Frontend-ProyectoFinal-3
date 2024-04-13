@@ -1,0 +1,145 @@
+.bgDarkR {
+  background-color: #08171f;
+}
+.bgLightR {
+  background-color: #fffaed;
+}
+.myMainR {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+}
+.myContR {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.myCardR {
+  width: 80%;
+  border: none;
+  border-radius: 20px;
+  transition: all 250ms;
+}
+.myCardR:hover {
+  transform: scale(1.05);
+}
+.myImageR {
+  border-radius: 0 20px 20px 0;
+  animation-name: borderAnimationR;
+  animation-duration: 2.5s;
+  animation-delay: .2s;
+  animation-fill-mode: forwards;
+}
+.myCardBodyR {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.myTitleR {
+  color: #0b1d26;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 20px;
+  margin: 5px;
+}
+.littleRectR {
+  width: 120px;
+  height: 4px;
+  background-color: #212e34;
+  border-radius: 5px;
+}
+.myFormR {
+  flex-grow: 1;
+  margin-top: 35px;
+  width: 75%;
+}
+.myLabelR {
+  color: #0b1d26;
+  font-weight: bold;
+}
+.myInputR {
+  background-color: #73737320;
+  padding: 12px;
+  border-radius: 0;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+  transition: all 250ms
+}
+.myInputR:focus {
+  background-color: #73737320;
+  transform: scaleX(1.05);
+}
+.textErrorR {
+  color: #690606;
+}
+.buttonContR {
+  text-align: center;
+}
+.myButtonR {
+  color: #fffaed;
+  background-color: #0b1d26;
+  font-size: 20px;
+  font-family: inherit;
+  border-radius: 30px;
+  border: 1px solid transparent;
+  transition: all 250ms;
+  padding: calc(1.5rem - 2px) calc(3rem - 2px);
+  background-clip: padding-box;
+  line-height: 1.25;
+  box-shadow: #0d0d0d04 0 1px 3px 0;
+  box-sizing: border-box;
+  display: inline-flex;
+}
+.myButtonR:hover,
+.myButtonR:focus {
+  background-color: #123140;
+  box-shadow: #0d0d0d20 0 4px 12px;
+}
+.myButtonR:hover {
+  transform: translateY(-2px);
+}
+.myButtonR:active {
+  background-color: #1b465c;
+  box-shadow: #0d0d0d12 0 2px 4px;
+  transform: translateY(0);
+}
+
+@keyframes borderAnimationR {
+  from {border-radius: 20px;}
+  to {border-radius: 80px 20px 20px 80px;}
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1399.9px) {
+  .myCardR {
+    width: 95%;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199.9px) {
+  .myCardR {
+    width: 100%;
+  }
+  .myContR {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .myFormR {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 575.9px){
+  .myCardR {
+    width: 100%;
+  }
+  .myContR {
+    margin-left: 0;
+    margin-right:0;
+    padding-left: 4;
+    padding-right: 4;
+  }
+  .myFormR {
+    width: 100%;
+  }
+}
