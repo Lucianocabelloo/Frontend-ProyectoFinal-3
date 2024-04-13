@@ -18,7 +18,7 @@ const UserForm = ({ editar, titulo }) => {
     if (editar) {
       console.log("Aca se edita");
     } else {
-      console.log(user);
+      user.activo = true;
       const answer = await createUserAPI(user);
       if (answer.status === 201) {
         Swal.fire(

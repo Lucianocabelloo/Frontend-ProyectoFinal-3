@@ -76,7 +76,7 @@ function App() {
           ></Route>
           <Route
             exact
-            path="/administrador/editar"
+            path="/administrador/editar/:id"
             element={<RoomForm editar={true} titulo="Editar"></RoomForm>}
           ></Route>
           <Route
@@ -86,7 +86,7 @@ function App() {
           ></Route>
           <Route
             exact
-            path="/administrador/editar-usuario"
+            path="/administrador/editar-usuario/:id"
             element={<UserForm editar={true} titulo="Editar"></UserForm>}
           ></Route>
           <Route path="*" element={<Error404 />} />

@@ -1,16 +1,23 @@
 import { useEffect, useState } from "react";
-import { Table, Row, Col, Container, Form, Button } from "react-bootstrap";
-import UserItem from "./users/UserItem";
-import ItemRoom from "./rooms/ItemRoom";
+import {
+  Row,
+  Col,
+  Container,
+  Form,
+  Button,
+  Image,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { readUsersAPI } from "../../helpers/userQueries";
 import Swal from "sweetalert2";
 import DataTable from "react-data-table-component";
 import FilterTable from "./administrator/FilterTable";
+import { getRoomsAPI } from "../../helpers/queries";
 
 const Administrator = () => {
   const [tabla, setTabla] = useState("Habitaciones");
   const [users, setUsers] = useState([]);
+  const [rooms, setRooms] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleOnChange = (event) => {
@@ -19,6 +26,7 @@ const Administrator = () => {
 
   useEffect(() => {
     getUsers();
+    getRooms();
   }, []);
 
   const getUsers = async () => {
@@ -36,7 +44,21 @@ const Administrator = () => {
     }
   };
 
-  const handleSearchChangeUsers = (event) => {
+  const getRooms = async () => {
+    const answer = await getRoomsAPI();
+    if (answer.status === 200) {
+      const data = await answer.json();
+      setRooms(data);
+    } else {
+      Swal.fire(
+        "Ocurrio un error",
+        "No se pudo obtener las habitaciones, intenta dentro de unos minutos nuevamente",
+        "error"
+      );
+    }
+  };
+
+  const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
@@ -45,6 +67,14 @@ const Administrator = () => {
       user.nombreCompleto.toLowerCase().includes(searchTerm.toLowerCase()) ||
       user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
       user.rol.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const filteresRooms = rooms.filter(
+    (room) =>
+      room.tipoHabitacion
+        .toLowerCase()
+        .includes(searchTerm.toLocaleLowerCase()) ||
+      room.categoria.toLowerCase().includes(searchTerm.toLocaleLowerCase())
   );
 
   const columnsUsers = [
@@ -84,10 +114,11 @@ const Administrator = () => {
     },
   ];
 
-  columnsRooms = [
+  const columnsRooms = [
     {
       name: "Número",
       selector: (row) => row.numero,
+      sortable: true,
     },
     {
       name: "Tipo",
@@ -103,11 +134,44 @@ const Administrator = () => {
     },
     {
       name: "Imagen",
-      selector: (row) => row.imagen,
+      cell: (row) => (
+        <Image
+          src={row.imagen}
+          alt={row.descripcion}
+          className="imgTabla"
+          thumbnail
+        ></Image>
+      ),
     },
     {
       name: "Disponible",
       selector: (row) => row.disponibilidad,
+      cell: (row) => (row.disponibilidad ? "Si" : "No"),
+    },
+    {
+      name: "Opciones",
+      cell: (row) => (
+        <div className="text-center my-2">
+          <Button variant="secondary" className="me-2 mb-2">
+            <i className="bi bi-calendar-date"></i>
+          </Button>
+          <Link
+            to={`/detalle-habitacion/${row._id}`}
+            className="btn btn-info me-2 mb-2"
+          >
+            <i className="bi bi-eye"></i>
+          </Link>
+          <Link
+            to={`/administrador/editar/${row._id}`}
+            className="btn btn-warning me-2 mb-2"
+          >
+            <i className="bi bi-pencil-square"></i>
+          </Link>
+          <Button variant="danger" className="me-2 mb-2">
+            <i className="bi bi-trash3"></i>
+          </Button>
+        </div>
+      ),
     },
   ];
 
@@ -143,26 +207,11 @@ const Administrator = () => {
       </Row>
       {tabla === "Habitaciones" && (
         <div className="tableContainer">
-          <FilterTable></FilterTable>
-          {/* <Table responsive striped hover bordered className="my-4" id="rooms">
-            <thead className="text-center">
-              <th>Número</th>
-              <th>Tipo</th>
-              <th>Categoria</th>
-              <th>Precio</th>
-              <th>Imagen</th>
-              <th>Disponible</th>
-              <th>Opciones</th>
-            </thead>
-            <tbody>
-              <ItemRoom></ItemRoom>
-              <ItemRoom></ItemRoom>
-            </tbody>
-          </Table> */}
+          <FilterTable searchTerm={searchTerm} handleSearchChange={handleSearchChange} placeholder="Filtrar por tipo o categoria "></FilterTable>
           <div className="mt-4">
             <DataTable
-              columns={columnsUsers}
-              data={filteredUsers}
+              columns={columnsRooms}
+              data={filteresRooms}
               pagination
               paginationPerPage={5}
               responsive
@@ -178,7 +227,8 @@ const Administrator = () => {
         <div className="tableContainer">
           <FilterTable
             searchTerm={searchTerm}
-            handleSearchChange={handleSearchChangeUsers}
+            handleSearchChange={handleSearchChange}
+            placeholder="Filtrar por nombre, email o rol"
           ></FilterTable>
           <div className="mt-4">
             <DataTable

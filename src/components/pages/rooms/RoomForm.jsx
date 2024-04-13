@@ -19,6 +19,7 @@ const RoomForm = ({ editar, titulo }) => {
     } else {
       console.log(room);
       const answer = await createRoomsAPI(room);
+      console.log(answer)
       if (answer.status === 201) {
         Swal.fire(
           "Habitación Creada",
@@ -175,7 +176,7 @@ const RoomForm = ({ editar, titulo }) => {
           <p>Los campos que tienen * son obligatorios.</p>
         </Form.Group>
         <Form.Group className="mb-3">
-          <Button variant="success me-2">
+          <Button type="submit" variant="success me-2">
             <i className="bi bi-floppy"></i> Guardar
           </Button>
           <Link to="/administrador" className="btn btn-primary">
