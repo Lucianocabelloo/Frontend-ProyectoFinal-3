@@ -37,6 +37,8 @@ import UserForm from "./components/pages/users/UserForm";
 import Error404 from "./components/pages/error404/Error404";
 import Login from "./components/pages/Login";
 import Contact from "./components/pages/contact/Contact";
+import DetailsRoom from "./components/pages/DetailsRoom";
+
 function App() {
   return (
     <BrowserRouter>
@@ -45,6 +47,7 @@ function App() {
         <Route exact path="/" element={<Home></Home>}></Route>
         <Route exact path="/nosotros" element={<AboutUs></AboutUs>}></Route>
         <Route exact path="/iniciar-sesion" element={<Login></Login>}></Route>
+        <Route exact path="/detalle-habitacion/:id" element={<DetailsRoom></DetailsRoom>}></Route>
         <Route exact path="/habitaciones" element={<Rooms></Rooms>}></Route>
         <Route exact path="/registro" element={<Register />}></Route>
         <Route exact path="/contacto" element={<Contact />}></Route>
