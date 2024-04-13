@@ -47,6 +47,7 @@ import DetailsRoom from "./components/pages/DetailsRoom";
 
 function App() {
   return (
+    <>
     <BrowserRouter>
       <Menu />
       <Routes>
@@ -75,6 +76,8 @@ function App() {
         <Route path="*" element={<Error404 />} />
       </Routes>
     </BrowserRouter>
+    </>
+    
   );
 }
 
