@@ -309,6 +309,11 @@ p, label {
   border: none;
 }
 
+.MuiButtonGroup-root{
+  display: flex !important;
+  justify-content: space-evenly  !important;
+}
+
 .bg-right-login{
   background: #08171e;
   border-radius: 20px;
