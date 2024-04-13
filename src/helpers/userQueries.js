@@ -54,10 +54,27 @@ export const editUserAPI = async (user, id) => {
   }
 };
 
-export const suspendUserAPI = async (activo,id) => {
+export const deleteUserAPI = async (id) => {
   try {
-    const answer = await fetch(`${URI_USER}/${id}`,
-    {
+    const response = await fetch(`${URI_USER}/${id}`, {
+      method: "DELETE",
+      headers: {
+        "x-token": JSON.parse(sessionStorage.getItem("usuarioHotel")).token,
+      },
+    });
+    return response;
+  } catch (error) {
+    Swal.fire({
+      title: "Servicio no disponible momentaneamente",
+      text: `Sucedio el error "${error}", intentelo nuevamente en unos minutos`,
+      icon: "error",
+    });
+  }
+};
+
+export const suspendUserAPI = async (activo, id) => {
+  try {
+    const answer = await fetch(`${URI_USER}/${id}`, {
       method: "PATCH",
       headers: {
         "x-token": JSON.parse(sessionStorage.getItem("usuarioHotel")).token,
