@@ -1,6 +1,8 @@
 import { Container, Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { createRoomsAPI } from "../../../helpers/queries";
+import Swal from "sweetalert2";
 
 const RoomForm = ({ editar, titulo }) => {
   const {
@@ -11,11 +13,26 @@ const RoomForm = ({ editar, titulo }) => {
     setValue,
   } = useForm();
 
-  const onSubmit = (room) => {
+  const onSubmit = async (room) => {
     if (editar) {
       console.log("Aca se edita");
     } else {
       console.log(room);
+      const answer = await createRoomsAPI(room);
+      if (answer.status === 201) {
+        Swal.fire(
+          "Habitación Creada",
+          `La habitación Nro. ${room.numero} fue creada exitosamente`,
+          "success"
+        );
+        reset();
+      } else {
+        Swal.fire(
+          "Ocurrio un error",
+          "La habitación no pudo ser creada, intentelo nuevamente dentro de unos minutos",
+          "error"
+        );
+      }
     }
   };
 

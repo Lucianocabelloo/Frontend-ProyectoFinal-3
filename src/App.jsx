@@ -13,7 +13,7 @@ import {
   faParking,
   faBed,
   faUser,
-  faClock
+  faClock,
 } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 
@@ -49,37 +49,51 @@ import DetailsRoom from "./components/pages/DetailsRoom";
 function App() {
   return (
     <>
-    <BrowserRouter>
-      <Menu />
-      <Routes>
-        <Route exact path="/" element={<Home></Home>}></Route>
-        <Route exact path="/nosotros" element={<AboutUs></AboutUs>}></Route>
-        <Route exact path="/iniciar-sesion" element={<Login></Login>}></Route>
-        <Route exact path="/detalle-habitacion/:id" element={<DetailsRoom></DetailsRoom>}></Route>
-        <Route exact path="/habitaciones" element={<Rooms></Rooms>}></Route>
-        <Route exact path="/registro" element={<Register />}></Route>
-        <Route exact path="/contacto" element={<Contact />}></Route>
-        <Route exact path="/galeria" element={<Gallery></Gallery>}></Route>
-        <Route
-          exact
-          path="/administrador"
-          element={<Administrador></Administrador>}
-        ></Route>
-        <Route
-          exact
-          path="/administrador/crear"
-          element={<RoomForm editar={false} titulo="Crear"></RoomForm>}
-        ></Route>
-        <Route
-          path="/administrador/crearusuario"
-          element={<UserForm editar={false} titulo="Crear"></UserForm>}
-        ></Route>
-        <Route path="*" element={<Error404 />} />
-      </Routes>
-      <Footer/>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Menu />
+        <Routes>
+          <Route exact path="/" element={<Home></Home>}></Route>
+          <Route exact path="/nosotros" element={<AboutUs></AboutUs>}></Route>
+          <Route exact path="/iniciar-sesion" element={<Login></Login>}></Route>
+          <Route
+            exact
+            path="/detalle-habitacion/:id"
+            element={<DetailsRoom></DetailsRoom>}
+          ></Route>
+          <Route exact path="/habitaciones" element={<Rooms></Rooms>}></Route>
+          <Route exact path="/registro" element={<Register />}></Route>
+          <Route exact path="/contacto" element={<Contact />}></Route>
+          <Route exact path="/galeria" element={<Gallery></Gallery>}></Route>
+          <Route
+            exact
+            path="/administrador"
+            element={<Administrador></Administrador>}
+          ></Route>
+          <Route
+            exact
+            path="/administrador/crear"
+            element={<RoomForm editar={false} titulo="Crear"></RoomForm>}
+          ></Route>
+          <Route
+            exact
+            path="/administrador/editar"
+            element={<RoomForm editar={true} titulo="Editar"></RoomForm>}
+          ></Route>
+          <Route
+            exact
+            path="/administrador/crear-usuario"
+            element={<UserForm editar={false} titulo="Crear"></UserForm>}
+          ></Route>
+          <Route
+            exact
+            path="/administrador/editar-usuario"
+            element={<UserForm editar={true} titulo="Editar"></UserForm>}
+          ></Route>
+          <Route path="*" element={<Error404 />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </>
-    
   );
 }
 
