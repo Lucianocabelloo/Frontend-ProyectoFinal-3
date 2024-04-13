@@ -326,6 +326,17 @@ p, label {
   to {border-radius: 150px 20px 20px 100px;}
 }
 
+.footer-Container{
+  padding: 0px;
+}
+
+.footer-Description{
+  width: 30ch;
+}
+
+.footer-Container h3{
+  color: #f0d78d;
+
 
 /* DETAILS ROOM STYLES  */
 .img-container-detail{
