@@ -129,7 +129,7 @@ p, label {
   align-items: end;
   height: 83vh;
   max-height: 50rem;
-  background: linear-gradient(0deg, #08171e, rgba(0,0,0,0.3))
+  background: linear-gradient(0deg, #08171e, rgba(0,0,0,0.2))
   ,url('./assets/img/banner.jpg') no-repeat center center;
   background-size: cover;
 }
@@ -320,7 +320,7 @@ p, label {
   justify-content: center;
   align-items: center;
   animation-name: borderAnimation;
-  animation-duration: 2.1s;
+  animation-duration: 2.6s;
   animation-delay: .6s;
   animation-fill-mode: forwards;
 }
@@ -398,6 +398,13 @@ p, label {
   }
   .price{
     font-size: 2.4rem;
+  }
+
+  .top{
+    align-items: center;
+    background: linear-gradient(0deg, #08171e, rgba(0,0,0,0.5))
+    ,url('./assets/img/banner.jpg') no-repeat center center;
+    background-size: cover;
   }
 
 }

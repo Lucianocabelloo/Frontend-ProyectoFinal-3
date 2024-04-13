@@ -24,7 +24,7 @@ const Banner = () => {
         <Container>
           <Row className="justify-content-center align-items-center">
             <Col lg={5}>
-              <h2 className="display-5 txt-details-color fw-bold">
+              <h2 className="display-4 txt-details-color fw-bold">
                 <span className="kaushan-script fw-normal fs-2 txt-light-customized">
                   Bienvenido a
                 </span>
