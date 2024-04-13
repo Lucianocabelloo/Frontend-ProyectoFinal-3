@@ -8,6 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import Iframe from "react-iframe";
+import Swal from "sweetalert2";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const {
@@ -23,8 +25,33 @@ const Contact = () => {
       "noopener,noreferrer"
     );
   };
-  const onSubmit = async () => {
-    reset;
+  const onSubmit = async (user) => {
+    const templateParams = {
+      name: user.nombreCompleto,
+      email: user.email,
+      message: user.consulta,
+    };
+    emailjs
+      .send("paradisehotelresort", "consulta", templateParams, {
+        publicKey: "Yw6Pt71umYLXr2vzv",
+      })
+      .then(
+        () => {
+          Swal.fire({
+            title: "Su consulta ha sido enviada!",
+            text: `Gracias ${user.nombreCompleto} por comunicarse con nosotros`,
+            icon: "success",
+          });
+        },
+        (error) => {
+          Swal.fire({
+            title: "Ocurrio un error!",
+            text: `Lo lamentamos ${user.nombreCompleto}, su consulta no pudo ser enviada`,
+            icon: "error",
+          });
+        }
+      );
+    reset();
   };
   return (
     <div className="myMainC pt-5">
