@@ -37,6 +37,7 @@ import UserForm from "./components/pages/users/UserForm";
 import Error404 from "./components/pages/error404/Error404";
 import Login from "./components/pages/Login";
 import Contact from "./components/pages/contact/Contact";
+import Footer from "./components/common/Footer";
 function App() {
   return (
     <BrowserRouter>
@@ -64,6 +65,7 @@ function App() {
         ></Route>
         <Route path="*" element={<Error404 />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }
