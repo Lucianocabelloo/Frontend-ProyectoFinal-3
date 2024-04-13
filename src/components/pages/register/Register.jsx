@@ -4,6 +4,7 @@ import registerImg from "../../../assets/img/register.jpg";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { createUserAPI } from "../../../helpers/userQueries";
+import emailjs from "@emailjs/browser";
 
 const Register = () => {
   const {
@@ -22,6 +23,13 @@ const Register = () => {
         text: `${user.nombreCompleto} has sido registrado correctamente`,
         icon: "success",
       });
+      const templateParams = {
+        name: user.nombreCompleto,
+        email: user.email,
+      };
+      emailjs.send("paradisehotelresort", "nuevo-usuario", templateParams, {
+        publicKey: "Yw6Pt71umYLXr2vzv",
+      });
       reset();
     } else {
       Swal.fire({
@@ -29,6 +37,7 @@ const Register = () => {
         text: `${user.nombreCompleto} no fue registrado, pruebe nuevamente en unos minutos`,
         icon: "error",
       });
+      reset();
     }
   };
   return (
