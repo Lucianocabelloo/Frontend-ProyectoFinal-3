@@ -27,6 +27,10 @@
 }
 .myImageR {
   border-radius: 0 20px 20px 0;
+  animation-name: borderAnimationR;
+  animation-duration: 2.5s;
+  animation-delay: .2s;
+  animation-fill-mode: forwards;
 }
 .myCardBodyR {
   display: flex;
@@ -99,6 +103,11 @@
   background-color: #1b465c;
   box-shadow: #0d0d0d12 0 2px 4px;
   transform: translateY(0);
+}
+
+@keyframes borderAnimationR {
+  from {border-radius: 20px;}
+  to {border-radius: 80px 20px 20px 80px;}
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1399.9px) {

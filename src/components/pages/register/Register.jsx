@@ -4,6 +4,7 @@ import registerImg from "../../../assets/img/register.jpg";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { createUserAPI } from "../../../helpers/userQueries";
+import emailjs from "@emailjs/browser";
 
 const Register = () => {
   const {
@@ -13,12 +14,21 @@ const Register = () => {
     reset,
   } = useForm();
   const onSubmit = async (user) => {
-  const answer = await createUserAPI(user);
+    user.rol = "Usuario";
+    user.activo = true;
+    const answer = await createUserAPI(user);
     if (answer.status === 201) {
       Swal.fire({
         title: "Su usuario a sido creado!",
         text: `${user.nombreCompleto} has sido registrado correctamente`,
         icon: "success",
+      });
+      const templateParams = {
+        name: user.nombreCompleto,
+        email: user.email,
+      };
+      emailjs.send("paradisehotelresort", "nuevo-usuario", templateParams, {
+        publicKey: "Yw6Pt71umYLXr2vzv",
       });
       reset();
     } else {
@@ -27,6 +37,7 @@ const Register = () => {
         text: `${user.nombreCompleto} no fue registrado, pruebe nuevamente en unos minutos`,
         icon: "error",
       });
+      reset();
     }
   };
   return (
@@ -102,7 +113,9 @@ const Register = () => {
                     </Form.Text>
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formPassword">
-                    <Form.Label className="myLabelR ps-3">Contraseña</Form.Label>
+                    <Form.Label className="myLabelR ps-3">
+                      Contraseña
+                    </Form.Label>
                     <Form.Control
                       className="myInputR"
                       type="password"
@@ -130,7 +143,11 @@ const Register = () => {
               </Form>
             </Col>
             <Col className="p-0 d-none d-lg-block">
-              <Card.Img src={registerImg} className="img-fluid myImageR" alt="Imagen representativa de bienvenida" />
+              <Card.Img
+                src={registerImg}
+                className="img-fluid myImageR"
+                alt="Imagen representativa de bienvenida"
+              />
             </Col>
           </Row>
         </Card>
