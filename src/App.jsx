@@ -11,6 +11,9 @@ import {
   faSnowflake,
   faTv,
   faParking,
+  faBed,
+  faUser,
+  faClock
 } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 
@@ -22,7 +25,10 @@ library.add(
   faConciergeBell,
   faSnowflake,
   faTv,
-  faParking
+  faParking,
+  faBed,
+  faUser,
+  faClock
 );
 import "./App.css";
 import Menu from "./components/common/Menu";
@@ -38,13 +44,18 @@ import Error404 from "./components/pages/error404/Error404";
 import Login from "./components/pages/Login";
 import Contact from "./components/pages/contact/Contact";
 import Footer from "./components/common/Footer";
+import DetailsRoom from "./components/pages/DetailsRoom";
+
 function App() {
   return (
+    <>
     <BrowserRouter>
       <Menu />
       <Routes>
         <Route exact path="/" element={<Home></Home>}></Route>
         <Route exact path="/nosotros" element={<AboutUs></AboutUs>}></Route>
+        <Route exact path="/iniciar-sesion" element={<Login></Login>}></Route>
+        <Route exact path="/detalle-habitacion/:id" element={<DetailsRoom></DetailsRoom>}></Route>
         <Route exact path="/habitaciones" element={<Rooms></Rooms>}></Route>
         <Route exact path="/registro" element={<Register />}></Route>
         <Route exact path="/contacto" element={<Contact />}></Route>
@@ -67,6 +78,8 @@ function App() {
       </Routes>
       <Footer/>
     </BrowserRouter>
+    </>
+    
   );
 }
 

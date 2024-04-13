@@ -145,7 +145,7 @@ z-index: 999;
         object-fit: cover;
       }
   }
-  @media (min-width: 1400px){
+  @media (min-width: 1440px){
     .carousel-container {
         height: 70vh; 
       }

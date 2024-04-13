@@ -337,6 +337,45 @@ p, label {
 .footer-Container h3{
   color: #f0d78d;
 
+
+/* DETAILS ROOM STYLES  */
+.img-container-detail{
+  height: 28rem;
+  border: 1px solid #F0D78D;
+}
+
+.img-room-detail{
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.line{
+  height: 1px;
+  width: 100%;
+  background: #F0D78D;
+}
+
+.circle{
+  height: 22px;
+  width: 45px;
+  border-radius: 50%;
+  border: 2px solid #F0D78D;
+}
+
+.room-number{
+  position: absolute;
+  top: -60px;
+  left: 0;
+  color: rgba(255,255,255,0.2);
+  font-weight: 800;
+  font-size: 8rem;
+}
+
+.price{
+  font-weight: 600;
+  color: #F0D78D;
+  font-size: 2.7rem;
 }
 
 @media (min-width: 980px) and (max-width: 1200px) {
@@ -352,6 +391,9 @@ p, label {
   }
 .icon-login{
   font-size: 20px;
+}
+.price{
+  font-size: 2.4rem;
 }
 
 }

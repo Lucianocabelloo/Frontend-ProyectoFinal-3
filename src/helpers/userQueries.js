@@ -17,11 +17,10 @@ export const readUsersAPI = async () => {
 
 export const createUserAPI = async (user) => {
   try {
-    const answer = await fetch(URI_USER, {
+    const answer = await fetch(`${URI_USER}/nuevo`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-token": JSON.parse(sessionStorage.getItem("usuarioHotel")).token,
       },
       body: JSON.stringify(user),
     });
