@@ -3,7 +3,7 @@ import Information from "../Information";
 
 const Home = () => {
     return (
-        <div className="mainContainer">
+        <div className="mainContainer bg-light-color">
             <Banner></Banner>
             <Information></Information>
         </div>

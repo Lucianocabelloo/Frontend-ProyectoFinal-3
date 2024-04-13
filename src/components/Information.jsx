@@ -50,12 +50,12 @@ const Information = () => {
               />
             </Col>
             <Col md={12} className="text-center my-4 ">
-              <Link to="/habitaciones" className="btn-customized-2">Ver Habitaciones</Link>
+              <Link to="/habitaciones" className="btn-customized-2 fs-5">Ver Habitaciones</Link>
             </Col>
           </Row>
+      <hr className="text-bg-color" />
         </Container>
       </section>
-      <hr className="text-bg-color" />
       <section className="my-5">
         <Container>
           <h3 className="fs-1 text-center txt-bg-color pb-3">
@@ -236,14 +236,14 @@ const Information = () => {
           <h3 className="fs-1 fw-bold txt-light-customized">
             Explora nuestra <span className="txt-details-color">galería</span>
           </h3>
-          <p className="txt-gray pt-3">
+          <p className="txt-gray pt-3 mb-5">
             Explora nuestra galería de imágenes y déjate cautivar por la
             elegancia y el encanto de nuestro hotel. Cada fotografía captura la
             esencia de nuestro oasis de lujo, desde nuestras exquisitas
             habitaciones hasta nuestros espacios comunes meticulosamente
             diseñados.
           </p>
-          <Link to="/galeria" className="btn-customized mt-3">Ver Galería</Link>
+          <Link to="/galeria" className="btn-customized">Ver Galería</Link>
           </div>
         </Container>
       </section>
