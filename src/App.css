@@ -326,17 +326,12 @@ p, label {
 .img-container-detail{
   height: 28rem;
   border: 1px solid #F0D78D;
-  overflow: hidden;
 }
 
 .img-room-detail{
   object-fit: cover;
   height: 100%;
   width: 100%;
-  transition: transform .9s;
-}
-.img-room-detail:hover{
-  transform: scale(1.25);
 }
 
 .line{
