@@ -8,12 +8,12 @@ const Banner = () => {
       <div className="top">
         <Container>
           <Row className="pb-5">
-            <Col md={12} lg={7} className="text-center text-lg-start">
-              <p className="kaushan-script fs-2 mb-1 txt-details-color">
+            <Col md={12} lg={8} className="text-center text-lg-start">
+              <p className="kaushan-script fs-3 mb-1 txt-details-color">
                 - Paradise Hotel Resort -
               </p>
-              <h1 className="txt-light-customized fw-bold pb-4">
-                Donde el lujo encuentra su hogar y tus sueños se hacen realidad
+              <h1 className="txt-light-customized fw-bold display-5 pb-4 txt-shadow">
+              Convierte tu estancia en una experiencia inolvidable
               </h1>
               <Link to="/habitaciones" className="btn-customized">Ver Habitaciones</Link>
             </Col>

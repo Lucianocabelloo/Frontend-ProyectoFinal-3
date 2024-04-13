@@ -127,9 +127,9 @@ p, label {
 .top{
   display: flex;
   align-items: end;
-  height: 80vh;
+  height: 83vh;
   max-height: 50rem;
-  background: linear-gradient(0deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3))
+  background: linear-gradient(0deg, #08171e, rgba(0,0,0,0.3))
   ,url('./assets/img/banner.jpg') no-repeat center center;
   background-size: cover;
 }
@@ -183,6 +183,10 @@ p, label {
 
 .icon{
   font-size: 40px;
+}
+
+.txt-shadow{
+  text-shadow: 3px 3px 15px rgba(0,0,0,0.3);
 }
 .container-nav {
   gap: 0px;
@@ -316,7 +320,7 @@ p, label {
   justify-content: center;
   align-items: center;
   animation-name: borderAnimation;
-  animation-duration: 2.5s;
+  animation-duration: 2.1s;
   animation-delay: .6s;
   animation-fill-mode: forwards;
 }
@@ -389,14 +393,11 @@ p, label {
     border-radius: 20px;
     animation: none;
   }
-.icon-login{
-  font-size: 20px;
-}
-.price{
-  font-size: 2.4rem;
-}
-
-}
-
+  .icon-login{
+    font-size: 20px;
+  }
+  .price{
+    font-size: 2.4rem;
+  }
 
 }

@@ -42,7 +42,7 @@ const Login = () => {
   return (
     <div className="bg-login mainContainer">
       <Container>
-        <Row className="box-login my-5">
+        <Row className="box-login">
           <Col lg={6} className="py-5 px-2 px-sm-4">
             <div className="text-center">
               <h1 className="txt-bg-color txt-montserrat fw-bold mb-4 display-5">
