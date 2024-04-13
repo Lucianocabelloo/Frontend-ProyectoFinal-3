@@ -407,3 +407,11 @@ p, label {
 }
 
 
+.footer-Content a {
+  text-decoration: none;
+  color: #d1d7d4;
+}
+.footer-Content a:hover {
+  text-decoration: none;
+  color: #8b8b8b;
+}
