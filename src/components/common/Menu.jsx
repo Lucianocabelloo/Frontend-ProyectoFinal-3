@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 const Menu = () => {
   return (
-    <Navbar  expand="lg" className="d-flex justify-content-center bg-transparent navbar-light bg-light">
+    <Navbar  expand="lg" className="d-flex justify-content-center  navbar-dark bg-transparent">
     <Container className='container-nav'>
       <Navbar.Brand href="#home">Paradise Hotel Resort</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
