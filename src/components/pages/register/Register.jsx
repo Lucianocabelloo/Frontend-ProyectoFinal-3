@@ -5,8 +5,13 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { createUserAPI } from "../../../helpers/userQueries";
 import emailjs from "@emailjs/browser";
+import { useState } from "react";
 
 const Register = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
   const {
     register,
     handleSubmit,
@@ -118,7 +123,7 @@ const Register = () => {
                     </Form.Label>
                     <Form.Control
                       className="myInputR"
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       placeholder="*******"
                       {...register("password", {
                         required: "Ingresar la contraseña es obligatorio",
@@ -134,7 +139,7 @@ const Register = () => {
                       <div className="checkboxOverride">
                         <input
                           type="checkbox"
-                          name=""
+                          onChange={toggleShowPassword}
                           id="checkboxInputOverride"
                           className="myCheck"
                           value="1"
