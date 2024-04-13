@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Table, Row, Col, Container, Form, Button } from "react-bootstrap";
-import ItemUsuario from "./users/ItemUsuario";
+import UserItem from "./users/UserItem";
 import ItemRoom from "./rooms/ItemRoom";
 
-const Administrador = () => {
+const Administrator = () => {
   const [tabla, setTabla] = useState("Habitaciones");
 
   const handleOnChange = (event) => {
@@ -59,7 +59,7 @@ const Administrador = () => {
             <th>Opciones</th>
           </thead>
           <tbody>
-            <ItemUsuario></ItemUsuario>
+            <UserItem></UserItem>
           </tbody>
         </Table>
       )}
@@ -67,4 +67,4 @@ const Administrador = () => {
   );
 };
 
-export default Administrador;
+export default Administrator;

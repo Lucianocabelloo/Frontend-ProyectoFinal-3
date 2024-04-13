@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 
-const ItemUsuario = () => {
+const UserItem = () => {
   return (
     <tr className="text-center">
       <td>Pepito Juan</td>
@@ -18,4 +18,4 @@ const ItemUsuario = () => {
   );
 };
 
-export default ItemUsuario;
+export default UserItem;
