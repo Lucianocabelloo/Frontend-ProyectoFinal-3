@@ -29,7 +29,7 @@
   border-radius: 0 20px 20px 0;
   animation-name: borderAnimationR;
   animation-duration: 2.5s;
-  animation-delay: .2s;
+  animation-delay: 0.2s;
   animation-fill-mode: forwards;
 }
 .myCardBodyR {
@@ -64,11 +64,46 @@
   border-radius: 0;
   border: 1px solid transparent !important;
   box-shadow: none !important;
-  transition: all 250ms
+  transition: all 250ms;
 }
 .myInputR:focus {
   background-color: #73737320;
   transform: scaleX(1.05);
+}
+.myCheckR {
+  visibility: hidden;
+}
+.myCheckboContR {
+  margin: 20px 20px;
+  position: relative;
+  width: 25px;
+}
+.myCheckboContR input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+.myCheckboContR label {
+  background: none repeat scroll 0 0 #73737320;
+  border: 1px solid transparent;
+  cursor: pointer;
+  height: 25px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 25px;
+}
+.myCheckboContR label:after {
+  color: #08171f;
+  border-style: none none solid solid;
+  content: "";
+  height: 5px;
+  left: 6px;
+  opacity: 0;
+  position: absolute;
+  top: 7px;
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  width: 10px;
 }
 .textErrorR {
   color: #690606;
@@ -106,8 +141,12 @@
 }
 
 @keyframes borderAnimationR {
-  from {border-radius: 20px;}
-  to {border-radius: 80px 20px 20px 80px;}
+  from {
+    border-radius: 20px;
+  }
+  to {
+    border-radius: 80px 20px 20px 80px;
+  }
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1399.9px) {
@@ -126,16 +165,17 @@
     padding-right: 0;
   }
   .myFormR {
+    margin-top: 9px;
     width: 100%;
   }
 }
-@media screen and (max-width: 575.9px){
+@media screen and (max-width: 575.9px) {
   .myCardR {
     width: 100%;
   }
   .myContR {
     margin-left: 0;
-    margin-right:0;
+    margin-right: 0;
     padding-left: 4;
     padding-right: 4;
   }

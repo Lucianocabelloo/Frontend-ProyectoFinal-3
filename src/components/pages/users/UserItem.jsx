@@ -1,15 +1,20 @@
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-const UserItem = () => {
+const UserItem = ({ user }) => {
   return (
     <tr className="text-center">
-      <td>Pepito Juan</td>
-      <td className="filaEmail text-truncate">example@example.com</td>
-      <td>Usuario</td>
+      <td>{user.nombreCompleto}</td>
+      <td className="filaEmail text-truncate">{user.email}</td>
+      <td>{user.rol}</td>
+      <td>{user.activo ? "Si" : "No"}</td>
       <td className="text-center">
-        <Button variant="warning" className="me-2 mb-2">
+        <Link
+          to="/administrador/editar-usuario"
+          className="btn btn-warning me-2 mb-2"
+        >
           <i className="bi bi-pencil-square"></i>
-        </Button>
+        </Link>
         <Button variant="danger" className="me-2 mb-2">
           <i className="bi bi-person-fill-x"></i>
         </Button>

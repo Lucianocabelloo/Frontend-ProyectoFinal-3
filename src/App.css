@@ -345,12 +345,14 @@ label {
 
 .footer-Container h3 {
   color: #f0d78d;
+}
 
   /* DETAILS ROOM STYLES  */
   .img-container-detail {
     height: 28rem;
     border: 1px solid #f0d78d;
   }
+
 
   .img-room-detail {
     object-fit: cover;
@@ -404,4 +406,4 @@ label {
       font-size: 2.4rem;
     }
   }
-}
+

@@ -1,6 +1,8 @@
 import { Container, Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { createRoomsAPI } from "../../../helpers/queries";
+import Swal from "sweetalert2";
 
 const RoomForm = ({ editar, titulo }) => {
   const {
@@ -11,18 +13,34 @@ const RoomForm = ({ editar, titulo }) => {
     setValue,
   } = useForm();
 
-  const onSubmit = (room) => {
+  const onSubmit = async (room) => {
     if (editar) {
       console.log("Aca se edita");
     } else {
       console.log(room);
+      const answer = await createRoomsAPI(room);
+      console.log(answer)
+      if (answer.status === 201) {
+        Swal.fire(
+          "Habitación Creada",
+          `La habitación Nro. ${room.numero} fue creada exitosamente`,
+          "success"
+        );
+        reset();
+      } else {
+        Swal.fire(
+          "Ocurrio un error",
+          "La habitación no pudo ser creada, intentelo nuevamente dentro de unos minutos",
+          "error"
+        );
+      }
     }
   };
 
   return (
     <Container className="my-4 mainContainer">
       <h1 className="mb-4">{titulo} Habitación</h1>
-      <hr className="hrRoom"/>
+      <hr className="hrRoom" />
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3 text-light" controlId="numero">
           <Form.Label>Número de Habitación:*</Form.Label>
@@ -158,9 +176,11 @@ const RoomForm = ({ editar, titulo }) => {
           <p>Los campos que tienen * son obligatorios.</p>
         </Form.Group>
         <Form.Group className="mb-3">
-          <Button variant="success me-2">Guardar</Button>
+          <Button type="submit" variant="success me-2">
+            <i className="bi bi-floppy"></i> Guardar
+          </Button>
           <Link to="/administrador" className="btn btn-primary">
-            Volver
+            <i className="bi bi-arrow-bar-left"></i> Volver
           </Link>
         </Form.Group>
       </Form>
