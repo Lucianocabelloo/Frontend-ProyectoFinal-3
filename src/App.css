@@ -20,6 +20,11 @@ body {
   gap: 64px;
 }
 
+.bg-transparent{
+  --bs-bg-opacity: 1;
+    background-color: #00000057 !important;
+}
+
 .navbar-brand {
   margin: 0px;
 }
