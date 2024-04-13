@@ -11,6 +11,9 @@ import {
   faSnowflake,
   faTv,
   faParking,
+  faBed,
+  faUser,
+  faClock
 } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 
@@ -22,7 +25,10 @@ library.add(
   faConciergeBell,
   faSnowflake,
   faTv,
-  faParking
+  faParking,
+  faBed,
+  faUser,
+  faClock
 );
 import "./App.css";
 import Menu from "./components/common/Menu";
