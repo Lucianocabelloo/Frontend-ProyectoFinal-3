@@ -48,7 +48,7 @@ const Register = () => {
             <Col className="p-0">
               <Form
                 onSubmit={handleSubmit(onSubmit)}
-                className="myCardBodyR px-4 px-sm-5 py-4"
+                className="myCardBodyR px-4 px-sm-5 py-4 py-lg-2 py-xl-4"
               >
                 <div>
                   <h4 className="myTitleR">Registrarse</h4>
@@ -130,6 +130,19 @@ const Register = () => {
                         },
                       })}
                     />
+                    <div className="d-flex justify-content-start align-items-center">
+                      <div className="checkboxOverride">
+                        <input
+                          type="checkbox"
+                          name=""
+                          id="checkboxInputOverride"
+                          className="myCheck"
+                          value="1"
+                        />
+                        <label htmlFor="checkboxInputOverride"></label>
+                      </div>
+                      <label className="myLabelR">Mostar contraseña</label>
+                    </div>
                     <Form.Text className="textErrorR">
                       <b>{errors.password?.message}&nbsp;</b>
                     </Form.Text>
