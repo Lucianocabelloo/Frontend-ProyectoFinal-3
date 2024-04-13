@@ -1,6 +1,9 @@
 import { Container, Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { createUserAPI } from "../../../helpers/userQueries";
+import Swal from "sweetalert2";
+import emailjs from "@emailjs/browser";
 
 const UserForm = ({ editar, titulo }) => {
   const {
@@ -11,11 +14,33 @@ const UserForm = ({ editar, titulo }) => {
     setValue,
   } = useForm();
 
-  const onSubmit = (user) => {
+  const onSubmit = async (user) => {
     if (editar) {
       console.log("Aca se edita");
     } else {
       console.log(user);
+      const answer = await createUserAPI(user);
+      if (answer.status === 201) {
+        Swal.fire(
+          "Usuario creado",
+          "El usuario fue creado exitosamente",
+          "success"
+        );
+        const templateParams = {
+          name: user.nombreCompleto,
+          email: user.email,
+        };
+        emailjs.send("paradisehotelresort", "nuevo-usuario", templateParams, {
+          publicKey: "Yw6Pt71umYLXr2vzv",
+        });
+        reset();
+      } else {
+        Swal.fire(
+          "Ocurrio un error",
+          "El usuario no pudo ser creado, intentelo nuevamente dentro de unos minutos",
+          "error"
+        );
+      }
     }
   };
 
@@ -114,9 +139,11 @@ const UserForm = ({ editar, titulo }) => {
           <p>Los campos que tienen * son obligatorios.</p>
         </Form.Group>
         <Form.Group className="mb-3">
-          <Button type="submit" variant="success me-2">Guardar</Button>
+          <Button type="submit" variant="success me-2">
+            <i className="bi bi-floppy"></i> Guardar
+          </Button>
           <Link to="/administrador" className="btn btn-primary">
-            Volver
+            <i className="bi bi-arrow-bar-left"></i> Volver
           </Link>
         </Form.Group>
       </Form>
