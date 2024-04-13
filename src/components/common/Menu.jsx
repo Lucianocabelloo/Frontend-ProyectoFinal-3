@@ -10,9 +10,9 @@ const Menu = () => {
       className="d-flex justify-content-center  navbar-dark bg-transparent"
     >
       <Container className="container-nav">
-        <Navbar.Brand href="#home" className="kaushan-script txt-details-color">
+        <NavLink to="/" className="navbar-brand kaushan-script txt-details-color">
           Paradise Hotel Resort
-        </Navbar.Brand>
+        </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse
           className="justify-content-center"

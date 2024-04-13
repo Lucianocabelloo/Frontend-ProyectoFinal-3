@@ -152,9 +152,9 @@ const Administrator = () => {
       name: "Opciones",
       cell: (row) => (
         <div className="text-center my-2">
-          <Button variant="secondary" className="me-2 mb-2">
+          <Link to={`/calendario`} className="btn btn-secondary me-2 mb-2">
             <i className="bi bi-calendar-date"></i>
-          </Button>
+          </Link>
           <Link
             to={`/detalle-habitacion/${row._id}`}
             className="btn btn-info me-2 mb-2"
