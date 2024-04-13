@@ -51,16 +51,16 @@ const Login = () => {
               <hr />
               <div className="d-flex justify-content-center gap-4 align-items-center">
                 <button className="icon-login">
-                  <i class="bi bi-google"></i>
+                  <i className="bi bi-google"></i>
                 </button>
                 <button className="icon-login">
-                  <i class="bi bi-facebook"></i>
+                  <i className="bi bi-facebook"></i>
                 </button>
                 <button className="icon-login">
-                  <i class="bi bi-linkedin"></i>
+                  <i className="bi bi-linkedin"></i>
                 </button>
                 <button className="icon-login">
-                  <i class="bi bi-twitter-x"></i>
+                  <i className="bi bi-twitter-x"></i>
                 </button>
               </div>
             </div>
