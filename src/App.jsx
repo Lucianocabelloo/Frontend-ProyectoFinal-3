@@ -11,6 +11,7 @@ import Rooms from "./components/pages/Rooms";
 
 function App() {
   return (
+    <>
     <BrowserRouter>
       <Menu />
       <Routes>
@@ -22,8 +23,9 @@ function App() {
         ></Route>
       </Routes>
     </BrowserRouter>
-      <Rooms></Rooms>
+    <Rooms></Rooms>
     </>
+    
   );
 }
 
