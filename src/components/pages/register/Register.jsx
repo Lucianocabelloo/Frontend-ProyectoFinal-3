@@ -24,7 +24,7 @@ const Register = () => {
     const answer = await createUserAPI(user);
     if (answer.status === 201) {
       Swal.fire({
-        title: "Su usuario a sido creado!",
+        title: "Su usuario ha sido creado!",
         text: `${user.nombreCompleto} has sido registrado correctamente`,
         icon: "success",
       });
@@ -38,7 +38,7 @@ const Register = () => {
       reset();
     } else {
       Swal.fire({
-        title: "Ocurrio un error!",
+        title: "Ocurrió un error!",
         text: `${user.nombreCompleto} no fue registrado, pruebe nuevamente en unos minutos`,
         icon: "error",
       });
@@ -73,12 +73,12 @@ const Register = () => {
                         minLength: {
                           value: 3,
                           message:
-                            "El nombre debe tener como minimo 3 caracteres",
+                            "El nombre debe tener como mínimo 3 caracteres",
                         },
                         maxLength: {
                           value: 80,
                           message:
-                            "El nombre debe tener como maximo 80 caracteres",
+                            "El nombre debe tener como máximo 80 caracteres",
                         },
                       })}
                     />
@@ -88,7 +88,7 @@ const Register = () => {
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formEmail">
                     <Form.Label className="myLabelR ps-3">
-                      Correo electronico
+                      Correo electrónico
                     </Form.Label>
                     <Form.Control
                       className="myInputR"
@@ -99,12 +99,12 @@ const Register = () => {
                         minLength: {
                           value: 10,
                           message:
-                            "El correo debe tener como minimo 10 caracteres",
+                            "El correo debe tener como mínimo 10 caracteres",
                         },
                         maxLength: {
                           value: 340,
                           message:
-                            "El correo debe tener como maximo 340 caracteres",
+                            "El correo debe tener como máximo 340 caracteres",
                         },
                         pattern: {
                           value:
@@ -131,22 +131,22 @@ const Register = () => {
                           value:
                             /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
                           message:
-                            "La contraseña debe contener al menos una mayuscula, una minuscula y un numero",
+                            "La contraseña debe contener al menos una mayúscula, una minúscula y un numero",
                         },
                       })}
                     />
                     <div className="d-flex justify-content-start align-items-center">
-                      <div className="checkboxOverride">
+                      <div className="myCheckboContR">
                         <input
                           type="checkbox"
                           onChange={toggleShowPassword}
-                          id="checkboxInputOverride"
-                          className="myCheck"
+                          id="myCheckboxR"
+                          className="myCheckR"
                           value="1"
                         />
-                        <label htmlFor="checkboxInputOverride"></label>
+                        <label htmlFor="myCheckboxR"></label>
                       </div>
-                      <label className="myLabelR">Mostar contraseña</label>
+                      <label className="myLabelR">Mostrar contraseña</label>
                     </div>
                     <Form.Text className="textErrorR">
                       <b>{errors.password?.message}&nbsp;</b>

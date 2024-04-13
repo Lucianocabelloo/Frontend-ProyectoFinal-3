@@ -70,18 +70,18 @@
   background-color: #73737320;
   transform: scaleX(1.05);
 }
-.myCheck {
+.myCheckR {
   visibility: hidden;
 }
-.checkboxOverride {
+.myCheckboContR {
   margin: 20px 20px;
   position: relative;
   width: 25px;
 }
-.checkboxOverride input[type="checkbox"]:checked + label:after {
+.myCheckboContR input[type="checkbox"]:checked + label:after {
   opacity: 1;
 }
-.checkboxOverride label {
+.myCheckboContR label {
   background: none repeat scroll 0 0 #73737320;
   border: 1px solid transparent;
   cursor: pointer;
@@ -91,7 +91,7 @@
   top: 0;
   width: 25px;
 }
-.checkboxOverride label:after {
+.myCheckboContR label:after {
   color: #08171f;
   border-style: none none solid solid;
   content: "";
