@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Error404 = () => {
   return (
-    <Link className="myMainE" to="/">
+    <Link className="myMainE py-5" to="/">
       <Container className="myContE">
         <img
           src={image404}
