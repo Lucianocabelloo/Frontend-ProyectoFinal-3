@@ -16,6 +16,13 @@ const Contact = () => {
     formState: { errors },
     reset,
   } = useForm();
+  const handleLinkClick = () => {
+    window.open(
+      "https://maps.app.goo.gl/FM52Yyiv4gvhG7b28",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
   const onSubmit = async () => {
     reset;
   };
@@ -52,7 +59,8 @@ const Contact = () => {
             xs={12}
             md={5}
             lg={4}
-            className="d-flex flex-column align-items-center flex-md-row justify-content-sm-center gap-4 py-2 myColsC"
+            className="d-flex flex-column align-items-center flex-md-row justify-content-sm-center gap-4 py-2 myColsC myColLinkC"
+            onClick={handleLinkClick}
           >
             <FontAwesomeIcon icon={faLocationDot} className="myIconsC" />
             <p className="mySubtC">
