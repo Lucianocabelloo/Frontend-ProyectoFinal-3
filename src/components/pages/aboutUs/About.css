@@ -113,3 +113,14 @@
     margin-top: 56px;
  }
 }
+
+@media (max-width: 420px){
+    .MuiCard-root{
+        padding: 0px !important;
+    }
+
+    .MuiCardOverflow-root{
+        padding: 0px !important;
+        width: 100%;
+    }
+}

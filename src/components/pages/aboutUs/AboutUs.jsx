@@ -22,14 +22,14 @@ const AboutUs = () => {
             name: "Agustin Maza",
             image: "https://example.com/mariagarcia.jpg",
             description: "Desarrollador Full Stack experto en el stack MERN. Con habilidades sólidas en MongoDB, Express.js, React.js y Node.js, crea aplicaciones web de alta calidad centradas en la experiencia del usuario y el rendimiento óptimo.",
-            github: "https://github.com/mariagarcia",
+            github: "https://github.com/Agustin030s",
             linkedin: "https://www.linkedin.com/in/mariagarcia"
         },
         {
             name: "Nicolas Iosa",
             image: "https://example.com/carloslopez.jpg",
             description: "Desarrollador Full Stack con dominio del stack MERN. Resuelve problemas complejos y trabaja en todas las capas de una aplicación, desde la base de datos hasta la interfaz de usuario. Colaborativo y comunicativo, es un activo valioso en cualquier equipo..",
-            github: "https://github.com/carloslopez",
+            github: "https://github.com/nicoiosa",
             linkedin: "https://www.linkedin.com/in/carloslopez"
         },
         {
