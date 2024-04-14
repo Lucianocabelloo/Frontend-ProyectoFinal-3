@@ -5,8 +5,7 @@ import { login } from "../../helpers/userQueries";
 import Swal from "sweetalert2";
 import { useState } from "react";
 
-const Login = () => {
-  const [usuarioLogueado, setUsuarioLogueado] = useState({});
+const Login = ({ setUserLoggedIn }) => {
   const {
     register,
     handleSubmit,
@@ -22,9 +21,14 @@ const Login = () => {
       const data = await answer.json();
       sessionStorage.setItem(
         "usuarioHotel",
-        JSON.stringify({ email: data.email, rol: data.rol, token: data.token })
+        JSON.stringify({
+          nombre: data.nombreCompleto.split(" ")[0],
+          email: data.email,
+          rol: data.rol,
+          token: data.token,
+        })
       );
-      setUsuarioLogueado(data);
+      setUserLoggedIn(data);
       if (data.rol === "Administrador") {
         navigate("/administrador");
       } else {

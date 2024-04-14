@@ -31,7 +31,6 @@ const Administrator = () => {
 
   const getUsers = async () => {
     const answer = await readUsersAPI();
-    console.log(answer);
     if (answer.status === 200) {
       const data = await answer.json();
       setUsers(data);
