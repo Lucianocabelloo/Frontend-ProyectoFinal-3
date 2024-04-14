@@ -92,7 +92,7 @@ const Rooms = () => {
         </Row>
         <Row className="justify-content-center justify-content-lg-evenly align-items-center">
           {
-            rooms.map((room)=> <RoomCard room={room} key={room.key}></RoomCard>)
+            rooms.map((room)=> <RoomCard room={room} key={room._id}></RoomCard>)
           }
         </Row>
       </Container>
