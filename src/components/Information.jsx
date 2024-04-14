@@ -14,7 +14,7 @@ const Information = () => {
     <>
       <section className="pt-10-rem">
         <Container>
-          <h3 className="fs-1 text-center txt-bg-color pt-sm-4 pb-3">
+          <h3 className="display-5 text-center txt-bg-color pt-sm-4 pb-3">
             Explora Nuestras Exquisitas Suites: Lujo Capturado en Cada Rincón
           </h3>
           <p className="text-center txt-bg-color">
@@ -50,14 +50,38 @@ const Information = () => {
               />
             </Col>
             <Col md={12} className="text-center my-4 ">
-              <Link to="/habitaciones" className="btn-customized-2 fs-5">Ver Habitaciones</Link>
+              <Link to="/habitaciones" className="btn-customized-2 fs-5">
+                Ver Habitaciones
+              </Link>
             </Col>
           </Row>
-      <hr className="text-bg-color" />
         </Container>
       </section>
-      <section className="my-5">
+      <section className="my-5 bg-color py-5">
         <Container>
+          <h3 className="text-center display-5 fw-bold">
+            Estos son algunos de nuestros{" "}
+            <span className="txt-details-color">servicios</span>
+          </h3>
+          <div className="d-flex align-items-center justify-content-center mt-3 mb-5">
+            <div className="line"></div>
+            <div className="circle mx-3"></div>
+            <div className="line"></div>
+          </div>
+          <Row>
+            <Col md={5}>
+              <div className="img-services-container">
+                <img
+                  src={pool}
+                  alt="Imagen del servicio del hotel"
+                  className="img-service"
+                />
+              </div>
+            </Col>
+            <Col md={7}></Col>
+          </Row>
+        </Container>
+        {/* <Container>
           <h3 className="fs-1 text-center txt-bg-color pb-3">
             Sumérgete en el Mundo del Lujo: Experiencias Excepcionales en
             Nuestro Hotel
@@ -161,9 +185,9 @@ const Information = () => {
               </div>
             </Col>
           </Row>
-        </Container>
+        </Container> */}
       </section>
-      <section className="my-5 bg-color">
+      <section className="mt-5 bg-color">
         <Container className="py-5">
           <Row className="py-5 justify-content-between align-items-center text-center text-lg-start">
             <Col lg={5}>
@@ -231,19 +255,25 @@ const Information = () => {
               />
             </Col>
           </Row>
-          <hr className="txt-details-color my-4"/>
-          <div className="text-center">
-          <h3 className="fs-1 fw-bold txt-light-customized">
-            Explora nuestra <span className="txt-details-color">galería</span>
-          </h3>
-          <p className="txt-gray pt-3 mb-5">
-            Explora nuestra galería de imágenes y déjate cautivar por la
-            elegancia y el encanto de nuestro hotel. Cada fotografía captura la
-            esencia de nuestro oasis de lujo, desde nuestras exquisitas
-            habitaciones hasta nuestros espacios comunes meticulosamente
-            diseñados.
-          </p>
-          <Link to="/galeria" className="btn-customized">Ver Galería</Link>
+          <div className="d-flex align-items-center justify-content-center mt-3 mb-4">
+            <div className="line"></div>
+            <div className="circle mx-3"></div>
+            <div className="line"></div>
+          </div>
+          <div className="text-center py-5">
+            <h3 className="fs-1 fw-bold txt-light-customized">
+              Explora nuestra <span className="txt-details-color">galería</span>
+            </h3>
+            <p className="txt-gray pt-3 mb-5">
+              Explora nuestra galería de imágenes y déjate cautivar por la
+              elegancia y el encanto de nuestro hotel. Cada fotografía captura
+              la esencia de nuestro oasis de lujo, desde nuestras exquisitas
+              habitaciones hasta nuestros espacios comunes meticulosamente
+              diseñados.
+            </p>
+            <Link to="/galeria" className="btn-customized fs-5">
+              Ver Galería
+            </Link>
           </div>
         </Container>
       </section>
