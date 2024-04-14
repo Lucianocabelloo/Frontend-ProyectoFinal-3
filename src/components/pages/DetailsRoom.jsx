@@ -16,7 +16,7 @@ const DetailsRoom = ({ userLoggedIn }) => {
   const {
     register,
     handleSubmit,
-    formState = { errors },
+    formState: { errors },
     reset,
     setvalue,
   } = useForm();
@@ -154,9 +154,24 @@ const DetailsRoom = ({ userLoggedIn }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={onSubmit}>
+          <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3" controlId="nombreCompleto">
-              <Form.Label className="text-dark">Nombre Completo:*</Form.Label>
+              <Form.Label
+                className="text-dark"
+                {...register("nombreCompleto", {
+                  required: "El nombre es obligatorio",
+                  minLength: {
+                    value: 3,
+                    message: "El nombre debe tener 3 caracteres como mínimo",
+                  },
+                  maxLength: {
+                    value: 80,
+                    message: "El nombre debe tener 80 caracteres como máximo",
+                  },
+                })}
+              >
+                Nombre Completo:*
+              </Form.Label>
               <Form.Control
                 type="text"
                 disabled={true}
@@ -165,25 +180,76 @@ const DetailsRoom = ({ userLoggedIn }) => {
             </Form.Group>
             <Form.Group className="mb-3 " controlId="dni">
               <Form.Label className="text-dark">DNI:*</Form.Label>
-              <Form.Control type="text" placeholder="Ingrese su dni" />
-              <Form.Text className="text-danger">error</Form.Text>
+              <Form.Control
+                type="text"
+                placeholder="Ingrese su dni"
+                {...register("dni", {
+                  required: "El DNI es obligatorio",
+                  minLength: {
+                    value: 8,
+                    message: "El dni debe tener 8 caracteres como mínimo",
+                  },
+                  maxLength: {
+                    value: 10,
+                    message: "El dni debe tener 10 caracteres como máximo",
+                  },
+                })}
+              />
+              <Form.Text className="text-danger">
+                {errors.dni?.message}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3 " controlId="telefono">
               <Form.Label className="text-dark">Teléfono:*</Form.Label>
-              <Form.Control type="text" placeholder="Ingrese su teléfono" />
-              <Form.Text className="text-danger">error</Form.Text>
+              <Form.Control
+                type="text"
+                placeholder="Ingrese su teléfono"
+                {...register("telefono", {
+                  required: "El número de teléfono es obligatorio",
+                  minLength: {
+                    value: 7,
+                    message:
+                      "El número de teléfono debe tener 7 caracteres como mínimo",
+                  },
+                  maxLength: {
+                    value: 15,
+                    message:
+                      "El número de teléfono debe tener 15 caracteres como máximo",
+                  },
+                })}
+              />
+              <Form.Text className="text-danger">
+                {errors.telefono?.message}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="fechaInicio">
               <Form.Label className="text-dark">
                 Fecha Inicio Reserva:*
               </Form.Label>
-              <Form.Control type="date" />
-              <Form.Text className="text-danger">error</Form.Text>
+              <Form.Control
+                type="date"
+                {...register("fechaInicio", {
+                  required: "La fecha de inicio es obligatoria",
+                })}
+              />
+              <Form.Text className="text-danger">
+                {errors.fechaInicio?.message}
+              </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="fechaFin">
               <Form.Label className="text-dark">Fecha Fin Reserva:*</Form.Label>
-              <Form.Control type="date" />
-              <Form.Text className="text-danger">error</Form.Text>
+              <Form.Control
+                type="date"
+                {...register("fechaFin", {
+                  required: "La fecha de fin es obligatoria",
+                })}
+              />
+              <Form.Text className="text-danger">
+                {errors.fechaFin?.message}
+              </Form.Text>
+            </Form.Group>
+            <Form.Group className="mb-3 text-light">
+              <p>Los campos que tienen * son obligatorios.</p>
             </Form.Group>
             <Form.Group className="mb-3">
               <Button type="submit" variant="primary">
