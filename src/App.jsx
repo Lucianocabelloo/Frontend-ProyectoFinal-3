@@ -73,11 +73,6 @@ function App() {
           <Route exact path="/registro" element={<Register />}></Route>
           <Route exact path="/contacto" element={<Contact />}></Route>
           <Route exact path="/galeria" element={<Gallery></Gallery>}></Route>
-          {/* <Route
-            exact
-            path="/calendario/:numero/:id"
-            element={<CalendarApp admin={false}></CalendarApp>}
-          ></Route> */}
           <Route
             exact
             path="/administrador/*"
