@@ -5,7 +5,7 @@ import { deleteUserAPI, readUsersAPI } from "../../helpers/userQueries";
 import Swal from "sweetalert2";
 import DataTable from "react-data-table-component";
 import FilterTable from "./administrator/FilterTable";
-import { getRoomsAPI } from "../../helpers/queries";
+import { deleteRoomAPI, getRoomsAPI } from "../../helpers/queries";
 
 const Administrator = () => {
   const [tabla, setTabla] = useState("Habitaciones");
@@ -79,6 +79,41 @@ const Administrator = () => {
           Swal.fire({
             title: "¡Ocurrió un error!",
             text: `El usuario ${row.nombreCompleto} no fue eliminado correctamente. Por favor, inténtelo nuevamente en unos minutos.`,
+            icon: "error",
+          });
+        }
+      }
+    });
+  };
+
+  const deleteRoom = (row) => {
+    Swal.fire({
+      title: "¿Estás seguro de querer eliminar la habitación?",
+      text: "¡Este cambio no se puede revertir!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, ¡borrarla!",
+      cancelButtonText: "¡Cancelar!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const answer = await deleteRoomAPI(row._id);
+        if (answer.status === 200) {
+          Swal.fire({
+            title: "¡Eliminado!",
+            text: `La habitación ${row.numero} fue eliminada.`,
+            icon: "success",
+          });
+          const response = await getRoomsAPI();
+          if (response.status === 200) {
+            const data = await response.json();
+            setRooms(data);
+          }
+        } else {
+          Swal.fire({
+            title: "¡Ocurrió un error!",
+            text: `La habitación ${row.numero} no fue eliminada correctamente. Por favor, inténtelo nuevamente en unos minutos.`,
             icon: "error",
           });
         }
@@ -199,7 +234,11 @@ const Administrator = () => {
           >
             <i className="bi bi-pencil-square"></i>
           </Link>
-          <Button variant="danger" className="me-2 mb-2">
+          <Button
+            variant="danger"
+            className="me-2 mb-2"
+            onClick={() => deleteRoom(row)}
+          >
             <i className="bi bi-trash3"></i>
           </Button>
         </div>
