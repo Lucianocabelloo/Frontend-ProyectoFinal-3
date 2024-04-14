@@ -1,9 +1,14 @@
 import { Container, Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { createUserAPI } from "../../../helpers/userQueries";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import {
+  createUserAPI,
+  editUserAPI,
+  getUserById,
+} from "../../../helpers/userQueries";
 import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
+import { useEffect } from "react";
 
 const UserForm = ({ editar, titulo }) => {
   const {
@@ -13,10 +18,44 @@ const UserForm = ({ editar, titulo }) => {
     reset,
     setValue,
   } = useForm();
-
+  const { id } = useParams();
+  const navigation = useNavigate();
+  useEffect(() => {
+    if (editar) {
+      loadDataUser();
+    }
+  }, []);
+  const loadDataUser = async () => {
+    const answer = await getUserById(id);
+    if (answer.status === 200) {
+      const searchedUser = await answer.json();
+      setValue(`nombreCompleto`, searchedUser.nombreCompleto);
+      setValue(`email`, searchedUser.email);
+      setValue(`rol`, searchedUser.rol);
+    }
+  };
   const onSubmit = async (user) => {
     if (editar) {
-      console.log("Aca se edita");
+      user.activo = true;
+      console.log(user);
+      const response = await editUserAPI(user, id);
+      console.log(id);
+      console.log(user);
+      console.log(response.status);
+      if (response.status === 200) {
+        Swal.fire({
+          title: "Usuario modificado!",
+          text: `El usuario ${user.nombreCompleto} fue modificado correctamente.`,
+          icon: "success",
+        });
+        navigation("/administrador");
+      } else {
+        Swal.fire({
+          title: "¡Ocurrió un error!",
+          text: `El usuario ${user.nombreCompleto} no fue modificado correctamente. Por favor, inténtelo nuevamente en unos minutos.`,
+          icon: "error",
+        });
+      }
     } else {
       user.activo = true;
       const answer = await createUserAPI(user);
