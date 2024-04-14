@@ -37,11 +37,7 @@ const UserForm = ({ editar, titulo }) => {
   const onSubmit = async (user) => {
     if (editar) {
       user.activo = true;
-      console.log(user);
       const response = await editUserAPI(user, id);
-      console.log(id);
-      console.log(user);
-      console.log(response.status);
       if (response.status === 200) {
         Swal.fire({
           title: "¡Usuario modificado!",
