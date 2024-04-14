@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Menu = () => {
   return (
@@ -10,9 +10,9 @@ const Menu = () => {
       className="d-flex justify-content-center  navbar-dark bg-transparent"
     >
       <Container className="container-nav">
-        <NavLink to="/" className="navbar-brand kaushan-script txt-details-color">
+        <Navbar.Brand as={Link} to="/" className="kaushan-script txt-details-color">
           Paradise Hotel Resort
-        </NavLink>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse
           className="justify-content-center"

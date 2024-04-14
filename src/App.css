@@ -447,12 +447,11 @@ p,label {
 .price{
   font-size: 2.4rem;
 }
+
 .footer-Content{
   flex-wrap: wrap;
-  justify-content: flex-start !important;
+  justify-content: space-evenly !important;
 }
-}
-
 
 .footer-Content a {
   text-decoration: none;
