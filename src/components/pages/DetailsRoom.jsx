@@ -1,7 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { getRoomById } from "../../helpers/queries";
 
 const DetailsRoom = () => {
+  const {id} = useParams();
+  const [room,setRoom] = useState([]);
+
+  useEffect(()=>{
+    loadRoomData();
+  },[])
+
   return (
     <Container className="my-4">
       <h1 className="kaushan-script">
