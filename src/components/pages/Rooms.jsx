@@ -6,8 +6,32 @@ import minibar from "../../assets/img/minibar.png";
 import safe from "../../assets/img/safe.png";
 import cafe from "../../assets/img/cafe.png";
 import RoomCard from "./rooms/RoomCard";
+import { useEffect, useState } from "react";
+import { getRoomsAPI } from "../../helpers/queries";
+
 
 const Rooms = () => {
+  const [rooms,setRooms] = useState([]);
+
+  useEffect(()=>{
+    getRooms();
+  },[])
+
+  async function getRooms () {
+    const response = await getRoomsAPI();
+    if (response.status === 200) {
+      const data = await response.json();
+      setRooms(data);
+
+    } else {
+      Swal.fire({
+        title: "Ocurrio un error!",
+        text: `Intente esta operación en unos minutos`,
+        icon: "error",
+      });
+    }
+  }
+
   return (
     <>
       <section className="tituloPrincipal mb-3">
@@ -67,10 +91,9 @@ const Rooms = () => {
           </Col>
         </Row>
         <Row className="justify-content-center justify-content-lg-evenly align-items-center">
-          <RoomCard></RoomCard>
-          <RoomCard></RoomCard>
-          <RoomCard></RoomCard>
-          <RoomCard></RoomCard>
+          {
+            rooms.map((room)=> <RoomCard room={room} key={room._id}></RoomCard>)
+          }
         </Row>
       </Container>
     </>
