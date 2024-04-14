@@ -1,3 +1,4 @@
+import { act } from "react-dom/test-utils";
 import Swal from "sweetalert2";
 
 const URI_USER = import.meta.env.VITE_API_USER;
@@ -81,6 +82,10 @@ export const suspendUserAPI = async (activo, id) => {
       },
       body: JSON.stringify(activo),
     });
+    console.log(`${URI_USER}/${id}`);
+    console.log(JSON.parse(sessionStorage.getItem("usuarioHotel")).token);
+    console.log(JSON.stringify(activo));
+    console.log(await answer.json());
     return answer;
   } catch (error) {
     Swal.fire({

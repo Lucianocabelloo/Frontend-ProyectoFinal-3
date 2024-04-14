@@ -1,14 +1,7 @@
 import { useEffect, useState } from "react";
-import {
-  Row,
-  Col,
-  Container,
-  Form,
-  Button,
-  Image,
-} from "react-bootstrap";
+import { Row, Col, Container, Form, Button, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { readUsersAPI } from "../../helpers/userQueries";
+import { readUsersAPI, suspendUserAPI } from "../../helpers/userQueries";
 import Swal from "sweetalert2";
 import DataTable from "react-data-table-component";
 import FilterTable from "./administrator/FilterTable";
@@ -57,6 +50,12 @@ const Administrator = () => {
     }
   };
 
+  const suspendUser = async (row) => {
+    const newStatus = !row.activo;
+    const id = row._id;
+    const answer = await suspendUserAPI({ activo: newStatus }, id);
+  };
+
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -92,8 +91,11 @@ const Administrator = () => {
     },
     {
       name: "Activo",
-      selector: (row) => row.activo,
-      cell: (row) => (row.activo ? "Si" : "No"),
+      cell: (row) => (
+        <Form.Group>
+          <Form.Check checked={row.activo} onChange={() => suspendUser(row)} />
+        </Form.Group>
+      ),
     },
     {
       name: "Opciones",
@@ -206,7 +208,11 @@ const Administrator = () => {
       </Row>
       {tabla === "Habitaciones" && (
         <div className="tableContainer">
-          <FilterTable searchTerm={searchTerm} handleSearchChange={handleSearchChange} placeholder="Filtrar por tipo o categoria "></FilterTable>
+          <FilterTable
+            searchTerm={searchTerm}
+            handleSearchChange={handleSearchChange}
+            placeholder="Filtrar por tipo o categoria "
+          ></FilterTable>
           <div className="mt-4">
             <DataTable
               columns={columnsRooms}
