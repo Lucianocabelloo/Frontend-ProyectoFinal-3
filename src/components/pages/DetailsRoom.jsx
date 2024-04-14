@@ -12,6 +12,24 @@ const DetailsRoom = () => {
     loadRoomData();
   },[])
 
+  async function loadRoomData () {
+    const response = await getRoomById(id);
+    if (response.status === 200) {
+      const data = await response.json();
+      setRoom(data);
+    } else {
+      Swal.fire({
+        title: "Ocurrio un error!",
+        text: `No pudimos cargar los datos de la habitación, intente de nuevo en unos minutos.`,
+        icon: "error",
+      });
+    }
+  }
+
+  let disponibilidad = '';
+  (room.disponibilidad === true) ? disponibilidad = 'Disponible' : disponibilidad = 'No disponible';
+
+
   return (
     <Container className="my-4">
       <h1 className="kaushan-script">
@@ -22,15 +40,15 @@ const DetailsRoom = () => {
         <Col lg={6}>
           <div className="img-container-detail">
             <img
-              src="https://images.pexels.com/photos/18368842/pexels-photo-18368842/free-photo-of-hotel-habitacion-pintura-pintando.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src={room.imagen}
               className="img-room-detail"
               alt="Imagen de la habitación"
             />
           </div>
         </Col>
         <Col lg={6} className="position-relative text-center mt-4 mt-lg-0">
-          <span className="room-number">1</span>
-          <h2 className="text-uppercase">Nombre de habitación</h2>
+          <span className="room-number">{room.numero}</span>
+          <h2 className="text-uppercase">Habitación {room.numero}</h2>
           <div className="d-flex align-items-center justify-content-center my-3">
             <div className="line"></div>
             <div className="circle mx-3"></div>
@@ -39,25 +57,20 @@ const DetailsRoom = () => {
           <Row className="align-items-center justify-content-center mt-4">
             <div className="col-4 txt-details-color">
               <FontAwesomeIcon icon="fa-solid fa-user" className="fs-4 mb-2" />
-              <h3 className="fs-5 txt-details-color fw-semibold">Doble</h3>
+              <h3 className="fs-5 txt-details-color fw-semibold">{room.tipoHabitacion}</h3>
             </div>
             <div className="col-4 txt-details-color">
               <FontAwesomeIcon icon="fa-solid fa-bed" className="fs-4 mb-2" />
-              <h3 className="fs-5 txt-details-color fw-semibold">Deluxe</h3>
+              <h3 className="fs-5 txt-details-color fw-semibold">{room.categoria}</h3>
             </div>
             <div className="col-12 col-sm-4 txt-details-color mt-2 mt-sm-0">
               <FontAwesomeIcon icon="fa-solid fa-clock" className="fs-4 mb-2" />
-              <h3 className="fs-5 txt-details-color fw-semibold">Disponible</h3>
+              <h3 className="fs-5 txt-details-color fw-semibold">{disponibilidad}</h3>
             </div>
           </Row>
           <div className="mt-4">
-            <p>
-              La habitación Deluxe ofrece lujo y comodidad. Con cama king-size,
-              baño de mármol, y vistas desde el balcón. Servicios exclusivos
-              como minibar y Wi-Fi. Una experiencia inolvidable de confort y
-              sofisticación.
-            </p>
-            <p className="price">$5000</p>
+            <p>{room.descripcion}</p>
+            <p className="price">${room.precio}</p>
             <button className="btn-customized">Reservar habitación</button>
           </div>
         </Col>
