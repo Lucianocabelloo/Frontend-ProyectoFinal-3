@@ -1,12 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Row,
-  Col,
-  Container,
-  Form,
-  Button,
-  Image,
-} from "react-bootstrap";
+import { Row, Col, Container, Form, Button, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { readUsersAPI } from "../../helpers/userQueries";
 import Swal from "sweetalert2";
@@ -151,7 +144,10 @@ const Administrator = () => {
       name: "Opciones",
       cell: (row) => (
         <div className="text-center my-2">
-          <Link to={`/calendario`} className="btn btn-secondary me-2 mb-2">
+          <Link
+            to={`/administrador/calendario/${row.numero}`}
+            className="btn btn-secondary me-2 mb-2"
+          >
             <i className="bi bi-calendar-date"></i>
           </Link>
           <Link
@@ -206,7 +202,11 @@ const Administrator = () => {
       </Row>
       {tabla === "Habitaciones" && (
         <div className="tableContainer">
-          <FilterTable searchTerm={searchTerm} handleSearchChange={handleSearchChange} placeholder="Filtrar por tipo o categoria "></FilterTable>
+          <FilterTable
+            searchTerm={searchTerm}
+            handleSearchChange={handleSearchChange}
+            placeholder="Filtrar por tipo o categoria "
+          ></FilterTable>
           <div className="mt-4">
             <DataTable
               columns={columnsRooms}
