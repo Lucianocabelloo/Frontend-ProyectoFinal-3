@@ -67,3 +67,13 @@ export const deleteRoomAPI = async (id) => {
     );
   }
 };
+
+export const getRoomById = async (id) => {
+  try {
+    const response = await fetch(`${URI_ROOM}/${id}`);
+    return response;
+
+  } catch (error) {
+    console.error(error)
+  }
+}

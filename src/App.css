@@ -49,18 +49,12 @@ a svg {
   max-width: 200px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h3,h4,h5,h6 {
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #fefffc;
 }
 
-p,
-label {
+p,label {
   font-family: "Montserrat", sans-serif;
   color: #fefffc;
 }
@@ -110,6 +104,10 @@ label {
   color: #000;
   border: 1px solid #000;
 }
+.btn-gold{
+  border: 1px solid #f0d78d;
+  color: #f0d78d;
+}
 
 .btn-customized-2 {
   background: #08171e;
@@ -132,10 +130,10 @@ label {
 .top {
   display: flex;
   align-items: end;
-  height: 80vh;
+  height: 83vh;
   max-height: 50rem;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
-    url("./assets/img/banner.jpg") no-repeat center center;
+  background: linear-gradient(0deg, #08171e, rgba(0,0,0,0.2))
+  ,url('./assets/img/banner.jpg') no-repeat center center;
   background-size: cover;
 }
 
@@ -188,6 +186,10 @@ label {
 
 .icon {
   font-size: 40px;
+}
+
+.txt-shadow{
+  text-shadow: 3px 3px 15px rgba(0,0,0,0.3);
 }
 .container-nav {
   gap: 0px;
@@ -321,8 +323,8 @@ label {
   justify-content: center;
   align-items: center;
   animation-name: borderAnimation;
-  animation-duration: 2.5s;
-  animation-delay: 0.6s;
+  animation-duration: 2.6s;
+  animation-delay: .6s;
   animation-fill-mode: forwards;
 }
 
@@ -347,46 +349,45 @@ label {
   color: #f0d78d;
 }
 
-  /* DETAILS ROOM STYLES  */
-  .img-container-detail {
-    height: 28rem;
-    border: 1px solid #f0d78d;
+/* DETAILS ROOM STYLES  */
+.img-container-detail{
+  height: 29rem;
+  border: 1px solid #F0D78D;
+}
+
+.img-room-detail{
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.line {
+   height: 1px;
+   width: 100%;
+   background: #f0d78d;
+}
+
+ .circle {
+   height: 22px;
+   width: 45px;
+   border-radius: 50%;
+   border: 2px solid #f0d78d;
   }
 
+ .room-number {
+   position: absolute;
+   top: -60px;
+   left: 0;
+   color: rgba(255, 255, 255, 0.2);
+   font-weight: 800;
+   font-size: 8rem;
+ }
 
-  .img-room-detail {
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-  }
-
-  .line {
-    height: 1px;
-    width: 100%;
-    background: #f0d78d;
-  }
-
-  .circle {
-    height: 22px;
-    width: 45px;
-    border-radius: 50%;
-    border: 2px solid #f0d78d;
-  }
-
-  .room-number {
-    position: absolute;
-    top: -60px;
-    left: 0;
-    color: rgba(255, 255, 255, 0.2);
-    font-weight: 800;
-    font-size: 8rem;
-  }
-
-  .price {
-    font-weight: 600;
-    color: #f0d78d;
-    font-size: 2.7rem;
-  }
+ .price {
+   font-weight: 600;
+   color: #f0d78d;
+   font-size: 2.7rem;
+ }
 
   @media (min-width: 980px) and (max-width: 1200px) {
     bubble {
@@ -405,5 +406,11 @@ label {
     .price {
       font-size: 2.4rem;
     }
+    
+    .top{
+      align-items: center;
+      background: linear-gradient(0deg, #08171e, rgba(0,0,0,0.5))
+      ,url('./assets/img/banner.jpg') no-repeat center center;
+      background-size: cover;
+      }
   }
-
