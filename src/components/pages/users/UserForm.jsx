@@ -44,7 +44,7 @@ const UserForm = ({ editar, titulo }) => {
       console.log(response.status);
       if (response.status === 200) {
         Swal.fire({
-          title: "Usuario modificado!",
+          title: "¡Usuario modificado!",
           text: `El usuario ${user.nombreCompleto} fue modificado correctamente.`,
           icon: "success",
         });
