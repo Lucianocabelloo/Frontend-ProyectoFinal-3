@@ -45,6 +45,7 @@ import Login from "./components/pages/Login";
 import Contact from "./components/pages/contact/Contact";
 import Footer from "./components/common/Footer";
 import DetailsRoom from "./components/pages/DetailsRoom";
+import CalendarApp from "./components/pages/calendar/CalendarApp";
 
 function App() {
   return (
@@ -64,6 +65,16 @@ function App() {
           <Route exact path="/registro" element={<Register />}></Route>
           <Route exact path="/contacto" element={<Contact />}></Route>
           <Route exact path="/galeria" element={<Gallery></Gallery>}></Route>
+          <Route
+            exact
+            path="/calendario"
+            element={<CalendarApp></CalendarApp>}
+          ></Route>
+          <Route
+            exact
+            path="/calendario/:numero"
+            element={<CalendarApp></CalendarApp>}
+          ></Route>
           <Route
             exact
             path="/administrador"

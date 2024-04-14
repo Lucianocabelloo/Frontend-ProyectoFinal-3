@@ -394,6 +394,48 @@ p,label {
    font-size: 2.7rem;
  }
 
+  .modal-content{
+    background: #08171e;
+    color: #fefffc;
+  }
+
+  .btn-close{
+    background-color: #fefffc;
+  }
+
+  .modal-body{
+    background: #f0d78d;
+  }
+  .modal-body p{
+    color: #08171e;
+  }
+
+  .calendarContainer{
+    background-color: #f0d78d;
+  }
+
+  .rbc-calendar{
+    border: 1px solid #fffaed;
+  }
+
+  .rbc-off-range-bg{
+    background: #fffaed !important;
+  }
+
+  .rbc-toolbar-label{
+    font-family: "Kaushan Script", cursive;
+    font-size: 30px;
+  }
+
+  .rbc-today{
+    background: #b0e0e6 !important;
+  }
+
+  .rbc-btn-group button{
+    background-color: #0d2531 !important;
+    color: #f1f1ff !important;
+  }
+
   @media (min-width: 980px) and (max-width: 1200px) {
     bubble {
       flex: none;
