@@ -71,7 +71,10 @@ const DetailsRoom = () => {
           <div className="mt-4">
             <p>{room.descripcion}</p>
             <p className="price">${room.precio}</p>
-            <button className="btn-customized">Reservar habitación</button>
+            <div className="d-flex justify-content-center align-items-center gap-4">
+            <button className="btn-customized btn-gold">Reservar habitación</button>
+            <button className="btn-customized">Ver fechas disponibles</button>
+            </div>
           </div>
         </Col>
       </Row>

@@ -104,6 +104,10 @@ p, label {
   color: #000;
   border: 1px solid #000;
 }
+.btn-gold{
+  border: 1px solid #f0d78d;
+  color: #f0d78d;
+}
 
 .btn-customized-2{
   background: #08171e;
