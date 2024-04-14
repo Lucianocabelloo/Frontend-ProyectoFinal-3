@@ -316,6 +316,11 @@ p,label {
   border: none;
 }
 
+.MuiButtonGroup-root{
+  display: flex !important;
+  justify-content: space-evenly  !important;
+}
+
 .bg-right-login {
   background: #08171e;
   border-radius: 20px;
@@ -394,6 +399,27 @@ p,label {
       flex: none;
     }
   }
+.icon-login{
+  font-size: 20px;
+}
+.price{
+  font-size: 2.4rem;
+}
+.footer-Content{
+  flex-wrap: wrap;
+  justify-content: flex-start !important;
+}
+}
+
+
+.footer-Content a {
+  text-decoration: none;
+  color: #d1d7d4;
+}
+.footer-Content a:hover {
+  text-decoration: none;
+  color: #8b8b8b;
+}
 
   @media (max-width: 992px) {
     .bg-right-login {
