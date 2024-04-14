@@ -41,6 +41,7 @@ const DetailsRoom = ({ userLoggedIn }) => {
 
   const onSubmit = (reserva) => {
     reserva.numHabitacion = room.numero;
+    reserva.email = userLoggedIn.email;
     console.log(reserva);
   };
 
