@@ -22,7 +22,7 @@ const Login = () => {
       const data = await answer.json();
       sessionStorage.setItem(
         "usuarioHotel",
-        JSON.stringify({ email: data.email, token: data.token })
+        JSON.stringify({ email: data.email, rol: data.rol, token: data.token })
       );
       setUsuarioLogueado(data);
       if (data.rol === "Administrador") {
@@ -50,16 +50,16 @@ const Login = () => {
               </h1>
               <hr />
               <div className="d-flex justify-content-center gap-4 align-items-center">
-                <Link to={'/google'} className="icon-login txt-bg-color">
+                <Link to={"/google"} className="icon-login txt-bg-color">
                   <i className="bi bi-google"></i>
                 </Link>
-                <Link to={'/facebook'} className="icon-login txt-bg-color">
+                <Link to={"/facebook"} className="icon-login txt-bg-color">
                   <i className="bi bi-facebook"></i>
                 </Link>
-                <Link to={'/linkedin'} className="icon-login txt-bg-color">
+                <Link to={"/linkedin"} className="icon-login txt-bg-color">
                   <i className="bi bi-linkedin"></i>
                 </Link>
-                <Link to={'/twitter-x'} className="icon-login txt-bg-color">
+                <Link to={"/twitter-x"} className="icon-login txt-bg-color">
                   <i className="bi bi-twitter-x"></i>
                 </Link>
               </div>
@@ -126,7 +126,7 @@ const Login = () => {
               </Form.Group>
               <div className="text-center">
                 <Link
-                  to={'/recuperar-password'}
+                  to={"/recuperar-password"}
                   className="text-secondary fw-bold text-center text-decoration-none"
                 >
                   Olvidó su contraseña?

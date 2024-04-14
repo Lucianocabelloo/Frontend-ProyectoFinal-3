@@ -44,16 +44,22 @@ import Footer from "./components/common/Footer";
 import DetailsRoom from "./components/pages/DetailsRoom";
 import CalendarApp from "./components/pages/calendar/CalendarApp";
 import Administrator from "./components/pages/Administrator";
+import { useState } from "react";
+import ProtectedRoutes from "./components/routes/ProtectedRoutes";
+import AdminRoutes from "./components/routes/AdminRoutes";
 
 function App() {
+  const user = JSON.parse(sessionStorage.getItem("usuarioHotel")) || {};
+  const [userLoggedIn, setUserLoggedIn] = useState(user);
+
   return (
     <>
       <BrowserRouter>
-        <Menu />
+        <Menu userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn}/>
         <Routes>
           <Route exact path="/" element={<Home></Home>}></Route>
           <Route exact path="/nosotros" element={<AboutUs></AboutUs>}></Route>
-          <Route exact path="/iniciar-sesion" element={<Login></Login>}></Route>
+          <Route exact path="/iniciar-sesion" element={<Login setUserLoggedIn={setUserLoggedIn}></Login>}></Route>
           <Route
             exact
             path="/detalle-habitacion/:id"
@@ -70,8 +76,12 @@ function App() {
           ></Route>
           <Route
             exact
-            path="/administrador"
-            element={<Administrator></Administrator>}
+            path="/administrador/*"
+            element={
+              <ProtectedRoutes>
+                <AdminRoutes></AdminRoutes>
+              </ProtectedRoutes>
+            }
           ></Route>
           <Route path="*" element={<Error404 />} />
         </Routes>
