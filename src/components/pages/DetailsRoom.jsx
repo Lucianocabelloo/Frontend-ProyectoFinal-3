@@ -1,15 +1,25 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { Button, Col, Container, Modal, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getRoomById } from "../../helpers/queries";
 import Swal from "sweetalert2";
 import CalendarApp from "./calendar/CalendarApp";
+import { useForm } from "react-hook-form";
 
-const DetailsRoom = () => {
+const DetailsRoom = ({ userLoggedIn }) => {
   const { id } = useParams();
   const [room, setRoom] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+  const [showModalCalendar, setShowModalCalendar] = useState(false);
+  const [showModalReserve, setShowModalReserve] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState = { errors },
+    reset,
+    setvalue,
+  } = useForm();
 
   useEffect(() => {
     loadRoomData();
@@ -29,12 +39,25 @@ const DetailsRoom = () => {
     }
   }
 
-  const handleEventClick = (event) => {
-    setShowModal(true);
+  const onSubmit = (reserva) => {
+    reserva.numHabitacion = room.numero;
+    console.log(reserva);
   };
 
-  const handleModalClose = () => {
-    setShowModal(false);
+  const handleEventCalendarModal = (event) => {
+    setShowModalCalendar(true);
+  };
+
+  const handleModalCloseCalendar = () => {
+    setShowModalCalendar(false);
+  };
+
+  const handleEventReserveModal = (event) => {
+    setShowModalReserve(true);
+  };
+
+  const handleReserveModalClose = () => {
+    setShowModalReserve(false);
   };
 
   let disponibilidad = "";
@@ -90,24 +113,84 @@ const DetailsRoom = () => {
             <p>{room.descripcion}</p>
             <p className="price">${room.precio}</p>
             <div className="d-flex justify-content-center align-items-center gap-4">
-              <button className="btn-customized btn-gold">
+              <Button
+                className="btn-customized btn-gold"
+                onClick={handleEventReserveModal}
+              >
                 Reservar habitación
-              </button>
-              <Button className="btn-customized" onClick={handleEventClick}>
+              </Button>
+              <Button
+                className="btn-customized"
+                onClick={handleEventCalendarModal}
+              >
                 Ver fechas disponibles
               </Button>
             </div>
           </div>
         </Col>
       </Row>
-      <Modal show={showModal} fullscreen={true} onHide={handleModalClose}>
+      <Modal
+        show={showModalCalendar}
+        fullscreen={true}
+        onHide={handleModalCloseCalendar}
+      >
         <Modal.Header closeButton>
-          <Modal.Title>
-            Fechas disponibles Habitación n° {room.numero}
+          <Modal.Title className="kaushan-script">
+            Fechas disponibles{" "}
+            <span className="txt-details-color">
+              Habitación n° {room.numero}
+            </span>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="modal-calendar">
           <CalendarApp admin={false} number={room.numero}></CalendarApp>
+        </Modal.Body>
+      </Modal>
+
+      <Modal show={showModalReserve} onHide={handleReserveModalClose}>
+        <Modal.Header closeButton>
+          <Modal.Title className="kaushan-script ">
+            Reservar <span className="txt-details-color">Habitación</span>
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={onSubmit}>
+            <Form.Group className="mb-3" controlId="nombreCompleto">
+              <Form.Label className="text-dark">Nombre Completo:*</Form.Label>
+              <Form.Control
+                type="text"
+                disabled={true}
+                value={userLoggedIn.nombreCompleto}
+              />
+            </Form.Group>
+            <Form.Group className="mb-3 " controlId="dni">
+              <Form.Label className="text-dark">DNI:*</Form.Label>
+              <Form.Control type="text" placeholder="Ingrese su dni" />
+              <Form.Text className="text-danger">error</Form.Text>
+            </Form.Group>
+            <Form.Group className="mb-3 " controlId="telefono">
+              <Form.Label className="text-dark">Teléfono:*</Form.Label>
+              <Form.Control type="text" placeholder="Ingrese su teléfono" />
+              <Form.Text className="text-danger">error</Form.Text>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="fechaInicio">
+              <Form.Label className="text-dark">
+                Fecha Inicio Reserva:*
+              </Form.Label>
+              <Form.Control type="date" />
+              <Form.Text className="text-danger">error</Form.Text>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="fechaFin">
+              <Form.Label className="text-dark">Fecha Fin Reserva:*</Form.Label>
+              <Form.Control type="date" />
+              <Form.Text className="text-danger">error</Form.Text>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Button type="submit" variant="primary">
+                <i className="bi bi-arrow-right-circle"></i> Reservar
+              </Button>
+            </Form.Group>
+          </Form>
         </Modal.Body>
       </Modal>
     </Container>
