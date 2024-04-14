@@ -8,7 +8,7 @@ import "dayjs/locale/es";
 import { getReservationByNumberAPI } from "../../../helpers/reservationQueries";
 import Swal from "sweetalert2";
 
-const CalendarApp = () => {
+const CalendarApp = ({ admin, number }) => {
   const localizer = dayjsLocalizer(dayjs);
   const [showModal, setShowModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -16,8 +16,10 @@ const CalendarApp = () => {
 
   const { numero } = useParams();
 
+  const numRoom = admin ? numero : number;
+
   useEffect(() => {
-    getReservationRoom(numero);
+    getReservationRoom(numRoom);
   }, []);
 
   const getReservationRoom = async (numero) => {
@@ -39,15 +41,15 @@ const CalendarApp = () => {
   dayjs.locale("es");
 
   const handleEventClick = (event) => {
-    setSelectedEvent(event);
-    setShowModal(true);
+    if (admin) {
+      setSelectedEvent(event);
+      setShowModal(true);
+    }
   };
 
   const handleModalClose = () => {
     setShowModal(false);
   };
-
-  console.log(dayjs("2024-04-15T10:00:00.000Z").toDate());
 
   const events =
     reservationsRoom.length > 0
@@ -67,8 +69,12 @@ const CalendarApp = () => {
 
   const EventComponent = ({ event }) => {
     return (
-      <div className="text-center" onClick={() => handleEventClick(event)}>
-        <p className="m-0">{event.title}</p>
+      <div
+        className="text-center"
+        onClick={() => handleEventClick(event)}
+        title=""
+      >
+        <p className="m-0 text-light">{admin ? event.title : "Reservado"}</p>
       </div>
     );
   };
@@ -76,6 +82,7 @@ const CalendarApp = () => {
   const components = {
     event: EventComponent,
   };
+
   return (
     <>
       {Object.keys(reservationsRoom).length > 0 && (
@@ -136,10 +143,12 @@ const CalendarApp = () => {
           </Modal>
         )}
       </Container>
-      <Container>
-        <Link to="/administrador" className="btn btn-primary w-100">
-          <i className="bi bi-arrow-bar-left"></i> Volver
-        </Link>
+      <Container className="my-2">
+        {admin && (
+          <Link to="/administrador" className="btn btn-primary w-100">
+            <i className="bi bi-arrow-bar-left"></i> Volver
+          </Link>
+        )}
       </Container>
     </>
   );

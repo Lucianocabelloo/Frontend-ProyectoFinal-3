@@ -1,18 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getRoomById } from "../../helpers/queries";
+import Swal from "sweetalert2";
+import CalendarApp from "./calendar/CalendarApp";
 
 const DetailsRoom = () => {
-  const {id} = useParams();
-  const [room,setRoom] = useState([]);
+  const { id } = useParams();
+  const [room, setRoom] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     loadRoomData();
-  },[])
+  }, []);
 
-  async function loadRoomData () {
+  async function loadRoomData() {
     const response = await getRoomById(id);
     if (response.status === 200) {
       const data = await response.json();
@@ -26,9 +29,18 @@ const DetailsRoom = () => {
     }
   }
 
-  let disponibilidad = '';
-  (room.disponibilidad === true) ? disponibilidad = 'Disponible' : disponibilidad = 'No disponible';
+  const handleEventClick = (event) => {
+    setShowModal(true);
+  };
 
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
+  let disponibilidad = "";
+  room.disponibilidad === true
+    ? (disponibilidad = "Disponible")
+    : (disponibilidad = "No disponible");
 
   return (
     <Container className="my-4">
@@ -57,27 +69,47 @@ const DetailsRoom = () => {
           <Row className="align-items-center justify-content-center mt-4">
             <div className="col-4 txt-details-color">
               <FontAwesomeIcon icon="fa-solid fa-user" className="fs-4 mb-2" />
-              <h3 className="fs-5 txt-details-color fw-semibold">{room.tipoHabitacion}</h3>
+              <h3 className="fs-5 txt-details-color fw-semibold">
+                {room.tipoHabitacion}
+              </h3>
             </div>
             <div className="col-4 txt-details-color">
               <FontAwesomeIcon icon="fa-solid fa-bed" className="fs-4 mb-2" />
-              <h3 className="fs-5 txt-details-color fw-semibold">{room.categoria}</h3>
+              <h3 className="fs-5 txt-details-color fw-semibold">
+                {room.categoria}
+              </h3>
             </div>
             <div className="col-12 col-sm-4 txt-details-color mt-2 mt-sm-0">
               <FontAwesomeIcon icon="fa-solid fa-clock" className="fs-4 mb-2" />
-              <h3 className="fs-5 txt-details-color fw-semibold">{disponibilidad}</h3>
+              <h3 className="fs-5 txt-details-color fw-semibold">
+                {disponibilidad}
+              </h3>
             </div>
           </Row>
           <div className="mt-4">
             <p>{room.descripcion}</p>
             <p className="price">${room.precio}</p>
             <div className="d-flex justify-content-center align-items-center gap-4">
-            <button className="btn-customized btn-gold">Reservar habitación</button>
-            <button className="btn-customized">Ver fechas disponibles</button>
+              <button className="btn-customized btn-gold">
+                Reservar habitación
+              </button>
+              <Button className="btn-customized" onClick={handleEventClick}>
+                Ver fechas disponibles
+              </Button>
             </div>
           </div>
         </Col>
       </Row>
+      <Modal show={showModal} fullscreen={true} onHide={handleModalClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            Fechas disponibles Habitación n° {room.numero}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="modal-calendar">
+          <CalendarApp admin={false} number={room.numero}></CalendarApp>
+        </Modal.Body>
+      </Modal>
     </Container>
   );
 };
