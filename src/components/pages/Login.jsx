@@ -23,7 +23,6 @@ const Login = ({ setUserLoggedIn }) => {
         "usuarioHotel",
         JSON.stringify({
           nombreCompleto: data.nombreCompleto,
-          nombre: data.nombreCompleto.split(" ")[0],
           email: data.email,
           rol: data.rol,
           token: data.token,

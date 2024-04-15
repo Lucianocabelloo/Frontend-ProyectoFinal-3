@@ -53,7 +53,7 @@ console.log(userLoggedIn);
           <Nav className="d-flex flex-row justify-content-evenly bubble align-items-center">
             {Object.keys(userLoggedIn).length > 0 ? (
               <>
-                <p className="m-0 text-center"><i className="bi bi-person fs-4"></i> {userLoggedIn.nombreCompleto}</p>
+                <p className="m-0 text-center"><i className="bi bi-person fs-4"></i> {userLoggedIn.nombreCompleto.split(" ")[0]}</p>
                 {userLoggedIn.rol === "Administrador" ? (
                   <NavLink to="/administrador" className="nav-link">
                     <svg
