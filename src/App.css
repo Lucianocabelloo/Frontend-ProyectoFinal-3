@@ -443,6 +443,11 @@ label {
   color: #f1f1ff !important;
 }
 
+.card-img-top{
+  min-height: 220px;
+  object-fit: fill;
+}
+
 @media (min-width: 980px) and (max-width: 1200px) {
   bubble {
     flex: none;

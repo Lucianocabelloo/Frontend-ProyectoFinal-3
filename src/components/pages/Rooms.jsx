@@ -1,4 +1,4 @@
-import { Container, Row, Col, Image, Form } from "react-bootstrap";
+import { Container, Row, Col, Image, Form, Spinner } from "react-bootstrap";
 import wifi from "../../assets/img/wifi.png";
 import bata from "../../assets/img/bata.png";
 import air from "../../assets/img/air.png";
@@ -12,25 +12,35 @@ import { getRoomsAPI } from "../../helpers/queries";
 
 const Rooms = () => {
   const [rooms,setRooms] = useState([]);
+  const [loading, setLoading] = useState(true); 
+
 
   useEffect(()=>{
     getRooms();
   },[])
 
   async function getRooms () {
-    const response = await getRoomsAPI();
-    if (response.status === 200) {
-      const data = await response.json();
-      setRooms(data);
-
-    } else {
-      Swal.fire({
-        title: "Ocurrio un error!",
-        text: `Intente esta operación en unos minutos`,
-        icon: "error",
-      });
+    try {
+      const response = await getRoomsAPI();
+      if (response.status === 200) {
+        const data = await response.json();
+        setRooms(data);
+        setLoading(false);
+      } else {
+   
+        setLoading(false); 
+        Swal.fire({
+          title: "Ocurrio un error!",
+          text: `Intente esta operación en unos minutos`,
+          icon: "error",
+        });
+      }
+    } catch (error) {
+      setLoading(false); 
+      console.error("Error al obtener los datos de las habitaciones:", error);
     }
   }
+  
 
   return (
     <>
@@ -90,11 +100,21 @@ const Rooms = () => {
             </Form.Select>
           </Col>
         </Row>
+        {loading && (
+          <>
+          <Spinner variant="light" animation="border" className="d-flex m-auto" size="lg" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+          <h2 className="text-center my-3">Cargando...</h2>
+          </>
+        )}
+        {!loading &&        
         <Row className="justify-content-center justify-content-lg-evenly align-items-center">
           {
             rooms.map((room)=> <RoomCard room={room} key={room._id}></RoomCard>)
           }
         </Row>
+        }
       </Container>
     </>
   );
