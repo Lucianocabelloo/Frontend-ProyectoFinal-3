@@ -1,5 +1,5 @@
-import Banner from "../Banner";
-import Information from "../Information";
+import Banner from "./homePage/Banner";
+import Information from "./homePage/Information";
 
 const Home = () => {
     return (

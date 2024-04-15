@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Row, Col, Container, Form, Button, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { readUsersAPI } from "../../helpers/userQueries";
+import { readUsersAPI, suspendUserAPI } from "../../helpers/userQueries";
 import Swal from "sweetalert2";
 import DataTable from "react-data-table-component";
 import FilterTable from "./administrator/FilterTable";
@@ -52,17 +52,49 @@ const Administrator = () => {
     }
   };
 
+  const suspendUser = async (row) => {
+    const newStatus = !row.activo;
+    const id = row._id;
+    const answer = await suspendUserAPI({ activo: newStatus }, id);
+    if (answer.status === 200) {
+      if (row.activo) {
+        Swal.fire({
+          title: "¡Suspendido!",
+          text: `El usuario ${row.nombreCompleto} suspendido.`,
+          icon: "success",
+        });
+      } else {
+        Swal.fire({
+          title: "¡Renovado!",
+          text: `El usuario ${row.nombreCompleto} fue renovado.`,
+          icon: "success",
+        });
+      }
+      const response = await readUsersAPI();
+      if (response.status === 200) {
+        const data = await response.json();
+        setUsers(data);
+      }
+    } else {
+      if (row.activo) {
+        Swal.fire({
+          title: "¡Ocurrió un error!",
+          text: `El usuario ${row.nombreCompleto} no pudo ser suspendido. Por favor, inténtelo nuevamente en unos minutos.`,
+          icon: "error",
+        });
+      } else {
+        Swal.fire({
+          title: "¡Ocurrió un error!",
+          text: `El usuario ${row.nombreCompleto} no pudo ser renovado. Por favor, inténtelo nuevamente en unos minutos.`,
+          icon: "error",
+        });
+      }
+    }
+  };
+
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
-
-  const filteredUsers = users.filter(
-    (user) =>
-      user.nombreCompleto.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      user.rol.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
     <Container className="my-4">
       <h1 className="display-3">Administrador</h1>
