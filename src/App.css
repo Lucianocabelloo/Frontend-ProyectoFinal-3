@@ -477,6 +477,10 @@ label {
   color: #8b8b8b;
 }
 
+.nomFormReserva{
+  font-family: "Montserrat", sans-serif;
+}
+
 @media (max-width: 992px) {
   .bg-right-login {
     border-radius: 20px;

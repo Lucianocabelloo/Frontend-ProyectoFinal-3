@@ -6,20 +6,14 @@ import { getRoomById } from "../../helpers/queries";
 import Swal from "sweetalert2";
 import CalendarApp from "./calendar/CalendarApp";
 import { useForm } from "react-hook-form";
+import ReservationForm from "./reserve/ReservationForm";
+import DateForm from "./reserve/DateForm";
 
 const DetailsRoom = ({ userLoggedIn }) => {
   const { id } = useParams();
   const [room, setRoom] = useState([]);
   const [showModalCalendar, setShowModalCalendar] = useState(false);
   const [showModalReserve, setShowModalReserve] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-    setvalue,
-  } = useForm();
 
   useEffect(() => {
     loadRoomData();
@@ -38,12 +32,6 @@ const DetailsRoom = ({ userLoggedIn }) => {
       });
     }
   }
-
-  const onSubmit = (reserva) => {
-    reserva.numHabitacion = room.numero;
-    reserva.email = userLoggedIn.email;
-    console.log(reserva);
-  };
 
   const handleEventCalendarModal = (event) => {
     setShowModalCalendar(true);
@@ -155,109 +143,13 @@ const DetailsRoom = ({ userLoggedIn }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleSubmit(onSubmit)}>
-            <Form.Group className="mb-3" controlId="nombreCompleto">
-              <Form.Label
-                className="text-dark"
-                {...register("nombreCompleto", {
-                  required: "El nombre es obligatorio",
-                  minLength: {
-                    value: 3,
-                    message: "El nombre debe tener 3 caracteres como mínimo",
-                  },
-                  maxLength: {
-                    value: 80,
-                    message: "El nombre debe tener 80 caracteres como máximo",
-                  },
-                })}
-              >
-                Nombre Completo:*
-              </Form.Label>
-              <Form.Control
-                type="text"
-                disabled={true}
-                value={userLoggedIn.nombreCompleto}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3 " controlId="dni">
-              <Form.Label className="text-dark">DNI:*</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Ingrese su dni"
-                {...register("dni", {
-                  required: "El DNI es obligatorio",
-                  minLength: {
-                    value: 8,
-                    message: "El dni debe tener 8 caracteres como mínimo",
-                  },
-                  maxLength: {
-                    value: 10,
-                    message: "El dni debe tener 10 caracteres como máximo",
-                  },
-                })}
-              />
-              <Form.Text className="text-danger">
-                {errors.dni?.message}
-              </Form.Text>
-            </Form.Group>
-            <Form.Group className="mb-3 " controlId="telefono">
-              <Form.Label className="text-dark">Teléfono:*</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Ingrese su teléfono"
-                {...register("telefono", {
-                  required: "El número de teléfono es obligatorio",
-                  minLength: {
-                    value: 7,
-                    message:
-                      "El número de teléfono debe tener 7 caracteres como mínimo",
-                  },
-                  maxLength: {
-                    value: 15,
-                    message:
-                      "El número de teléfono debe tener 15 caracteres como máximo",
-                  },
-                })}
-              />
-              <Form.Text className="text-danger">
-                {errors.telefono?.message}
-              </Form.Text>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="fechaInicio">
-              <Form.Label className="text-dark">
-                Fecha Inicio Reserva:*
-              </Form.Label>
-              <Form.Control
-                type="date"
-                {...register("fechaInicio", {
-                  required: "La fecha de inicio es obligatoria",
-                })}
-              />
-              <Form.Text className="text-danger">
-                {errors.fechaInicio?.message}
-              </Form.Text>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="fechaFin">
-              <Form.Label className="text-dark">Fecha Fin Reserva:*</Form.Label>
-              <Form.Control
-                type="date"
-                {...register("fechaFin", {
-                  required: "La fecha de fin es obligatoria",
-                })}
-              />
-              <Form.Text className="text-danger">
-                {errors.fechaFin?.message}
-              </Form.Text>
-            </Form.Group>
-            <Form.Group className="mb-3 text-light">
-              <p>Los campos que tienen * son obligatorios.</p>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Button type="submit" variant="primary">
-                <i className="bi bi-arrow-right-circle"></i> Reservar
-              </Button>
-            </Form.Group>
-          </Form>
+          <ReservationForm
+            email={userLoggedIn.email}
+            numero={room.numero}
+            nombre={userLoggedIn.nombreCompleto}
+            precioHab={room.precio}
+          ></ReservationForm>
+          {/* <DateForm></DateForm> */}
         </Modal.Body>
       </Modal>
     </Container>
