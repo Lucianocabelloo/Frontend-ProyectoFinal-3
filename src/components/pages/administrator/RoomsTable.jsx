@@ -3,7 +3,7 @@ import FilterTable from "./FilterTable";
 import { Link } from "react-router-dom";
 import { Button, Image } from "react-bootstrap";
 
-const RoomsTable = ({rooms, handleSearchChange, searchTerm}) => {
+const RoomsTable = ({ rooms, handleSearchChange, deleteRoom, searchTerm }) => {
   const filteresRooms = rooms.filter(
     (room) =>
       room.tipoHabitacion
@@ -68,7 +68,11 @@ const RoomsTable = ({rooms, handleSearchChange, searchTerm}) => {
           >
             <i className="bi bi-pencil-square"></i>
           </Link>
-          <Button variant="danger" className="me-2 mb-2">
+          <Button
+            variant="danger"
+            className="me-2 mb-2"
+            onClick={() => deleteRoom(row)}
+          >
             <i className="bi bi-trash3"></i>
           </Button>
         </div>

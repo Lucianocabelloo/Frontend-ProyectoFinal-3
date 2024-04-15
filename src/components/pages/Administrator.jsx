@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { Row, Col, Container, Form, Button, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { readUsersAPI, suspendUserAPI } from "../../helpers/userQueries";
+import {
+  deleteUserAPI,
+  readUsersAPI,
+  suspendUserAPI,
+} from "../../helpers/userQueries";
 import Swal from "sweetalert2";
 import DataTable from "react-data-table-component";
 import FilterTable from "./administrator/FilterTable";
-import { getRoomsAPI } from "../../helpers/queries";
+import { deleteRoomAPI, getRoomsAPI } from "../../helpers/queries";
 import UsersTable from "./administrator/UsersTable";
 import RoomsTable from "./administrator/RoomsTable";
 
@@ -92,6 +96,75 @@ const Administrator = () => {
     }
   };
 
+  const deleteUser = (row) => {
+    Swal.fire({
+      title: "¿Estás seguro de querer eliminar al usuario?",
+      text: "¡Este cambio no se puede revertir!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, ¡borrarlo!",
+      cancelButtonText: "¡Cancelar!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const answer = await deleteUserAPI(row._id);
+        if (answer.status === 200) {
+          Swal.fire({
+            title: "¡Eliminado!",
+            text: `El usuario ${row.nombreCompleto} fue eliminado.`,
+            icon: "success",
+          });
+          const response = await readUsersAPI();
+          if (response.status === 200) {
+            const data = await response.json();
+            setUsers(data);
+          }
+        } else {
+          Swal.fire({
+            title: "¡Ocurrió un error!",
+            text: `El usuario ${row.nombreCompleto} no fue eliminado correctamente. Por favor, inténtelo nuevamente en unos minutos.`,
+            icon: "error",
+          });
+        }
+      }
+    });
+  };
+
+  const deleteRoom = (row) => {
+    Swal.fire({
+      title: "¿Estás seguro de querer eliminar la habitación?",
+      text: "¡Este cambio no se puede revertir!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, ¡borrarla!",
+      cancelButtonText: "¡Cancelar!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const answer = await deleteRoomAPI(row._id);
+        if (answer.status === 200) {
+          Swal.fire({
+            title: "¡Eliminado!",
+            text: `La habitación ${row.numero} fue eliminada.`,
+            icon: "success",
+          });
+          const response = await getRoomsAPI();
+          if (response.status === 200) {
+            const data = await response.json();
+            setRooms(data);
+          }
+        } else {
+          Swal.fire({
+            title: "¡Ocurrió un error!",
+            text: `La habitación ${row.numero} no fue eliminada correctamente. Por favor, inténtelo nuevamente en unos minutos.`,
+            icon: "error",
+          });
+        }
+      }
+    });
+  };
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -130,6 +203,7 @@ const Administrator = () => {
           <RoomsTable
             rooms={rooms}
             handleSearchChange={handleSearchChange}
+            deleteRoom={deleteRoom}
             searchTerm={searchTerm}
           ></RoomsTable>
         </div>
@@ -140,6 +214,7 @@ const Administrator = () => {
             users={users}
             handleSearchChange={handleSearchChange}
             suspendUser={suspendUser}
+            deleteUser={deleteUser}
             searchTerm={searchTerm}
           ></UsersTable>
         </div>
