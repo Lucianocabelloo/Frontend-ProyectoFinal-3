@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { act } from "react-dom/test-utils";
 import Swal from "sweetalert2";
 
 const URI_USER = import.meta.env.VITE_API_USER;
@@ -77,6 +79,7 @@ export const suspendUserAPI = async (activo, id) => {
     const answer = await fetch(`${URI_USER}/${id}`, {
       method: "PATCH",
       headers: {
+        "Content-Type": "application/json",
         "x-token": JSON.parse(sessionStorage.getItem("usuarioHotel")).token,
       },
       body: JSON.stringify(activo),
