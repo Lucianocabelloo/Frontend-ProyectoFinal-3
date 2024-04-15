@@ -22,6 +22,7 @@ const Login = ({ setUserLoggedIn }) => {
       sessionStorage.setItem(
         "usuarioHotel",
         JSON.stringify({
+          nombreCompleto: data.nombreCompleto,
           nombre: data.nombreCompleto.split(" ")[0],
           email: data.email,
           rol: data.rol,
