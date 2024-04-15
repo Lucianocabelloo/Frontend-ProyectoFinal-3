@@ -26,7 +26,7 @@ export default function TeamCard({user}) {
       }}
     >
       <CardContent sx={{ alignItems: 'center', textAlign: 'center' }}>
-        <Avatar src="/static/images/avatar/1.jpg" sx={{ '--Avatar-size': '4rem' }} />
+        <Avatar src={user.image} sx={{ '--Avatar-size': '8rem' }} />
         <Chip
           size="sm"
           variant="soft"

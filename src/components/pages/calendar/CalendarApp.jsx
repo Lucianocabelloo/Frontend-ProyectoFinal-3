@@ -2,45 +2,79 @@ import { Calendar, dayjsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import dayjs from "dayjs";
 import { Container, Button, Modal } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "dayjs/locale/es";
+import { getReservationByNumberAPI } from "../../../helpers/reservationQueries";
+import Swal from "sweetalert2";
 
-const CalendarApp = () => {
+const CalendarApp = ({ admin, number }) => {
   const localizer = dayjsLocalizer(dayjs);
   const [showModal, setShowModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [reservationsRoom, setReservationRoom] = useState([]);
+
+  const { numero } = useParams();
+
+  const numRoom = admin ? numero : number;
+
+  useEffect(() => {
+    getReservationRoom(numRoom);
+  }, []);
+
+  const getReservationRoom = async (numero) => {
+    try {
+      const response = await getReservationByNumberAPI(numero);
+      if (response.status === 200) {
+        const data = await response.json();
+        setReservationRoom(data);
+      }
+    } catch (error) {
+      Swal.fire(
+        "Ocurrio un error",
+        `No se pudo obtener las reservas de la habitación Nro ${numero}, intenta dentro de unos minutos nuevamente`,
+        "error"
+      );
+    }
+  };
 
   dayjs.locale("es");
 
   const handleEventClick = (event) => {
-    setSelectedEvent(event);
-    setShowModal(true);
+    if (admin) {
+      setSelectedEvent(event);
+      setShowModal(true);
+    }
   };
 
   const handleModalClose = () => {
     setShowModal(false);
   };
 
-  const events = [
-    {
-      start: dayjs("2024-04-14T12:00:00").toDate(),
-      end: dayjs("2024-04-18T12:00:00").toDate(),
-      title: "Juan Perez",
-      data: {
-        dni: "42965821",
-        telefono: "3815736423",
-        email: "admin@admin.com",
-        total: "15000",
-        numHabitacion: "1",
-      },
-    },
-  ];
+  const events =
+    reservationsRoom.length > 0
+      ? reservationsRoom.map((reserva) => ({
+          start: dayjs(reserva.fechaInicio).toDate(),
+          end: dayjs(reserva.fechaFin).toDate(),
+          title: reserva.nombreCompleto,
+          data: {
+            dni: reserva.dni,
+            telefono: reserva.telefono,
+            email: reserva.email,
+            total: reserva.total,
+            numHabitacion: reserva.numHabitacion,
+          },
+        }))
+      : [];
 
   const EventComponent = ({ event }) => {
     return (
-      <div className="text-center" onClick={() => handleEventClick(event)}>
-        <p className="m-0">{event.title}</p>
+      <div
+        className="text-center"
+        onClick={() => handleEventClick(event)}
+        title=""
+      >
+        <p className="m-0 text-light">{admin ? event.title : "Reservado"}</p>
       </div>
     );
   };
@@ -48,9 +82,13 @@ const CalendarApp = () => {
   const components = {
     event: EventComponent,
   };
+
   return (
     <>
-      <Container fluid className="my-4 p-2 mainContainer calendarContainer">
+      {Object.keys(reservationsRoom).length > 0 && (
+        <h4 className="text-center mt-2">{reservationsRoom.mensaje}</h4>
+      )}
+      <Container fluid className="my-3 p-2 mainContainer calendarContainer">
         <Calendar
           localizer={localizer}
           events={events}
@@ -105,10 +143,12 @@ const CalendarApp = () => {
           </Modal>
         )}
       </Container>
-      <Container>
-        <Link to="/administrador" className="btn btn-primary w-100">
-          <i className="bi bi-arrow-bar-left"></i> Volver
-        </Link>
+      <Container className="my-2">
+        {admin && (
+          <Link to="/administrador" className="btn btn-primary w-100">
+            <i className="bi bi-arrow-bar-left"></i> Volver
+          </Link>
+        )}
       </Container>
     </>
   );

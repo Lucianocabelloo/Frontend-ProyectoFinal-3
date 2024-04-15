@@ -30,7 +30,7 @@ export const getReservationByIdAPI = async (id) => {
 
 export const getReservationByNumberAPI = async (number) => {
   try {
-    const response = await fetch(`${URI_Reservation}/${number}`);
+    const response = await fetch(`${URI_Reservation}/forroom/${number}`);
     return response;
   } catch (error) {
     Swal.fire({

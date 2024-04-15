@@ -55,25 +55,24 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Menu userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn}/>
+        <Menu userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
         <Routes>
           <Route exact path="/" element={<Home></Home>}></Route>
           <Route exact path="/nosotros" element={<AboutUs></AboutUs>}></Route>
-          <Route exact path="/iniciar-sesion" element={<Login setUserLoggedIn={setUserLoggedIn}></Login>}></Route>
+          <Route
+            exact
+            path="/iniciar-sesion"
+            element={<Login setUserLoggedIn={setUserLoggedIn}></Login>}
+          ></Route>
           <Route
             exact
             path="/detalle-habitacion/:id"
-            element={<DetailsRoom></DetailsRoom>}
+            element={<DetailsRoom userLoggedIn={userLoggedIn}></DetailsRoom>}
           ></Route>
           <Route exact path="/habitaciones" element={<Rooms></Rooms>}></Route>
           <Route exact path="/registro" element={<Register />}></Route>
           <Route exact path="/contacto" element={<Contact />}></Route>
           <Route exact path="/galeria" element={<Gallery></Gallery>}></Route>
-          <Route
-            exact
-            path="/calendario"
-            element={<CalendarApp></CalendarApp>}
-          ></Route>
           <Route
             exact
             path="/administrador/*"

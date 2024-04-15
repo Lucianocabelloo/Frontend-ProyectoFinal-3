@@ -11,7 +11,7 @@ const AdminRoutes = () => {
         <Route
           exact
           path="/calendario/:numero"
-          element={<CalendarApp></CalendarApp>}
+          element={<CalendarApp admin={true}></CalendarApp>}
         ></Route>
         <Route exact path="/" element={<Administrator></Administrator>}></Route>
         <Route

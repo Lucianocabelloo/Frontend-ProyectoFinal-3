@@ -421,6 +421,10 @@ label {
   height: 100vh;
 }
 
+.rbc-event{
+  background: #0d2531 !important;
+}
+
 .rbc-calendar {
   border: 1px solid #fffaed;
 }
@@ -443,9 +447,13 @@ label {
   color: #f1f1ff !important;
 }
 
+
 .card-img-top{
   min-height: 220px;
   object-fit: fill;
+}
+.modal-calendar{
+  color: #08171e;
 }
 
 @media (min-width: 980px) and (max-width: 1200px) {
