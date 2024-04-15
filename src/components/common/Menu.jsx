@@ -44,6 +44,9 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
             <NavLink to="/galeria" className="nav-link">
               Galeria de Imagenes
             </NavLink>
+            <NavLink to="/contacto" className="nav-link">
+              Contacto
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse className="mt-2">
