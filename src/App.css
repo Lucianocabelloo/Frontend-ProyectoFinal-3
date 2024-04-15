@@ -447,6 +447,11 @@ label {
   color: #f1f1ff !important;
 }
 
+
+.card-img-top{
+  min-height: 220px;
+  object-fit: fill;
+}
 .modal-calendar{
   color: #08171e;
 }
