@@ -1,13 +1,10 @@
-import { Row, Col, Container, Card } from "react-bootstrap";
-import room1 from "../assets/img/room1.jpg";
-import room2 from "../assets/img/room2.jpg";
-import room3 from "../assets/img/room3.jpg";
-import pool from "../assets/img/pool.jpg";
-import gym from "../assets/img/gym.jpg";
-import spa from "../assets/img/spa.jpg";
-import restaurant from "../assets/img/restaurant.jpg";
+import { Row, Col, Container } from "react-bootstrap";
+import room1 from "../../../assets/img/room1.jpg";
+import room2 from "../../../assets/img/room2.jpg";
+import room3 from "../../../assets/img/room3.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import Services from "./Services";
 
 const Information = () => {
   return (
@@ -57,135 +54,19 @@ const Information = () => {
           </Row>
         </Container>
       </section>
-      <section className="my-5 bg-color py-5">
+      <section className="my-5 bg-color pt-5 pb-4">
         <Container>
           <h3 className="text-center display-5 fw-bold">
             Estos son algunos de nuestros{" "}
             <span className="txt-details-color">servicios</span>
           </h3>
-          <div className="d-flex align-items-center justify-content-center mt-3 mb-5">
+          <div className="d-flex align-items-center justify-content-center mt-4 mb-5">
             <div className="line"></div>
             <div className="circle mx-3"></div>
             <div className="line"></div>
           </div>
-          <Row>
-            <Col md={5}>
-              <div className="img-services-container">
-                <img
-                  src={pool}
-                  alt="Imagen del servicio del hotel"
-                  className="img-service"
-                />
-              </div>
-            </Col>
-            <Col md={7}></Col>
-          </Row>
+          <Services></Services>
         </Container>
-        {/* <Container>
-          <h3 className="fs-1 text-center txt-bg-color pb-3">
-            Sumérgete en el Mundo del Lujo: Experiencias Excepcionales en
-            Nuestro Hotel
-          </h3>
-          <p className="text-center txt-bg-color">
-            Descubre un oasis de elegancia y confort, donde cada detalle está
-            diseñado para superar tus expectativas y brindarte una estancia
-            inolvidable.
-          </p>
-          <Row className="justify-content-center align-items-center my-5 gap-5">
-            <Col md={5}>
-              <div className="card-customized bg-color p-1">
-                <div className="img-container">
-                  <img
-                    src={pool}
-                    className="img-customized"
-                    alt="Imagen de la piscina del hotel"
-                  />
-                </div>
-                <div className="card-body p-2">
-                  <hr className="text-warning m-0" />
-                  <h4 className="kaushan-script txt-details-color fs-1 pt-2">
-                    Piscina
-                  </h4>
-                  <hr className="text-warning my-2" />
-                  <p className="txt-gray">
-                    Fresco oasis de relajación bajo el sol radiante: ¡tu
-                    escapada perfecta te espera junto a nuestra piscina de
-                    ensueño!
-                  </p>
-                </div>
-              </div>
-            </Col>
-            <Col md={5}>
-              <div className="card-customized bg-color p-1">
-                <div className="img-container">
-                  <img
-                    src={gym}
-                    className="img-customized"
-                    alt="Imagen de la piscina del hotel"
-                  />
-                </div>
-                <div className="card-body p-2">
-                  <hr className="text-warning m-0" />
-                  <h4 className="kaushan-script txt-details-color fs-1 pt-2">
-                    Gimnasio
-                  </h4>
-                  <hr className="text-warning my-2" />
-                  <p className="txt-gray">
-                    Alcanza tus metas fitness en nuestro santuario de bienestar:
-                    ¡tu gimnasio de lujo te espera para desafiar tus límites y
-                    revitalizar tu cuerpo y mente!
-                  </p>
-                </div>
-              </div>
-            </Col>
-            <Col md={5}>
-              <div className="card-customized bg-color p-1">
-                <div className="img-container">
-                  <img
-                    src={restaurant}
-                    className="img-customized"
-                    alt="Imagen de la piscina del hotel"
-                  />
-                </div>
-                <div className="card-body p-2">
-                  <hr className="text-warning m-0" />
-                  <h4 className="kaushan-script txt-details-color fs-1 pt-2">
-                    Restaurante
-                  </h4>
-                  <hr className="text-warning my-2" />
-                  <p className="txt-gray">
-                    Saborea la excelencia culinaria en nuestro oasis
-                    gastronómico: ¡una experiencia sensorial única donde cada
-                    plato es una obra maestra!
-                  </p>
-                </div>
-              </div>
-            </Col>
-            <Col md={5}>
-              <div className="card-customized bg-color p-1">
-                <div className="img-container">
-                  <img
-                    src={spa}
-                    className="img-customized"
-                    alt="Imagen de la piscina del hotel"
-                  />
-                </div>
-                <div className="card-body p-2">
-                  <hr className="text-warning m-0" />
-                  <h4 className="kaushan-script txt-details-color fs-2 pt-2">
-                    SPA de Lujo
-                  </h4>
-                  <hr className="text-warning my-2" />
-                  <p className="txt-gray">
-                    Sumérgete en un mundo de relajación y rejuvenecimiento en
-                    nuestro santuario de bienestar: ¡tu escape perfecto para
-                    renovar cuerpo, mente y espíritu!
-                  </p>
-                </div>
-              </div>
-            </Col>
-          </Row>
-        </Container> */}
       </section>
       <section className="mt-5 bg-color">
         <Container className="py-5">

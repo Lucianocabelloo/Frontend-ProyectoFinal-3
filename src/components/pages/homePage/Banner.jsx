@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import imgBanner from "../assets/img/img-banner2.jpg";
+import imgBanner from "../../../assets/img/img-banner2.jpg";
 import { Link } from "react-router-dom";
 
 const Banner = () => {
