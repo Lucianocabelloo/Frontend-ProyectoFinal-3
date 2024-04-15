@@ -1,9 +1,9 @@
 import DataTable from "react-data-table-component";
 import FilterTable from "./FilterTable";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
-const UsersTable = ({ users, handleSearchChange, searchTerm }) => {
+const UsersTable = ({ users, handleSearchChange, suspendUser, searchTerm }) => {
   const columnsUsers = [
     {
       name: "Nombre Completo",
@@ -20,8 +20,11 @@ const UsersTable = ({ users, handleSearchChange, searchTerm }) => {
     },
     {
       name: "Activo",
-      selector: (row) => row.activo,
-      cell: (row) => (row.activo ? "Si" : "No"),
+      cell: (row) => (
+        <Form.Group>
+          <Form.Check checked={row.activo} onChange={() => suspendUser(row)} />
+        </Form.Group>
+      ),
     },
     {
       name: "Opciones",

@@ -127,12 +127,21 @@ const Administrator = () => {
       </Row>
       {tabla === "Habitaciones" && (
         <div className="tableContainer">
-          <RoomsTable rooms={rooms} handleSearchChange={handleSearchChange} searchTerm={searchTerm}></RoomsTable>
+          <RoomsTable
+            rooms={rooms}
+            handleSearchChange={handleSearchChange}
+            searchTerm={searchTerm}
+          ></RoomsTable>
         </div>
       )}
       {tabla === "Usuarios" && (
         <div className="tableContainer">
-          <UsersTable users={users} handleSearchChange={handleSearchChange} searchTerm={searchTerm}></UsersTable>
+          <UsersTable
+            users={users}
+            handleSearchChange={handleSearchChange}
+            suspendUser={suspendUser}
+            searchTerm={searchTerm}
+          ></UsersTable>
         </div>
       )}
     </Container>
