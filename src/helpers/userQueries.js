@@ -84,10 +84,6 @@ export const suspendUserAPI = async (activo, id) => {
       },
       body: JSON.stringify(activo),
     });
-    console.log(`${URI_USER}/${id}`);
-    console.log(JSON.parse(sessionStorage.getItem("usuarioHotel")).token);
-    console.log(JSON.stringify(activo));
-    console.log(await answer.json());
     return answer;
   } catch (error) {
     Swal.fire({
