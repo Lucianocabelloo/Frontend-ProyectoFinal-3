@@ -2,8 +2,16 @@ import { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import DateForm from "./DateForm";
+import { createReserveAPI } from "../../../helpers/reservationQueries";
+import Swal from "sweetalert2";
 
-const ReservationForm = ({ email, numero, nombre, precioHab }) => {
+const ReservationForm = ({
+  email,
+  numero,
+  nombre,
+  precioHab,
+  setShowModalReserve,
+}) => {
   const [dates, setDates] = useState({
     fechaInicio: "",
     fechaFin: "",
@@ -15,20 +23,42 @@ const ReservationForm = ({ email, numero, nombre, precioHab }) => {
     handleSubmit,
     formState: { errors },
     reset,
-    setvalue,
   } = useForm();
 
   useEffect(() => {
     calcularTotal();
   }, [dates]);
 
-  const onSubmit = (reserva) => {
+  const onSubmit = async (reserva) => {
     reserva.numHabitacion = numero;
     reserva.email = email;
     reserva.nombreCompleto = nombre;
     reserva.fechaInicio = dates.fechaInicio + "T10:00:00.000Z";
     reserva.fechaFin = dates.fechaFin + "T10:00:00.000Z";
-    console.log(reserva);
+    const response = await createReserveAPI(reserva);
+    if (response.status === 201) {
+      Swal.fire(
+        "Reserva Creada",
+        `La habitación Nro. ${reserva.numHabitacion} fue reservada exitosamente`,
+        "success"
+      );
+      reset();
+      setShowModalReserve(false);
+    } else {
+      Swal.fire(
+        "Ocurrio un error",
+        "La reserva no pudo ser creada, intentelo nuevamente dentro de unos minutos",
+        "error"
+      );
+    }
+  };
+
+  const handleChangeDate = (event) => {
+    const { name, value } = event.target;
+    setDates({
+      ...dates,
+      [name]: value,
+    });
   };
 
   const calcularTotal = () => {
@@ -42,8 +72,6 @@ const ReservationForm = ({ email, numero, nombre, precioHab }) => {
       setTotal(newTotal);
     }
   };
-
-
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -97,7 +125,36 @@ const ReservationForm = ({ email, numero, nombre, precioHab }) => {
           {errors.telefono?.message}
         </Form.Text>
       </Form.Group>
-      <DateForm dates={dates} setDates={setDates}></DateForm>
+      <Form.Group className="mb-3" controlId="fechaInicio">
+        <Form.Label className="text-dark">Fecha Inicio Reserva:*</Form.Label>
+        <Form.Control
+          type="date"
+          name="fechaInicio"
+          value={dates.fechaInicio}
+          {...register("fechaInicio", {
+            required: "La fecha de inicio es obligatoria",
+          })}
+          onChange={handleChangeDate}
+        />
+        <Form.Text className="text-danger">
+          {errors.fechaInicio?.message}
+        </Form.Text>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="fechaFin">
+        <Form.Label className="text-dark">Fecha Inicio Reserva:*</Form.Label>
+        <Form.Control
+          type="date"
+          name="fechaFin"
+          value={dates.fechaFin}
+          {...register("fechaFin", {
+            required: "La fecha de fin es obligatoria",
+          })}
+          onChange={handleChangeDate}
+        />
+        <Form.Text className="text-danger">
+          {errors.fechaFin?.message}
+        </Form.Text>
+      </Form.Group>
       <Form.Group className="mb-3 text-light">
         <p>
           <b>Total: $ {total}</b>

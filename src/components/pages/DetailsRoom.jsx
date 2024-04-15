@@ -148,8 +148,8 @@ const DetailsRoom = ({ userLoggedIn }) => {
             numero={room.numero}
             nombre={userLoggedIn.nombreCompleto}
             precioHab={room.precio}
+            setShowModalReserve={setShowModalReserve}
           ></ReservationForm>
-          {/* <DateForm></DateForm> */}
         </Modal.Body>
       </Modal>
     </Container>
