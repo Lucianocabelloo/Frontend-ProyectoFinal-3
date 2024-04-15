@@ -2,7 +2,7 @@
 
 # Paradise Hotel Resort 🏨🌴
 
-En el mundo de la hospitalidad, cada detalle cuenta. Nuestro proyecto de backend, construido con Express y Node.js, es el motor detrás de una experiencia hotelera sin igual. Desde la reserva de habitaciones hasta el servicio personalizado, nuestro sistema se asegura de que cada huésped se sumerja en una experiencia excepcional. Con una arquitectura robusta y eficiente, facilitamos la gestión de reservas y la comunicación fluida entre el personal y los huéspedes. Bienvenido a un viaje donde la comodidad y la excelencia se unen, gracias a nuestra plataforma de backend que impulsa la magia detrás de cada estancia inolvidable.
+En el mundo de la hospitalidad, cada detalle cuenta. Nuestro proyecto de Frontend, construido con Javascript y React es el motor Frente de una experiencia hotelera sin igual. Desde la reserva de habitaciones hasta el servicio personalizado, nuestro sistema se asegura de que cada huésped se sumerja en una experiencia excepcional. Con una arquitectura robusta y eficiente, facilitamos la gestión de reservas y la comunicación fluida entre el personal y los huéspedes. Bienvenido a un viaje donde la comodidad y la excelencia se unen.
 
 ## Uso de la plataforma:
 
