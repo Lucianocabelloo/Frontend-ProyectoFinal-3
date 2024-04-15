@@ -5,13 +5,14 @@ import room3 from "../../../assets/img/room3.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Services from "./Services";
+import CardReviews from "./CardReviews";
 
 const Information = () => {
   return (
     <>
       <section className="pt-10-rem">
         <Container>
-          <h3 className="display-5 text-center txt-bg-color pt-sm-4 pb-3">
+          <h3 className="display-5 text-center fw-bold txt-bg-color pt-sm-4 pb-3">
             Explora Nuestras Exquisitas Suites: Lujo Capturado en Cada Rincón
           </h3>
           <p className="text-center txt-bg-color">
@@ -66,6 +67,12 @@ const Information = () => {
             <div className="line"></div>
           </div>
           <Services></Services>
+        </Container>
+      </section>
+      <section className="my-5">
+        <Container>
+          <h3 className="display-5 text-center txt-bg-color fw-bold mb-4">Reseñas de nuestros huespedes</h3>
+          <CardReviews></CardReviews>
         </Container>
       </section>
       <section className="mt-5 bg-color">

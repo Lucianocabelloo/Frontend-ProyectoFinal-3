@@ -14,7 +14,9 @@ import {
   faBed,
   faUser,
   faClock,
-  faSpa
+  faSpa,
+  faQuoteLeft,
+  faQuoteRight
 } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 
@@ -30,7 +32,9 @@ library.add(
   faBed,
   faUser,
   faClock,
-  faSpa
+  faSpa,
+  faQuoteLeft,
+  faQuoteRight
 );
 import "./App.css";
 import Menu from "./components/common/Menu";
