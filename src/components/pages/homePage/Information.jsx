@@ -12,7 +12,7 @@ const Information = () => {
     <>
       <section className="pt-10-rem">
         <Container>
-          <h3 className="display-5 text-center fw-bold txt-bg-color pt-sm-4 pb-3">
+          <h3 className="display-5 text-center fw-semibold text-dark pt-sm-4 pb-3">
             Explora Nuestras Exquisitas Suites: Lujo Capturado en Cada Rincón
           </h3>
           <p className="text-center txt-bg-color">
