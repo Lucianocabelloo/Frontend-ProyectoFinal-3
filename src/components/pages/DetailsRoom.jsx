@@ -5,9 +5,7 @@ import { useParams } from "react-router-dom";
 import { getRoomById } from "../../helpers/queries";
 import Swal from "sweetalert2";
 import CalendarApp from "./calendar/CalendarApp";
-import { useForm } from "react-hook-form";
 import ReservationForm from "./reserve/ReservationForm";
-import DateForm from "./reserve/DateForm";
 
 const DetailsRoom = ({ userLoggedIn }) => {
   const { id } = useParams();
