@@ -1,8 +1,9 @@
 import { Container, Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { createRoomsAPI } from "../../../helpers/queries";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { createRoomsAPI, editRoomAPI, getRoomById } from "../../../helpers/queries";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
 
 const RoomForm = ({ editar, titulo }) => {
   const {
@@ -12,10 +13,43 @@ const RoomForm = ({ editar, titulo }) => {
     reset,
     setValue,
   } = useForm();
-
+  const { id } = useParams();
+  const navigation = useNavigate();
+  useEffect(() => {
+    if (editar) {
+      loadDataRoom();
+    }
+  }, []);
+  const loadDataRoom = async () => {
+    const answer = await getRoomById(id);
+    if (answer.status === 200) {
+      const searchedRoom = await answer.json();
+      setValue(`numero`, searchedRoom.numero);
+      setValue(`tipoHabitacion`, searchedRoom.tipoHabitacion);
+      setValue(`categoria`, searchedRoom.categoria);
+      setValue(`descripcion`, searchedRoom.descripcion);
+      setValue(`precio`, searchedRoom.precio);
+      setValue(`imagen`, searchedRoom.imagen);
+      setValue(`disponibilidad`, searchedRoom.disponibilidad);
+    }
+  };
   const onSubmit = async (room) => {
     if (editar) {
-      console.log("Aca se edita");
+      const response = await editRoomAPI(room, id);
+      if (response.status === 200) {
+        Swal.fire({
+          title: "¡Habitacion modificada!",
+          text: `La habitación ${room.numero} fue modificada correctamente.`,
+          icon: "success",
+        });
+        navigation("/administrador");
+      } else {
+        Swal.fire({
+          title: "¡Ocurrió un error!",
+          text: `La habitación ${room.numero} no fue modificada correctamente. Por favor, inténtelo nuevamente en unos minutos.`,
+          icon: "error",
+        });
+      }
     } else {
       const answer = await createRoomsAPI(room);
       if (answer.status === 201) {
