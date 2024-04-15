@@ -17,9 +17,7 @@ const RoomForm = ({ editar, titulo }) => {
     if (editar) {
       console.log("Aca se edita");
     } else {
-      console.log(room);
       const answer = await createRoomsAPI(room);
-      console.log(answer)
       if (answer.status === 201) {
         Swal.fire(
           "Habitación Creada",
