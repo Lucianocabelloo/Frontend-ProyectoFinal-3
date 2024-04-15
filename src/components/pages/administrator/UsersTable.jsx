@@ -3,7 +3,7 @@ import FilterTable from "./FilterTable";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
-const UsersTable = ({ users, handleSearchChange, searchTerm }) => {
+const UsersTable = ({ users, handleSearchChange, deleteUser, searchTerm }) => {
   const columnsUsers = [
     {
       name: "Nombre Completo",
@@ -33,7 +33,7 @@ const UsersTable = ({ users, handleSearchChange, searchTerm }) => {
           >
             <i className="bi bi-pencil-square"></i>
           </Link>
-          <Button variant="danger" className="me-2 mb-2">
+          <Button variant="danger" className="me-2 mb-2" onClick={() => deleteUser(row)}>
             <i className="bi bi-person-fill-x"></i>
           </Button>
         </div>

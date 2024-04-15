@@ -74,6 +74,15 @@ export const deleteUserAPI = async (id) => {
   }
 };
 
+export const getUserById = async (id) => {
+  try {
+    const response = await fetch(`${URI_USER}/${id}`);
+    return response;
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export const suspendUserAPI = async (activo, id) => {
   try {
     const answer = await fetch(`${URI_USER}/${id}`, {
