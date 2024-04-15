@@ -213,6 +213,7 @@ const Administrator = () => {
           <UsersTable
             users={users}
             handleSearchChange={handleSearchChange}
+            suspendUser={suspendUser}
             deleteUser={deleteUser}
             searchTerm={searchTerm}
           ></UsersTable>
