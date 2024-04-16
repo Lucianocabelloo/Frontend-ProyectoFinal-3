@@ -9,17 +9,16 @@ import RoomCard from "./rooms/RoomCard";
 import { useEffect, useState } from "react";
 import { getRoomsAPI } from "../../helpers/queries";
 
-
 const Rooms = () => {
-  const [rooms,setRooms] = useState([]);
-  const [loading, setLoading] = useState(true); 
+  const [rooms, setRooms] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-
-  useEffect(()=>{
+  useEffect(() => {
     getRooms();
-  },[])
+  }, []);
 
-  async function getRooms () {
+  async function getRooms() {
     try {
       const response = await getRoomsAPI();
       if (response.status === 200) {
@@ -27,8 +26,7 @@ const Rooms = () => {
         setRooms(data);
         setLoading(false);
       } else {
-   
-        setLoading(false); 
+        setLoading(false);
         Swal.fire({
           title: "Ocurrio un error!",
           text: `Intente esta operación en unos minutos`,
@@ -36,11 +34,18 @@ const Rooms = () => {
         });
       }
     } catch (error) {
-      setLoading(false); 
+      setLoading(false);
       console.error("Error al obtener los datos de las habitaciones:", error);
     }
   }
-  
+
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+  };
+
+  const filteredRooms = selectedCategory
+    ? rooms.filter((room) => room.categoria === selectedCategory)
+    : rooms;
 
   return (
     <>
@@ -91,7 +96,10 @@ const Rooms = () => {
             <h2 className="tituloHab mt-4">Habitaciones</h2>
           </Col>
           <Col lg="4">
-            <Form.Select className="selectPersonalizado">
+            <Form.Select
+              className="selectPersonalizado"
+              onChange={handleCategoryChange}
+            >
               <option value="">Todos</option>
               <option value="Standard">Standard</option>
               <option value="Deluxe">Deluxe</option>
@@ -102,19 +110,27 @@ const Rooms = () => {
         </Row>
         {loading && (
           <>
-          <Spinner variant="light" animation="border" className="d-flex m-auto" size="lg" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
-          <h2 className="text-center my-3">Cargando...</h2>
+            <Spinner
+              variant="light"
+              animation="border"
+              className="d-flex m-auto"
+              size="lg"
+              role="status"
+            >
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+            <h2 className="text-center my-3">Cargando...</h2>
           </>
         )}
-        {!loading &&        
-        <Row className="justify-content-center justify-content-lg-evenly align-items-center">
-          {
-            rooms.map((room)=> <RoomCard room={room} key={room._id}></RoomCard>)
-          }
-        </Row>
-        }
+        {!loading && (
+          <Row className="justify-content-center justify-content-lg-evenly align-items-center">
+            {filteredRooms.length > 0
+              ? filteredRooms.map((room) => (
+                  <RoomCard room={room} key={room._id}></RoomCard>
+                ))
+              : (<p className="text-center fs-3 mt-2">No hay habitaciones para esta categoria</p>)}
+          </Row>
+        )}
       </Container>
     </>
   );

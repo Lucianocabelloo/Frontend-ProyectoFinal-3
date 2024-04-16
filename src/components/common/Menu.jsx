@@ -32,7 +32,6 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
     setUserLoggedIn("");
     navigate("/");
   };
-
   async function getUserReservations() {
     const response = await getReservationsAPI();
     if (response.status === 200) {

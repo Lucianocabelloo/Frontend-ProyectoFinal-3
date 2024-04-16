@@ -15,7 +15,6 @@ import { Link } from 'react-router-dom';
 
 export default function TeamCard({user}) {
 
-  console.log(user)
 
   return (
     <Card
