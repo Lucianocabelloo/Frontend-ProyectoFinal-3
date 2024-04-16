@@ -8,18 +8,18 @@ const Footer = () => {
   };
   return (
     <Container fluid className="footer-Container">
-      <section className="footer-Content py-5 bg-transparent d-flex justify-content-evenly">
+      <section className="footer-Content py-5 px-2 bg-transparent d-flex justify-content-evenly">
         <div className="footer-Description">
-          <h3>Paradise Hotel Resort</h3>
-          <p>
+          <h3 className="text-center text-md-start mb-3">Paradise Hotel Resort</h3>
+          <p className="text-center text-md-start">
             En el corazón de Costa Serena, entre las olas que acarician la playa
             y los árboles que susurran secretos antiguos, nació Paradise Hotel
             Resort. Desde 2010, hemos sido un refugio de lujo donde el océano y
             la selva convergen para brindarte una experiencia inolvidable.
           </p>
         </div>
-        <div className="footer-Contact">
-          <h3>Contacto</h3>
+        <div className="footer-Contact mb-4 mt-3 mt-md-0 mb-md-0">
+          <h3 className="mb-3">Contacto</h3>
           <p className="d-flex align-items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,7 @@ const Footer = () => {
           </p>
         </div>
         <div className="footer-Links text-light">
-          <h3>Links</h3>
+          <h3 className="mb-3">Links</h3>
           <ul className="d-flex flex-column gap-2 p-0 ">
             <li className="d-flex align-items-center gap-2">
               <svg
@@ -127,7 +127,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="footer-SocialMedia text-light">
-          <h3>Redes Sociales</h3>
+          <h3 className="mb-3">Redes Sociales</h3>
           <ul className="list-unstyled d-flex flex-column gap-2 ">
             <li className="d-flex align-items-center gap-2">
               <svg
