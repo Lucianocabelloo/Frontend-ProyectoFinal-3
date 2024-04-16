@@ -12,7 +12,6 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
     setUserLoggedIn("");
     navigate("/");
   };
-console.log(userLoggedIn);
   return (
     <Navbar
       expand="lg"
