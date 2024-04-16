@@ -5,10 +5,13 @@ import { Container, Button, Modal } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "dayjs/locale/es";
-import { getReservationByNumberAPI } from "../../../helpers/reservationQueries";
+import {
+  getReservationByNumberAPI,
+  getReservationsAPI,
+} from "../../../helpers/reservationQueries";
 import Swal from "sweetalert2";
 
-const CalendarApp = ({ admin, number }) => {
+const CalendarApp = ({ admin, number, allReserve }) => {
   const localizer = dayjsLocalizer(dayjs);
   const [showModal, setShowModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -19,7 +22,11 @@ const CalendarApp = ({ admin, number }) => {
   const numRoom = admin ? numero : number;
 
   useEffect(() => {
-    getReservationRoom(numRoom);
+    if (allReserve) {
+      getAllReservations();
+    } else {
+      getReservationRoom(numRoom);
+    }
   }, []);
 
   const getReservationRoom = async (numero) => {
@@ -38,10 +45,26 @@ const CalendarApp = ({ admin, number }) => {
     }
   };
 
+  const getAllReservations = async () => {
+    try {
+      const response = await getReservationsAPI();
+      if (response.status === 200) {
+        const data = await response.json();
+        setReservationRoom(data);
+      }
+    } catch (error) {
+      Swal.fire(
+        "Ocurrio un error",
+        "No se pudo obtener las reservas, intenta dentro de unos minutos nuevamente",
+        "error"
+      );
+    }
+  };
+
   dayjs.locale("es");
 
   const handleEventClick = (event) => {
-    if (admin) {
+    if (admin || allReserve) {
       setSelectedEvent(event);
       setShowModal(true);
     }
@@ -74,7 +97,9 @@ const CalendarApp = ({ admin, number }) => {
         onClick={() => handleEventClick(event)}
         title=""
       >
-        <p className="m-0 text-light">{admin ? event.title : "Reservado"}</p>
+        <p className="m-0 text-light">
+          {admin || allReserve ? event.title : "Reservado"}
+        </p>
       </div>
     );
   };
@@ -144,10 +169,12 @@ const CalendarApp = ({ admin, number }) => {
         )}
       </Container>
       <Container className="my-2">
-        {admin && (
+        {admin || allReserve ? (
           <Link to="/administrador" className="btn btn-primary w-100">
             <i className="bi bi-arrow-bar-left"></i> Volver
           </Link>
+        ) : (
+          ""
         )}
       </Container>
     </>

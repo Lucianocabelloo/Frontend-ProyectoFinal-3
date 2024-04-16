@@ -3,7 +3,12 @@ import { Button, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import FilterTable from "./FilterTable";
 
-const ReservationTable = ({ reservations, handleSearchChange, searchTerm }) => {
+const ReservationTable = ({
+  reservations,
+  handleSearchChange,
+  searchTerm,
+  deleteReserve,
+}) => {
   const filteredReservations = reservations.filter(
     (reservation) =>
       reservation.nombreCompleto
@@ -58,16 +63,10 @@ const ReservationTable = ({ reservations, handleSearchChange, searchTerm }) => {
       name: "Opciones",
       cell: (row) => (
         <div className="text-center my-2">
-          <Link
-            to={`/detalle-habitacion/${row._id}`}
-            className="btn btn-info me-2 mb-2"
-          >
-            <i className="bi bi-eye"></i>
-          </Link>
           <Button
             variant="danger"
             className="me-2 mb-2"
-            // onClick={() => deleteRoom(row)}
+            onClick={() => deleteReserve(row)}
           >
             <i className="bi bi-trash3"></i>
           </Button>
