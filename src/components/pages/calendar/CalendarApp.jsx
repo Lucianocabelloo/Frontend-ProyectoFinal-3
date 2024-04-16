@@ -161,9 +161,9 @@ const CalendarApp = ({ admin, number, allReserve }) => {
               </p>
             </Modal.Body>
             <Modal.Footer className="text-end">
-              <Button variant="info">
+              <Link to="/error404" className="btn btn-info">
                 <i className="bi bi-printer"></i>
-              </Button>
+              </Link>
             </Modal.Footer>
           </Modal>
         )}
