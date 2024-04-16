@@ -50,9 +50,9 @@ const Rooms = () => {
   return (
     <>
       <section className="tituloPrincipal mb-3">
-        <h1 className="text-center">Rooms & Suites</h1>
+        <h1 className="text-center fw-bold text-uppercase">Rooms & Suites</h1>
       </section>
-      <Container className="my-4">
+      <Container className="my-5">
         <Row className="mb-3">
           <Col md="4">
             <hr className="hrRoom" />
@@ -91,9 +91,9 @@ const Rooms = () => {
           </Col>
         </Row>
         <hr className="hrRoom" />
-        <Row className="justify-content-evely align-items-center">
+        <Row className="justify-content-evely align-items-center mt-5">
           <Col lg="8">
-            <h2 className="tituloHab mt-4">Habitaciones</h2>
+            <h2 className="display-5 mb-4 mb-lg-0">Nuestras <span className="txt-details-color">habitaciones</span></h2>
           </Col>
           <Col lg="4">
             <Form.Select
@@ -128,7 +128,7 @@ const Rooms = () => {
               ? filteredRooms.map((room) => (
                   <RoomCard room={room} key={room._id}></RoomCard>
                 ))
-              : (<p className="text-center fs-3 mt-2">No hay habitaciones para esta categoria</p>)}
+              : (<p className="text-center text-secondary fs-3 my-5">No hay habitaciones para esta categoria</p>)}
           </Row>
         )}
       </Container>
