@@ -6,10 +6,12 @@ import {
   Navbar,
   Offcanvas,
   Row,
+  Col,
 } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { getReservationsAPI } from "../../helpers/reservationQueries";
 import ItemReservation from "../pages/reserve/ItemReservation";
+import Swal from "sweetalert2";
 
 const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
   const navigate = useNavigate();
@@ -17,8 +19,10 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
   const [userReservations, setUserReservations] = useState([]);
 
   useEffect(() => {
-    getUserReservations();
-  }, [userReservations]);
+    if (userLoggedIn && userLoggedIn.email) {
+      getUserReservations();
+    }
+  }, [userLoggedIn]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -38,7 +42,12 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
         (reserva) => reserva.email === reservasDeUsuario
       );
       setUserReservations(reservasFiltradas);
-      console.log(reservasFiltradas);
+    } else {
+      Swal.fire({
+        title: "Ocurrio un error!",
+        text: `Vuelva a ingresar en unos minutos.`,
+        icon: "error",
+      });
     }
   }
 
@@ -164,12 +173,20 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Row className="p-3 py-2">
-            {userReservations.map((reservation) => (
-              <ItemReservation
-                key={reservation._id}
-                reservation={reservation}
-              ></ItemReservation>
-            ))}
+            {userReservations.length !== 0 ? (
+              userReservations.map((reservation) => (
+                <ItemReservation
+                  key={reservation._id}
+                  reservation={reservation}
+                ></ItemReservation>
+              ))
+            ) : (
+              <Col md={12} className="pt-4">
+                <h4 className="text-secondary fs-3 text-center txt-montserrat fw-normal">
+                  No hay reservas
+                </h4>
+              </Col>
+            )}
           </Row>
         </Offcanvas.Body>
       </Offcanvas>

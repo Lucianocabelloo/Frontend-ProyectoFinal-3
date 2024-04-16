@@ -1,9 +1,10 @@
 import { Col } from "react-bootstrap";
 
 const ItemReservation = ({ reservation }) => {
-  const getDate = (fechaISO) => {
-    const date = new Date(fechaISO);
 
+  const getDate = (fechaISO) => {
+
+    const date = new Date(fechaISO);
     const months = [
       "Enero",
       "Febrero",
