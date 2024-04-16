@@ -121,9 +121,9 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
           </Nav>
         </Navbar.Collapse>
       </Container>
-      <Offcanvas show={show} onHide={handleClose} placement="end">
+      <Offcanvas show={show} onHide={handleClose} placement="end" className="bg-color">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+          <Offcanvas.Title className="txt-details-color">Mis reservas</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           Some text as placeholder. In real life you can have the elements you
