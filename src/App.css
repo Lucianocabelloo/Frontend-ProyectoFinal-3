@@ -443,7 +443,7 @@ label {
 }
 
 .modal-body {
-  background: #f0d78d;
+  background: #ededed;
 }
 .modal-body p {
   color: #08171e;
@@ -451,7 +451,8 @@ label {
 
 .calendarContainer {
   background-color: #f0d78d;
-  height: 100vh;
+  height: 80vh;
+  width: 85vw;
 }
 
 .rbc-event{
@@ -540,8 +541,8 @@ label {
   bottom: 20px;
   right: 20px;
   border-radius: 25px;
-  background-color: #08171e8c;
-  padding: 16px 30px;
+  background-color: #041016af;
+  padding: 15px 28px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -578,5 +579,11 @@ label {
     background: linear-gradient(0deg, #08171e, rgba(0, 0, 0, 0.5)),
       url("./assets/img/banner.jpg") no-repeat center center;
     background-size: cover;
+  }
+
+  .container-Button svg{
+    height: 25px;
+    width: 25px;
+  
   }
 }

@@ -58,7 +58,7 @@ const DetailsRoom = ({ userLoggedIn }) => {
         Detalles de <span className="txt-details-color">habitación</span>
       </h1>
       <hr className="txt-details-color my-4" />
-      <Row>
+      <Row className="my-5">
         <Col lg={6}>
           <div className="img-container-detail">
             <img
@@ -68,7 +68,7 @@ const DetailsRoom = ({ userLoggedIn }) => {
             />
           </div>
         </Col>
-        <Col lg={6} className="position-relative text-center mt-4 mt-lg-0">
+        <Col lg={6} className="position-relative text-center mt-4 mt-lg-0 px-3">
           <span className="room-number">{room.numero}</span>
           <h2 className="text-uppercase">Habitación {room.numero}</h2>
           <div className="d-flex align-items-center justify-content-center my-3">

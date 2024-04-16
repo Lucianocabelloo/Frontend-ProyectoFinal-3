@@ -154,9 +154,9 @@ const ReservationForm = ({
         <p>Los campos que tienen * son obligatorios.</p>
       </Form.Group>
       <Form.Group className="mb-3">
-        <Button type="submit" variant="primary">
+        <button className="btn-customized-2" type="submit">
           <i className="bi bi-arrow-right-circle"></i> Reservar
-        </Button>
+        </button>
       </Form.Group>
     </Form>
   );
