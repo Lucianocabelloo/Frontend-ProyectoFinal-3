@@ -221,11 +221,16 @@ label {
 }
 
 .tituloPrincipal {
-  background-image: url("./assets/img/rooms.jpg");
+  background: linear-gradient(0deg,rgba(0,0,0,0.5),rgba(0,0,0,0.2)) 
+  ,url("./assets/img/rooms.jpg");
   background-size: cover;
   background-position: center;
-  padding: 150px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  max-height: 36rem;
+  text-shadow: 3px 3px 15px rgba(0,0,0,0.2);
 }
 
 .hrRoom {
@@ -281,6 +286,7 @@ label {
 .selectPersonalizado {
   background-color: #f0d78d;
   color: #08171e;
+  font-weight: 600;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -491,6 +497,12 @@ label {
 
 .offcanvas-body {
   overflow-y: auto;
+}
+
+.card-room-img{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 @media (min-width: 980px) and (max-width: 1200px) {
