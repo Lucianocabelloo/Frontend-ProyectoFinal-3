@@ -1,21 +1,59 @@
-import { Button } from "react-bootstrap";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import { useEffect, useState } from "react";
+import {
+  Button,
+  Container,
+  Nav,
+  Navbar,
+  Offcanvas,
+  Row,
+  Col,
+} from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { getReservationsAPI } from "../../helpers/reservationQueries";
+import ItemReservation from "../pages/reserve/ItemReservation";
+import Swal from "sweetalert2";
 
 const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const [userReservations, setUserReservations] = useState([]);
+
+  useEffect(() => {
+    if (userLoggedIn && userLoggedIn.email) {
+      getUserReservations();
+    }
+  }, [userLoggedIn]);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const logout = () => {
     sessionStorage.removeItem("usuarioHotel");
     setUserLoggedIn("");
     navigate("/");
   };
+  async function getUserReservations() {
+    const response = await getReservationsAPI();
+    if (response.status === 200) {
+      const reservasDeUsuario = userLoggedIn.email;
+      const data = await response.json();
+      const reservasFiltradas = data.filter(
+        (reserva) => reserva.email === reservasDeUsuario
+      );
+      setUserReservations(reservasFiltradas);
+    } else {
+      Swal.fire({
+        title: "Ocurrio un error!",
+        text: `Vuelva a ingresar en unos minutos.`,
+        icon: "error",
+      });
+    }
+  }
+
   return (
     <Navbar
       expand="lg"
-      className="d-flex justify-content-center  navbar-dark bg-transparent"
+      className="d-flex justify-content-center navbar-dark bg-transparent py-3"
     >
       <Container className="container-nav justify-content-evenly align-items-center">
         <Navbar.Brand
@@ -52,7 +90,22 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
           <Nav className="d-flex flex-row justify-content-evenly bubble align-items-center">
             {Object.keys(userLoggedIn).length > 0 ? (
               <>
-                <p className="m-0 text-center"><i className="bi bi-person fs-4"></i> {userLoggedIn.nombreCompleto.split(" ")[0]}</p>
+                <button
+                  className="btn btn-outline-warning me-2 fw-semibold"
+                  onClick={handleShow}
+                >
+                  Mis reservas
+                </button>
+                <button
+                  className="btn btn-outline-danger fw-semibold"
+                  onClick={logout}
+                >
+                  <i className="bi bi-box-arrow-left "></i> Logout
+                </button>
+                <p className="m-0 ms-3 text-center fw-bold">
+                  <i className="bi bi-person fs-4 txt-details-color"></i>{" "}
+                  {userLoggedIn.nombreCompleto.split(" ")[0]}
+                </p>
                 {userLoggedIn.rol === "Administrador" ? (
                   <NavLink to="/administrador" className="nav-link">
                     <svg
@@ -71,17 +124,14 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
                 ) : (
                   false
                 )}
-                <Button className="nav-link active ms-2" onClick={logout}>
-                  <i className="bi bi-box-arrow-left"></i> Logout
-                </Button>
               </>
             ) : (
               <>
                 <NavLink to="/registro" className="nav-link">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
+                    width="30"
+                    height="30"
                     fill="currentColor"
                     className="bi bi-person-add"
                     viewBox="0 0 16 16"
@@ -94,8 +144,8 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
                 <NavLink to="/iniciar-sesion" className="nav-link">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
+                    width="30"
+                    height="30"
                     fill="currentColor"
                     className="bi bi-person"
                     viewBox="0 0 16 16"
@@ -109,6 +159,36 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
           </Nav>
         </Navbar.Collapse>
       </Container>
+      <Offcanvas
+        show={show}
+        onHide={handleClose}
+        placement="end"
+        className="bg-color"
+      >
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title className="text-light fs-2">
+            Mis reservas
+          </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <Row className="p-3 py-2">
+            {userReservations.length !== 0 ? (
+              userReservations.map((reservation) => (
+                <ItemReservation
+                  key={reservation._id}
+                  reservation={reservation}
+                ></ItemReservation>
+              ))
+            ) : (
+              <Col md={12} className="pt-4">
+                <h4 className="text-secondary fs-3 text-center txt-montserrat fw-normal">
+                  No hay reservas
+                </h4>
+              </Col>
+            )}
+          </Row>
+        </Offcanvas.Body>
+      </Offcanvas>
     </Navbar>
   );
 };
