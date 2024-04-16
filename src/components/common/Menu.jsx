@@ -1,22 +1,24 @@
-import { Button } from "react-bootstrap";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import { useState } from "react";
+import { Button, Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const logout = () => {
     sessionStorage.removeItem("usuarioHotel");
     setUserLoggedIn("");
     navigate("/");
   };
-console.log(userLoggedIn);
+  console.log(userLoggedIn);
   return (
     <Navbar
       expand="lg"
-      className="d-flex justify-content-center  navbar-dark bg-transparent"
+      className="d-flex justify-content-center navbar-dark bg-transparent py-3"
     >
       <Container className="container-nav justify-content-evenly align-items-center">
         <Navbar.Brand
@@ -53,7 +55,19 @@ console.log(userLoggedIn);
           <Nav className="d-flex flex-row justify-content-evenly bubble align-items-center">
             {Object.keys(userLoggedIn).length > 0 ? (
               <>
-                <p className="m-0 text-center"><i className="bi bi-person fs-4"></i> {userLoggedIn.nombreCompleto.split(" ")[0]}</p>
+                <button className="btn btn-outline-warning me-2 fw-semibold" onClick={handleShow}>
+                  Mis reservas
+                </button>
+                <button
+                  className="btn btn-outline-danger fw-semibold"
+                  onClick={logout}
+                >
+                  <i className="bi bi-box-arrow-left "></i> Logout
+                </button>
+                <p className="m-0 ms-3 text-center fw-bold">
+                  <i className="bi bi-person fs-4 txt-details-color"></i>{" "}
+                  {userLoggedIn.nombreCompleto.split(" ")[0]}
+                </p>
                 {userLoggedIn.rol === "Administrador" ? (
                   <NavLink to="/administrador" className="nav-link">
                     <svg
@@ -72,17 +86,14 @@ console.log(userLoggedIn);
                 ) : (
                   false
                 )}
-                <Button className="nav-link active ms-2" onClick={logout}>
-                  <i className="bi bi-box-arrow-left"></i> Logout
-                </Button>
               </>
             ) : (
               <>
                 <NavLink to="/registro" className="nav-link">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
+                    width="30"
+                    height="30"
                     fill="currentColor"
                     className="bi bi-person-add"
                     viewBox="0 0 16 16"
@@ -95,8 +106,8 @@ console.log(userLoggedIn);
                 <NavLink to="/iniciar-sesion" className="nav-link">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
+                    width="30"
+                    height="30"
                     fill="currentColor"
                     className="bi bi-person"
                     viewBox="0 0 16 16"
@@ -110,6 +121,15 @@ console.log(userLoggedIn);
           </Nav>
         </Navbar.Collapse>
       </Container>
+      <Offcanvas show={show} onHide={handleClose} placement="end">
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          Some text as placeholder. In real life you can have the elements you
+          have chosen. Like, text, images, lists, etc.
+        </Offcanvas.Body>
+      </Offcanvas>
     </Navbar>
   );
 };
