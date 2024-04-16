@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getRoomById } from "../../helpers/queries";
 import Swal from "sweetalert2";
 import CalendarApp from "./calendar/CalendarApp";
@@ -12,6 +12,7 @@ const DetailsRoom = ({ userLoggedIn }) => {
   const [room, setRoom] = useState([]);
   const [showModalCalendar, setShowModalCalendar] = useState(false);
   const [showModalReserve, setShowModalReserve] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadRoomData();
@@ -40,7 +41,22 @@ const DetailsRoom = ({ userLoggedIn }) => {
   };
 
   const handleEventReserveModal = (event) => {
-    setShowModalReserve(true);
+    if (userLoggedIn.email !== undefined) {
+      setShowModalReserve(true);
+    } else {
+      Swal.fire({
+        title: "Iniciar sesión",
+        text: "Debes iniciar sesión para hacer una reserva.",
+        icon: "warning",
+        confirmButtonText: "Iniciar sesión",
+        cancelButtonText: "Cancelar",
+        showCancelButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/iniciar-sesion'); // Redirigir al usuario a la página de inicio de sesión
+        }
+      });
+    }
   };
 
   const handleReserveModalClose = () => {
