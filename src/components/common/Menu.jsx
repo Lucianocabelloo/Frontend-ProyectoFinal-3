@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { getReservationsAPI } from "../../helpers/reservationQueries";
 
 const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+  const [userReservations,setUserReservations] = useState([]);
+
+  useEffect(()=>{
+    getUserReservations();
+  },[])
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -14,7 +20,18 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
     setUserLoggedIn("");
     navigate("/");
   };
-  console.log(userLoggedIn);
+
+  async function getUserReservations() {
+    const response = await getReservationsAPI();
+    if (response.status === 200) {
+      const reservasDeUsuario = userLoggedIn.email;
+      const data = await response.json();
+      const reservasFiltradas = data.filter((reserva)=>reserva.email === reservasDeUsuario);
+      setUserReservations(reservasFiltradas);
+    }
+  }
+
+
   return (
     <Navbar
       expand="lg"
@@ -125,10 +142,9 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
         <Offcanvas.Header closeButton>
           <Offcanvas.Title className="txt-details-color">Mis reservas</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
-        </Offcanvas.Body>
+        {
+          
+        }
       </Offcanvas>
     </Navbar>
   );
