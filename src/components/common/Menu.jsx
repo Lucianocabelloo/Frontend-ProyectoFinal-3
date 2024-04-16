@@ -1,16 +1,24 @@
 import { useEffect, useState } from "react";
-import { Button, Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
+import {
+  Button,
+  Container,
+  Nav,
+  Navbar,
+  Offcanvas,
+  Row,
+} from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { getReservationsAPI } from "../../helpers/reservationQueries";
+import ItemReservation from "../pages/reserve/ItemReservation";
 
 const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-  const [userReservations,setUserReservations] = useState([]);
+  const [userReservations, setUserReservations] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     getUserReservations();
-  },[])
+  }, [userReservations]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -26,11 +34,13 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
     if (response.status === 200) {
       const reservasDeUsuario = userLoggedIn.email;
       const data = await response.json();
-      const reservasFiltradas = data.filter((reserva)=>reserva.email === reservasDeUsuario);
+      const reservasFiltradas = data.filter(
+        (reserva) => reserva.email === reservasDeUsuario
+      );
       setUserReservations(reservasFiltradas);
+      console.log(reservasFiltradas);
     }
   }
-
 
   return (
     <Navbar
@@ -72,7 +82,10 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
           <Nav className="d-flex flex-row justify-content-evenly bubble align-items-center">
             {Object.keys(userLoggedIn).length > 0 ? (
               <>
-                <button className="btn btn-outline-warning me-2 fw-semibold" onClick={handleShow}>
+                <button
+                  className="btn btn-outline-warning me-2 fw-semibold"
+                  onClick={handleShow}
+                >
                   Mis reservas
                 </button>
                 <button
@@ -138,13 +151,27 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
           </Nav>
         </Navbar.Collapse>
       </Container>
-      <Offcanvas show={show} onHide={handleClose} placement="end" className="bg-color">
+      <Offcanvas
+        show={show}
+        onHide={handleClose}
+        placement="end"
+        className="bg-color"
+      >
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="txt-details-color">Mis reservas</Offcanvas.Title>
+          <Offcanvas.Title className="text-light fs-2">
+            Mis reservas
+          </Offcanvas.Title>
         </Offcanvas.Header>
-        {
-          
-        }
+        <Offcanvas.Body>
+          <Row className="p-3 py-2">
+            {userReservations.map((reservation) => (
+              <ItemReservation
+                key={reservation._id}
+                reservation={reservation}
+              ></ItemReservation>
+            ))}
+          </Row>
+        </Offcanvas.Body>
       </Offcanvas>
     </Navbar>
   );

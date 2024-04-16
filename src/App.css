@@ -129,7 +129,6 @@ label {
 .btn-customized-2:hover {
   background: #0d2531;
   text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-  letter-spacing: 3px;
 }
 
 /* Home page STYLES  */
@@ -482,6 +481,16 @@ label {
 }
 .modal-calendar{
   color: #08171e;
+}
+
+.list-customized{
+  list-style: none;
+  color: #eee;
+  font-family: 'Montserrat',sans-serif;
+}
+
+.offcanvas-body {
+  overflow-y: auto;
 }
 
 @media (min-width: 980px) and (max-width: 1200px) {
