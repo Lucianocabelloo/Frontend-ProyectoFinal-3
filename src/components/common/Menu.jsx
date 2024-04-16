@@ -76,7 +76,7 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
               Habitaciones
             </NavLink>
             <NavLink to="/nosotros" className="nav-link">
-              Acerca de nosotros
+              Nosotros
             </NavLink>
             <NavLink to="/galeria" className="nav-link">
               Galeria de Imagenes

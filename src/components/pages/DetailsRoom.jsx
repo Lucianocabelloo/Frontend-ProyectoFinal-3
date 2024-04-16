@@ -18,6 +18,10 @@ const DetailsRoom = ({ userLoggedIn }) => {
     loadRoomData();
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
+
   async function loadRoomData() {
     const response = await getRoomById(id);
     if (response.status === 200) {

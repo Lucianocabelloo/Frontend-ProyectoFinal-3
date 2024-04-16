@@ -542,6 +542,7 @@ label {
   right: 20px;
   border-radius: 25px;
   background-color: #041016af;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
   padding: 15px 28px;
   display: flex;
   justify-content: center;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import  img1 from "../../../assets/img/room1.jpg"
 import  img2 from "../../../assets/img/room2.jpg"
@@ -12,6 +12,10 @@ import CarouselGalery from './CarouselGalery'
 import "./gallery.css"
 
 const Gallery = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const data = [
         {

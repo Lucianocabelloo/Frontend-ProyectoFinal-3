@@ -18,6 +18,10 @@ const Rooms = () => {
     getRooms();
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   async function getRooms() {
     try {
       const response = await getRoomsAPI();
