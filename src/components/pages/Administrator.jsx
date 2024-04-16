@@ -12,11 +12,14 @@ import FilterTable from "./administrator/FilterTable";
 import { deleteRoomAPI, getRoomsAPI } from "../../helpers/queries";
 import UsersTable from "./administrator/UsersTable";
 import RoomsTable from "./administrator/RoomsTable";
+import { getReservationsAPI } from "../../helpers/reservationQueries";
+import ReservationTable from "./administrator/ReservationTable";
 
 const Administrator = () => {
   const [tabla, setTabla] = useState("Habitaciones");
   const [users, setUsers] = useState([]);
   const [rooms, setRooms] = useState([]);
+  const [reservations, setReservations] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleOnChange = (event) => {
@@ -26,6 +29,7 @@ const Administrator = () => {
   useEffect(() => {
     getUsers();
     getRooms();
+    getReservations();
   }, []);
 
   const getUsers = async () => {
@@ -51,6 +55,22 @@ const Administrator = () => {
       Swal.fire(
         "Ocurrio un error",
         "No se pudo obtener las habitaciones, intenta dentro de unos minutos nuevamente",
+        "error"
+      );
+    }
+  };
+
+  const getReservations = async () => {
+    try {
+      const response = await getReservationsAPI();
+      if (response.status === 200) {
+        const data = await response.json();
+        setReservations(data);
+      }
+    } catch (error) {
+      Swal.fire(
+        "Ocurrio un error",
+        "No se pudo obtener las reservas, intenta dentro de unos minutos nuevamente",
         "error"
       );
     }
@@ -180,6 +200,7 @@ const Administrator = () => {
           >
             <option value="Habitaciones">Habitaciones</option>
             <option value="Usuarios">Usuarios</option>
+            <option value="Reservas">Reservas</option>
           </Form.Select>
         </Col>
         <Col md="8" className="text-md-end text-center mb-3">
@@ -217,6 +238,15 @@ const Administrator = () => {
             deleteUser={deleteUser}
             searchTerm={searchTerm}
           ></UsersTable>
+        </div>
+      )}
+      {tabla === "Reservas" && (
+        <div className="tableContainer">
+          <ReservationTable
+            reservations={reservations}
+            handleSearchChange={handleSearchChange}
+            searchTerm={searchTerm}
+          ></ReservationTable>
         </div>
       )}
     </Container>
