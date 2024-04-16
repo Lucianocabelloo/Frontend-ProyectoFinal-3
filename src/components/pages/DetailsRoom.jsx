@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getRoomById } from "../../helpers/queries";
 import Swal from "sweetalert2";
 import CalendarApp from "./calendar/CalendarApp";
@@ -12,6 +12,7 @@ const DetailsRoom = ({ userLoggedIn }) => {
   const [room, setRoom] = useState([]);
   const [showModalCalendar, setShowModalCalendar] = useState(false);
   const [showModalReserve, setShowModalReserve] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadRoomData();
@@ -40,7 +41,22 @@ const DetailsRoom = ({ userLoggedIn }) => {
   };
 
   const handleEventReserveModal = (event) => {
-    setShowModalReserve(true);
+    if (userLoggedIn.email !== undefined) {
+      setShowModalReserve(true);
+    } else {
+      Swal.fire({
+        title: "Iniciar sesión",
+        text: "Debes iniciar sesión para hacer una reserva.",
+        icon: "warning",
+        confirmButtonText: "Iniciar sesión",
+        cancelButtonText: "Cancelar",
+        showCancelButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/iniciar-sesion'); // Redirigir al usuario a la página de inicio de sesión
+        }
+      });
+    }
   };
 
   const handleReserveModalClose = () => {
@@ -58,7 +74,7 @@ const DetailsRoom = ({ userLoggedIn }) => {
         Detalles de <span className="txt-details-color">habitación</span>
       </h1>
       <hr className="txt-details-color my-4" />
-      <Row>
+      <Row className="my-5">
         <Col lg={6}>
           <div className="img-container-detail">
             <img
@@ -68,7 +84,7 @@ const DetailsRoom = ({ userLoggedIn }) => {
             />
           </div>
         </Col>
-        <Col lg={6} className="position-relative text-center mt-4 mt-lg-0">
+        <Col lg={6} className="position-relative text-center mt-4 mt-lg-0 px-3">
           <span className="room-number">{room.numero}</span>
           <h2 className="text-uppercase">Habitación {room.numero}</h2>
           <div className="d-flex align-items-center justify-content-center my-3">
