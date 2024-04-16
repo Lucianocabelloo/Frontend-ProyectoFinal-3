@@ -47,7 +47,7 @@ const Register = () => {
   };
   return (
     <div className="myMainR bgDarkR">
-      <Container className="myContR my-5">
+      <Container className="myContR">
         <Card className="bgLightR myCardR">
           <Row>
             <Col className="p-0">
