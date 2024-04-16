@@ -53,6 +53,7 @@ import Administrator from "./components/pages/Administrator";
 import { useState } from "react";
 import ProtectedRoutes from "./components/routes/ProtectedRoutes";
 import AdminRoutes from "./components/routes/AdminRoutes";
+import FloatingButton from "./components/common/FloatingButton";
 
 function App() {
   const user = JSON.parse(sessionStorage.getItem("usuarioHotel")) || {};
@@ -61,6 +62,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      <FloatingButton/>
         <Menu userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn} />
         <Routes>
           <Route exact path="/" element={<Home></Home>}></Route>
