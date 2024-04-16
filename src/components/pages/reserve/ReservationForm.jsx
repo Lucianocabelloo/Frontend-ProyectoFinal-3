@@ -85,17 +85,13 @@ const ReservationForm = ({
       <Form.Group className="mb-3 " controlId="dni">
         <Form.Label className="text-dark">DNI:*</Form.Label>
         <Form.Control
-          type="text"
+          type="number"
           placeholder="Ingrese su dni"
           {...register("dni", {
             required: "El DNI es obligatorio",
-            minLength: {
-              value: 8,
-              message: "El dni debe tener 8 caracteres como mínimo",
-            },
-            maxLength: {
-              value: 10,
-              message: "El dni debe tener 10 caracteres como máximo",
+            pattern: {
+              value: /^\d{7,8}$/,
+              message: "Debe contener entre 7 u 8 caracteres",
             },
           })}
         />
@@ -104,19 +100,14 @@ const ReservationForm = ({
       <Form.Group className="mb-3 " controlId="telefono">
         <Form.Label className="text-dark">Teléfono:*</Form.Label>
         <Form.Control
-          type="text"
+          type="number"
           placeholder="Ingrese su teléfono"
           {...register("telefono", {
             required: "El número de teléfono es obligatorio",
-            minLength: {
-              value: 7,
-              message:
-                "El número de teléfono debe tener 7 caracteres como mínimo",
-            },
-            maxLength: {
-              value: 15,
-              message:
-                "El número de teléfono debe tener 15 caracteres como máximo",
+            pattern: {
+              value:
+                /^((\+54\s?)?(\s?9\s?)?\d{2,3}[\s-]?\d{3,4}-?\d{3,4}|\d{10,11}|(\d{3,4}[\s-]){1,2}\d{3,4})$/g,
+              message: "Debe tener un formato de telefono valido",
             },
           })}
         />
@@ -140,7 +131,7 @@ const ReservationForm = ({
         </Form.Text>
       </Form.Group>
       <Form.Group className="mb-3" controlId="fechaFin">
-        <Form.Label className="text-dark">Fecha Inicio Reserva:*</Form.Label>
+        <Form.Label className="text-dark">Fecha Final Reserva:*</Form.Label>
         <Form.Control
           type="date"
           name="fechaFin"
