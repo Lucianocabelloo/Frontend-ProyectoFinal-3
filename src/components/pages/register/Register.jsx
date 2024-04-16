@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { createUserAPI } from "../../../helpers/userQueries";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,6 +19,7 @@ const Register = () => {
     formState: { errors },
     reset,
   } = useForm();
+  const navigation = useNavigate();
   const onSubmit = async (user) => {
     user.rol = "Usuario";
     user.activo = true;
@@ -36,6 +38,7 @@ const Register = () => {
         publicKey: "Yw6Pt71umYLXr2vzv",
       });
       reset();
+      navigation("/iniciar-sesion");
     } else {
       Swal.fire({
         title: "Ocurrió un error!",
@@ -47,7 +50,7 @@ const Register = () => {
   };
   return (
     <div className="myMainR bgDarkR">
-      <Container className="myContR my-5">
+      <Container className="myContR">
         <Card className="bgLightR myCardR">
           <Row>
             <Col className="p-0">
@@ -127,6 +130,14 @@ const Register = () => {
                       placeholder="*******"
                       {...register("password", {
                         required: "Ingresar la contraseña es obligatorio",
+                        minLength: {
+                          value: 8,
+                          message: "el minimo es de 8 caracteres",
+                        },
+                        maxLength: {
+                          value: 24,
+                          message: "el maximo es de 24 caracteres",
+                        },
                         pattern: {
                           value:
                             /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,

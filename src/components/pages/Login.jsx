@@ -120,7 +120,7 @@ const Login = ({ setUserLoggedIn }) => {
                     pattern: {
                       value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
                       message:
-                        "La contraseña debe contener al menos una letra mayúscula, una letra minúscula y un número",
+                        "La contraseña debe contener entre 8 y 24 caracteres, una letra mayúscula, una letra minúscula y un número",
                     },
                   })}
                 />

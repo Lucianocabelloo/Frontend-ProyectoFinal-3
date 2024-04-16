@@ -15,6 +15,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 .myCardR {
   width: 80%;
@@ -178,6 +180,8 @@
     margin-right: 0;
     padding-left: 4;
     padding-right: 4;
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
   .myFormR {
     width: 100%;
