@@ -7,16 +7,20 @@ import {
   suspendUserAPI,
 } from "../../helpers/userQueries";
 import Swal from "sweetalert2";
-import DataTable from "react-data-table-component";
-import FilterTable from "./administrator/FilterTable";
 import { deleteRoomAPI, getRoomsAPI } from "../../helpers/queries";
 import UsersTable from "./administrator/UsersTable";
 import RoomsTable from "./administrator/RoomsTable";
+import {
+  deleteReservationAPI,
+  getReservationsAPI,
+} from "../../helpers/reservationQueries";
+import ReservationTable from "./administrator/ReservationTable";
 
 const Administrator = () => {
   const [tabla, setTabla] = useState("Habitaciones");
   const [users, setUsers] = useState([]);
   const [rooms, setRooms] = useState([]);
+  const [reservations, setReservations] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleOnChange = (event) => {
@@ -26,6 +30,7 @@ const Administrator = () => {
   useEffect(() => {
     getUsers();
     getRooms();
+    getReservations();
   }, []);
 
   const getUsers = async () => {
@@ -51,6 +56,22 @@ const Administrator = () => {
       Swal.fire(
         "Ocurrio un error",
         "No se pudo obtener las habitaciones, intenta dentro de unos minutos nuevamente",
+        "error"
+      );
+    }
+  };
+
+  const getReservations = async () => {
+    try {
+      const response = await getReservationsAPI();
+      if (response.status === 200) {
+        const data = await response.json();
+        setReservations(data);
+      }
+    } catch (error) {
+      Swal.fire(
+        "Ocurrio un error",
+        "No se pudo obtener las reservas, intenta dentro de unos minutos nuevamente",
         "error"
       );
     }
@@ -165,6 +186,41 @@ const Administrator = () => {
       }
     });
   };
+
+  const deleteReserve = (row) => {
+    Swal.fire({
+      title: "¿Estás seguro de querer eliminar la reserva?",
+      text: "¡Este cambio no se puede revertir!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, ¡borrarla!",
+      cancelButtonText: "¡Cancelar!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const answer = await deleteReservationAPI(row._id);
+        if (answer.status === 200) {
+          Swal.fire({
+            title: "¡Eliminado!",
+            text: `La reserva fue eliminada.`,
+            icon: "success",
+          });
+          const response = await getReservationsAPI();
+          if (response.status === 200) {
+            const data = await response.json();
+            setReservations(data);
+          }
+        } else {
+          Swal.fire({
+            title: "¡Ocurrió un error!",
+            text: `La reserva no fue eliminada correctamente. Por favor, inténtelo nuevamente en unos minutos.`,
+            icon: "error",
+          });
+        }
+      }
+    });
+  };
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -180,6 +236,7 @@ const Administrator = () => {
           >
             <option value="Habitaciones">Habitaciones</option>
             <option value="Usuarios">Usuarios</option>
+            <option value="Reservas">Reservas</option>
           </Form.Select>
         </Col>
         <Col md="8" className="text-md-end text-center mb-3">
@@ -194,6 +251,14 @@ const Administrator = () => {
               className="btn btn-primary me-2"
             >
               <i className="bi bi-person-add"></i>
+            </Link>
+          )}
+          {tabla === "Reservas" && (
+            <Link
+              to="/administrador/calendario"
+              className="btn btn-primary me-2"
+            >
+              <i className="bi bi-calendar-date"></i>
             </Link>
           )}
         </Col>
@@ -217,6 +282,16 @@ const Administrator = () => {
             deleteUser={deleteUser}
             searchTerm={searchTerm}
           ></UsersTable>
+        </div>
+      )}
+      {tabla === "Reservas" && (
+        <div className="tableContainer">
+          <ReservationTable
+            reservations={reservations}
+            handleSearchChange={handleSearchChange}
+            searchTerm={searchTerm}
+            deleteReserve={deleteReserve}
+          ></ReservationTable>
         </div>
       )}
     </Container>

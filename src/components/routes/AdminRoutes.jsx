@@ -13,6 +13,11 @@ const AdminRoutes = () => {
           path="/calendario/:numero"
           element={<CalendarApp admin={true}></CalendarApp>}
         ></Route>
+        <Route
+          exact
+          path="/calendario"
+          element={<CalendarApp allReserve={true}></CalendarApp>}
+        ></Route>
         <Route exact path="/" element={<Administrator></Administrator>}></Route>
         <Route
           exact
