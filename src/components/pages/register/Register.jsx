@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { createUserAPI } from "../../../helpers/userQueries";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,6 +19,7 @@ const Register = () => {
     formState: { errors },
     reset,
   } = useForm();
+  const navigation = useNavigate();
   const onSubmit = async (user) => {
     user.rol = "Usuario";
     user.activo = true;
@@ -36,6 +38,7 @@ const Register = () => {
         publicKey: "Yw6Pt71umYLXr2vzv",
       });
       reset();
+      navigation("/iniciar-sesion");
     } else {
       Swal.fire({
         title: "Ocurrió un error!",
