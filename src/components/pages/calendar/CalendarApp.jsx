@@ -111,7 +111,7 @@ const CalendarApp = ({ admin, number, allReserve }) => {
   return (
     <>
       {Object.keys(reservationsRoom).length > 0 && (
-        <h4 className="text-center mt-2">{reservationsRoom.mensaje}</h4>
+        <h4 className="text-center mt-2 text-dark fs-1">{reservationsRoom.mensaje}</h4>
       )}
       <Container fluid className="my-3 p-2 mainContainer calendarContainer">
         <Calendar
