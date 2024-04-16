@@ -127,6 +127,14 @@ const Register = () => {
                       placeholder="*******"
                       {...register("password", {
                         required: "Ingresar la contraseña es obligatorio",
+                        minLength: {
+                          value: 8,
+                          message: "el minimo es de 8 caracteres",
+                        },
+                        maxLength: {
+                          value: 24,
+                          message: "el maximo es de 24 caracteres",
+                        },
                         pattern: {
                           value:
                             /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
