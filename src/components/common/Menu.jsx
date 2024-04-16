@@ -90,12 +90,14 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
           <Nav className="d-flex flex-row justify-content-evenly bubble align-items-center">
             {Object.keys(userLoggedIn).length > 0 ? (
               <>
-                <button
-                  className="btn btn-outline-warning me-2 fw-semibold"
-                  onClick={handleShow}
-                >
-                  Mis reservas
-                </button>
+                {userLoggedIn.rol !== "Administrador" && (
+                  <button
+                    className="btn btn-outline-warning me-2 fw-semibold"
+                    onClick={handleShow}
+                  >
+                    Mis reservas
+                  </button>
+                )}
                 <button
                   className="btn btn-outline-danger fw-semibold"
                   onClick={logout}
