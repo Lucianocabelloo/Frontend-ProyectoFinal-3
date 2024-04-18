@@ -35,11 +35,8 @@ const Login = ({ setUserLoggedIn }) => {
         navigate("/");
       }
     } else {
-      Swal.fire(
-        "Ocurrio un error",
-        "Correo o contraseña incorrectos o usuario suspendido",
-        "error"
-      );
+      const msg = await answer.json();
+      Swal.fire("Ocurrio un error", `${msg.message}`, "error");
     }
   };
 
