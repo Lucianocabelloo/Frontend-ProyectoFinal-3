@@ -51,7 +51,7 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
   }
 
   const deleteReserveFromUser = () => {
-    setUserReservations([]);
+    setUserReservations([]); 
   };
 
   return (
@@ -184,6 +184,7 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
                   key={reservation._id}
                   reservation={reservation}
                   deleteReserveFromUser={deleteReserveFromUser}
+
                 ></ItemReservation>
               ))
             ) : (

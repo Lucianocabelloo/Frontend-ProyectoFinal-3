@@ -97,6 +97,8 @@ const ItemReservation = ({ reservation, deleteReserveFromUser }) => {
       });
     };
 
+
+
   return (
     <Col md={12} className="mb-4 bg-color-2 py-3">
       <h4 className="txt-details-color fs-3">
