@@ -50,6 +50,10 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
     }
   }
 
+  const deleteReserveFromUser = () => {
+    setUserReservations([]); 
+  };
+
   return (
     <Navbar
       expand="lg"
@@ -179,6 +183,8 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
                 <ItemReservation
                   key={reservation._id}
                   reservation={reservation}
+                  deleteReserveFromUser={deleteReserveFromUser}
+
                 ></ItemReservation>
               ))
             ) : (
