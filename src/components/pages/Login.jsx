@@ -42,7 +42,9 @@ const Login = ({ setUserLoggedIn }) => {
       );
     }
   };
-
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <div className="bg-login mainContainer">
       <Container>
@@ -137,6 +139,7 @@ const Login = ({ setUserLoggedIn }) => {
                 </Link>
                 <button
                   type="submit"
+                  onClick={scrollToTop}
                   className="btn-customized-2 d-block m-auto mt-4 fs-5"
                 >
                   Iniciar sesión

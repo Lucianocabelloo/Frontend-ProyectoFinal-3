@@ -96,7 +96,6 @@ const Footer = () => {
               </svg>
               <Link to="/404" onClick={() => scrollToTop("/404")}>FAQ</Link>
             </li>
-
             <li className="d-flex align-items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
