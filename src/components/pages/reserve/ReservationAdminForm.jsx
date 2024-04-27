@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { getRoomsAPI } from "../../../helpers/queries";
 import { createReserveAPI } from "../../../helpers/reservationQueries";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ReservationAdminForm = ({ titulo, editar }) => {
   const [rooms, setRooms] = useState([]);
@@ -266,9 +267,12 @@ const ReservationAdminForm = ({ titulo, editar }) => {
           <p>Los campos que tienen * son obligatorios.</p>
         </Form.Group>
         <Form.Group className="mb-3">
-          <Button type="submit">
+          <Button type="submit" variant="success" className="me-2">
             <i className="bi bi-arrow-right-circle"></i> Reservar
           </Button>
+          <Link to="/administrador" className="btn btn-primary">
+            <i className="bi bi-arrow-bar-left"></i> Volver
+          </Link>
         </Form.Group>
       </Form>
     </Container>
