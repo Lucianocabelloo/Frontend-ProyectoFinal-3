@@ -254,12 +254,20 @@ const Administrator = () => {
             </Link>
           )}
           {tabla === "Reservas" && (
-            <Link
-              to="/administrador/calendario"
-              className="btn btn-primary me-2"
-            >
-              <i className="bi bi-calendar-date"></i>
-            </Link>
+            <>
+              <Link
+                to="/administrador/crear-reserva"
+                className="btn btn-primary me-2"
+              >
+                <i class="bi bi-file-earmark-plus-fill"></i>
+              </Link>
+              <Link
+                to="/administrador/calendario"
+                className="btn btn-secondary me-2"
+              >
+                <i className="bi bi-calendar-date"></i>
+              </Link>
+            </>
           )}
         </Col>
       </Row>
