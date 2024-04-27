@@ -122,7 +122,7 @@ const Register = () => {
                       <b>{errors.email?.message}&nbsp;</b>
                     </Form.Text>
                   </Form.Group>
-                  <Form.Group controlId="formPassword">
+                  <Form.Group className="mb-3" controlId="formPassword">
                     <Form.Label className="myLabelR ps-3">
                       Contraseña
                     </Form.Label>
