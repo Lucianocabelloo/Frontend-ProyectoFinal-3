@@ -45,6 +45,11 @@ const AdminRoutes = () => {
           path="/crear-reserva"
           element={<ReservationAdminForm titulo="Crear" editar={false}></ReservationAdminForm>}
         ></Route>
+        <Route
+          exact
+          path="/editar-reserva/:id"
+          element={<ReservationAdminForm titulo="Editar" editar={true}></ReservationAdminForm>}
+        ></Route>
       </Routes>
     </>
   );
