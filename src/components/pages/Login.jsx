@@ -76,7 +76,7 @@ const Login = ({ setUserLoggedIn }) => {
                 <Form.Control
                   type="email"
                   placeholder="pedro@example.com"
-                  className="input-customized"
+                  className="myInputR"
                   {...register("email", {
                     required: "El email es obligatorio",
                     minLength: {
@@ -106,7 +106,7 @@ const Login = ({ setUserLoggedIn }) => {
                 <Form.Control
                   type="password"
                   placeholder="*******"
-                  className="input-customized"
+                  className="myInputR"
                   {...register("password", {
                     required: "La contraseña es obligatoria",
                     minLength: {
