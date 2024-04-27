@@ -265,7 +265,7 @@ const Administrator = () => {
                 to="/administrador/crear-reserva"
                 className="btn btn-primary me-2"
               >
-                <i class="bi bi-file-earmark-plus-fill"></i>
+                <i className="bi bi-file-earmark-plus-fill"></i>
               </Link>
             </>
           )}

@@ -2,24 +2,30 @@ import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { getRoomsAPI } from "../../../helpers/queries";
-import { createReserveAPI } from "../../../helpers/reservationQueries";
+import {
+  createReserveAPI,
+  getReservationByIdAPI,
+} from "../../../helpers/reservationQueries";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const ReservationAdminForm = ({ titulo, editar }) => {
   const [rooms, setRooms] = useState([]);
   const [roomPrice, setRoomPrice] = useState(0);
+  const [total, setTotal] = useState(0);
   const [dates, setDates] = useState({
     fechaInicio: "",
     fechaFin: "",
   });
 
-  const [total, setTotal] = useState(0);
+  const { id } = useParams();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
+    setValue,
   } = useForm();
 
   useEffect(() => {
@@ -28,6 +34,9 @@ const ReservationAdminForm = ({ titulo, editar }) => {
 
   useEffect(() => {
     getRooms();
+    if (editar) {
+      loadData();
+    }
   }, []);
 
   const getRooms = async () => {
@@ -65,9 +74,34 @@ const ReservationAdminForm = ({ titulo, editar }) => {
         });
       } else {
         const messages = await response.json();
-        console.log(messages);
         Swal.fire("Ocurrio un error", `${messages.mensaje}`, "error");
       }
+    }
+  };
+
+  const loadData = async () => {
+    const response = await getReservationByIdAPI(id);
+    if (response.status === 200) {
+      const searchedReserve = await response.json();
+      setValue("dni", searchedReserve.dni);
+      setValue("nombreCompleto", searchedReserve.nombreCompleto);
+      setValue("email", searchedReserve.email);
+      setValue("telefono", searchedReserve.telefono);
+      setDates({
+        fechaInicio: searchedReserve.fechaInicio.split("T")[0],
+        fechaFin: searchedReserve.fechaFin.split("T")[0],
+      });
+      setValue("numHabitacion", searchedReserve.numHabitacion);
+      
+      console.log(rooms)
+      const selectedRoom = rooms.find(room => room.numero === searchedReserve.numHabitacion);
+      console.log(selectedRoom)
+    } else {
+      Swal.fire(
+        "Ocurrio un error",
+        "No se pudo obtener los datos de la reserva, intenta dentro de unos minutos nuevamente",
+        "error"
+      );
     }
   };
 
@@ -80,7 +114,6 @@ const ReservationAdminForm = ({ titulo, editar }) => {
 
     if (name === "numHabitacion") {
       const selectedRoom = rooms.find((room) => room.numero === Number(value));
-      console.log(selectedRoom);
       if (selectedRoom) {
         setRoomPrice(selectedRoom.precio);
       }
