@@ -51,7 +51,7 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
   }
 
   const deleteReserveFromUser = () => {
-    setUserReservations([]); 
+    setUserReservations([]);
   };
 
   return (
@@ -102,12 +102,6 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
                     Mis reservas
                   </button>
                 )}
-                <button
-                  className="btn btn-outline-danger fw-semibold"
-                  onClick={logout}
-                >
-                  <i className="bi bi-box-arrow-left "></i> Logout
-                </button>
                 <p className="m-0 ms-3 text-center fw-bold">
                   <i className="bi bi-person fs-4 txt-details-color"></i>{" "}
                   {userLoggedIn.nombreCompleto.split(" ")[0]}
@@ -130,6 +124,12 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
                 ) : (
                   false
                 )}
+                <button
+                  className="btn btn-outline-danger fw-semibold"
+                  onClick={logout}
+                >
+                  <i className="bi bi-box-arrow-left "></i> Logout
+                </button>
               </>
             ) : (
               <>
@@ -184,7 +184,6 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
                   key={reservation._id}
                   reservation={reservation}
                   deleteReserveFromUser={deleteReserveFromUser}
-
                 ></ItemReservation>
               ))
             ) : (
