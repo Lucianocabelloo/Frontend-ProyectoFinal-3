@@ -63,6 +63,12 @@ const ReservationTable = ({
       name: "Opciones",
       cell: (row) => (
         <div className="text-center my-2">
+          <Link
+            to={`/administrador/editar-reserva/${row._id}`}
+            className="btn btn-warning me-2 mb-2"
+          >
+            <i className="bi bi-pencil-square"></i>
+          </Link>
           <Button
             variant="danger"
             className="me-2 mb-2"
