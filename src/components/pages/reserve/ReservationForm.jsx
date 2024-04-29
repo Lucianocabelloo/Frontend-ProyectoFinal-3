@@ -44,11 +44,8 @@ const ReservationForm = ({
       reset();
       setShowModalReserve(false);
     } else {
-      Swal.fire(
-        "Ocurrio un error",
-        "La reserva no pudo ser creada, intentelo nuevamente dentro de unos minutos",
-        "error"
-      );
+      const data = await response.json();
+      Swal.fire("Ocurrio un error", `${data.mensaje}`, "error");
     }
   };
 

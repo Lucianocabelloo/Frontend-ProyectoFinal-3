@@ -66,9 +66,10 @@ const UserForm = ({ editar, titulo }) => {
         });
         reset();
       } else {
+        const data = await answer.json();
         Swal.fire(
           "Ocurrio un error",
-          "El usuario no pudo ser creado, intentelo nuevamente dentro de unos minutos",
+          `${data.message}`,
           "error"
         );
       }
