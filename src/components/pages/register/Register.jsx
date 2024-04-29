@@ -1,11 +1,11 @@
 import { Container, Card, Row, Col, Form } from "react-bootstrap";
 import "./register.css";
 import registerImg from "../../../assets/img/register.jpg";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import Swal from "sweetalert2";
 import { createUserAPI } from "../../../helpers/userQueries";
 import emailjs from "@emailjs/browser";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -18,7 +18,9 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
   } = useForm();
+  const password = watch("password");
   const navigation = useNavigate();
   const onSubmit = async (user) => {
     user.rol = "Usuario";
@@ -146,6 +148,27 @@ const Register = () => {
                         },
                       })}
                     />
+                    <Form.Text className="textErrorR">
+                      <b>{errors.password?.message}&nbsp;</b>
+                    </Form.Text>
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formConfirmPassword">
+                    <Form.Label className="myLabelR ps-3">
+                      Confirmar contraseña
+                    </Form.Label>
+                    <Form.Control
+                      className="myInputR"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="*******"
+                      {...register("confirmPassword", {
+                        required: "Debe confirmar la contraseña",
+                        validate: (value) =>
+                          value === password || "Las contraseñas no coinciden",
+                      })}
+                    />
+                    <Form.Text className="textErrorR">
+                      <b>{errors.confirmPassword?.message}&nbsp;</b>
+                    </Form.Text>
                     <div className="d-flex justify-content-start align-items-center">
                       <div className="myCheckboContR">
                         <input
@@ -157,11 +180,8 @@ const Register = () => {
                         />
                         <label htmlFor="myCheckboxR"></label>
                       </div>
-                      <label className="myLabelR">Mostrar contraseña</label>
+                      <label className="myLabelR">Mostrar contraseñas</label>
                     </div>
-                    <Form.Text className="textErrorR">
-                      <b>{errors.password?.message}&nbsp;</b>
-                    </Form.Text>
                   </Form.Group>
                 </div>
                 <div className="buttonContR">
@@ -174,7 +194,7 @@ const Register = () => {
             <Col className="p-0 d-none d-lg-block">
               <Card.Img
                 src={registerImg}
-                className="img-fluid myImageR"
+                className="myImageR"
                 alt="Imagen representativa de bienvenida"
               />
             </Col>
