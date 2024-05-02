@@ -241,7 +241,7 @@ const RoomForm = ({ editar, titulo }) => {
               <p>Los campos que tienen * son obligatorios.</p>
             </Form.Group>
             <Form.Group className="mb-3">
-              <button type="submit" className="me-2 myButtonF">
+              <button type="submit" className="mb-3 mx-3 myButtonF">
                 <i className="bi bi-floppy"></i>&nbsp;Guardar
               </button>
               <Link to="/administrador" className="myButtonF myButtonFDif">

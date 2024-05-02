@@ -92,10 +92,12 @@ const ReservationAdminForm = ({ titulo, editar }) => {
         fechaFin: searchedReserve.fechaFin.split("T")[0],
       });
       setValue("numHabitacion", searchedReserve.numHabitacion);
-      
-      console.log(rooms)
-      const selectedRoom = rooms.find(room => room.numero === searchedReserve.numHabitacion);
-      console.log(selectedRoom)
+
+      console.log(rooms);
+      const selectedRoom = rooms.find(
+        (room) => room.numero === searchedReserve.numHabitacion
+      );
+      console.log(selectedRoom);
     } else {
       Swal.fire(
         "Ocurrio un error",
@@ -144,6 +146,7 @@ const ReservationAdminForm = ({ titulo, editar }) => {
               <Form.Control
                 type="number"
                 placeholder="Ingrese el dni del cliente"
+                className="myInputF"
                 {...register("dni", {
                   required: "El DNI es obligatorio",
                   pattern: {
@@ -163,6 +166,7 @@ const ReservationAdminForm = ({ titulo, editar }) => {
               <Form.Control
                 type="text"
                 placeholder="Ingrese Nombre Completo del Cliente"
+                className="myInputF"
                 {...register("nombreCompleto", {
                   required: "El nombre es obligatorio",
                   minLength: {
@@ -188,6 +192,7 @@ const ReservationAdminForm = ({ titulo, editar }) => {
               <Form.Control
                 type="email"
                 placeholder="Ingrese el email del cliente"
+                className="myInputF"
                 {...register("email", {
                   required: "El email es obligatorio",
                   minLength: {
@@ -216,6 +221,7 @@ const ReservationAdminForm = ({ titulo, editar }) => {
               <Form.Control
                 type="number"
                 placeholder="Ingrese el teléfono del cliente"
+                className="myInputF"
                 {...register("telefono", {
                   required: "El número de teléfono es obligatorio",
                   pattern: {
@@ -238,6 +244,7 @@ const ReservationAdminForm = ({ titulo, editar }) => {
               <Form.Control
                 type="date"
                 name="fechaInicio"
+                className="myInputF"
                 value={dates.fechaInicio}
                 {...register("fechaInicio", {
                   required: "La fecha de inicio es obligatoria",
@@ -255,6 +262,7 @@ const ReservationAdminForm = ({ titulo, editar }) => {
               <Form.Control
                 type="date"
                 name="fechaFin"
+                className="myInputF"
                 value={dates.fechaFin}
                 {...register("fechaFin", {
                   required: "La fecha de fin es obligatoria",
@@ -270,6 +278,7 @@ const ReservationAdminForm = ({ titulo, editar }) => {
             <Form.Group className="mb-3" controlId="numHabitacion">
               <Form.Label>Habitación:*</Form.Label>
               <Form.Select
+                className="myInputSel"
                 name="numHabitacion"
                 {...register("numHabitacion", {
                   required: "La habitación es obligatoria",
@@ -289,24 +298,25 @@ const ReservationAdminForm = ({ titulo, editar }) => {
               </Form.Text>
             </Form.Group>
           </Col>
+          <Col className="mt-3 text-center">
+            <Form.Group className="mb-3 text-light">
+              <p className="fs-3">
+                <b>Total: $ {total}</b>
+              </p>
+            </Form.Group>
+            <Form.Group className="mb-3 text-light">
+              <p>Los campos que tienen * son obligatorios.</p>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <button type="submit" className="mb-3 mx-3 myButtonF">
+                <i className="bi bi-arrow-right-circle"></i>&nbsp;Reservar
+              </button>
+              <Link to="/administrador" className="myButtonF myButtonFDif">
+                <i className="bi bi-arrow-bar-left"></i>&nbsp;Volver
+              </Link>
+            </Form.Group>
+          </Col>
         </Row>
-
-        <Form.Group className="mb-3 text-light">
-          <p className="fs-3">
-            <b>Total: $ {total}</b>
-          </p>
-        </Form.Group>
-        <Form.Group className="mb-3 text-light">
-          <p>Los campos que tienen * son obligatorios.</p>
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Button type="submit" variant="success" className="me-2">
-            <i className="bi bi-arrow-right-circle"></i> Reservar
-          </Button>
-          <Link to="/administrador" className="btn btn-primary">
-            <i className="bi bi-arrow-bar-left"></i> Volver
-          </Link>
-        </Form.Group>
       </Form>
     </Container>
   );
