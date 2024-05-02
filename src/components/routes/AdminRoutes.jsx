@@ -3,7 +3,8 @@ import Administrator from "../pages/Administrator";
 import RoomForm from "../pages/rooms/RoomForm";
 import UserForm from "../pages/users/UserForm";
 import CalendarApp from "../pages/calendar/CalendarApp";
-import ReservationForm from "../pages/reserve/ReservationForm";
+import ReservationAdminForm from "../pages/reserve/ReservationAdminForm";
+
 
 const AdminRoutes = () => {
   return (
@@ -42,8 +43,13 @@ const AdminRoutes = () => {
         ></Route>
         <Route
           exact
+          path="/crear-reserva"
+          element={<ReservationAdminForm titulo="Crear" editar={false}></ReservationAdminForm>}
+        ></Route>
+        <Route
+          exact
           path="/editar-reserva/:id"
-          element={<ReservationForm editar={true} titulo="Editar"></ReservationForm>}
+          element={<ReservationAdminForm titulo="Editar" editar={true}></ReservationAdminForm>}
         ></Route>
       </Routes>
     </>

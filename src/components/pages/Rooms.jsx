@@ -48,8 +48,10 @@ const Rooms = () => {
   };
 
   const filteredRooms = selectedCategory
-    ? rooms.filter((room) => room.categoria === selectedCategory)
-    : rooms;
+    ? rooms.filter(
+        (room) => room.categoria === selectedCategory && room.disponibilidad
+      )
+    : rooms.filter((room) => room.disponibilidad);
 
   return (
     <>
@@ -97,7 +99,9 @@ const Rooms = () => {
         <hr className="hrRoom" />
         <Row className="justify-content-evely align-items-center mt-5">
           <Col lg="8">
-            <h2 className="display-5 mb-4 mb-lg-0">Nuestras <span className="txt-details-color">habitaciones</span></h2>
+            <h2 className="display-5 mb-4 mb-lg-0">
+              Nuestras <span className="txt-details-color">habitaciones</span>
+            </h2>
           </Col>
           <Col lg="4">
             <Form.Select
@@ -128,11 +132,15 @@ const Rooms = () => {
         )}
         {!loading && (
           <Row className="justify-content-center justify-content-lg-evenly align-items-center">
-            {filteredRooms.length > 0
-              ? filteredRooms.map((room) => (
-                  <RoomCard room={room} key={room._id}></RoomCard>
-                ))
-              : (<p className="text-center text-secondary fs-3 my-5">No hay habitaciones para esta categoria</p>)}
+            {filteredRooms.length > 0 ? (
+              filteredRooms.map((room) => (
+                <RoomCard room={room} key={room._id}></RoomCard>
+              ))
+            ) : (
+              <p className="text-center text-secondary fs-3 my-5">
+                No hay habitaciones para esta categoria
+              </p>
+            )}
           </Row>
         )}
       </Container>

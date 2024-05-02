@@ -64,9 +64,11 @@ const RoomForm = ({ editar, titulo }) => {
         );
         reset();
       } else {
+        const data = await answer.json();
+        console.log(data.errors.msg);
         Swal.fire(
           "Ocurrio un error",
-          "La habitación no pudo ser creada, intentelo nuevamente dentro de unos minutos",
+          `${data.errors.length > 0 ? data.errors[0].msg : data.message}`,
           "error"
         );
       }
