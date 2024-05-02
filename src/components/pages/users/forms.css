@@ -1,0 +1,70 @@
+.myLabelF {
+  color: #0b1d26;
+  font-weight: bold;
+}
+.myInputF {
+  background-color: #fffaed;
+  padding: 12px;
+  border-radius: 0;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+  transition: all 250ms;
+}
+.myInputF:focus {
+  background-color: #fffaed;
+  transform: scaleX(1.05);
+}
+.myInputSel {
+  background-color: #fffaed;
+  padding: 12px;
+  border-radius: 0;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+  transition: all 250ms;
+}
+.myInputSel:hover,
+.myInputSel:focus {
+  background-color: #fffaed;
+  transform: scaleX(1.05);
+}
+.myButtonF {
+  color: #0b1d26;
+  background-color: #f0d78d;
+  font-size: 16px;
+  font-family: inherit;
+  border-radius: 30px;
+  border: 1px solid transparent;
+  transition: all 250ms;
+  padding: calc(1rem - 1.5px) calc(2rem - 1.5px);
+  background-clip: padding-box;
+  line-height: 1.25;
+  box-shadow: #0d0d0d04 0 1px 3px 0;
+  box-sizing: border-box;
+  display: inline-flex;
+  text-decoration: none;
+}
+.myButtonF:hover,
+.myButtonF:focus {
+  background-color: rgb(180, 157, 88);
+  box-shadow: #0d0d0d20 0 4px 12px;
+}
+.myButtonF:hover {
+  transform: translateY(-2px);
+}
+.myButtonF:active {
+  background-color: rgb(133, 115, 62);
+  box-shadow: #0d0d0d12 0 2px 4px;
+  transform: translateY(0);
+}
+
+.myButtonFDif {
+  color: #fefffc;
+  background-color: #bf1a2f;
+}
+.myButtonFDif:hover,
+.myButtonFDif:focus {
+  background-color: #851323;
+}
+.myButtonFDif:active {
+  background-color: #5f0e19;
+}

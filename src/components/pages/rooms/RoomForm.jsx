@@ -8,6 +8,7 @@ import {
 } from "../../../helpers/queries";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
+import "../users/forms.css";
 
 const RoomForm = ({ editar, titulo }) => {
   const {
@@ -80,13 +81,14 @@ const RoomForm = ({ editar, titulo }) => {
       <h1 className="mb-4">{titulo} Habitación</h1>
       <hr className="hrRoom mb-5" />
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Row className="justify-content-evenly">
+        <Row className="justify-content-around">
           <Col md={5}>
             <Form.Group className="mb-3 text-light" controlId="numero">
               <Form.Label>Número de Habitación:*</Form.Label>
               <Form.Control
                 type="number"
                 placeholder="1"
+                className="myInputF"
                 {...register("numero", {
                   required: "El número de habitación es obligatorio",
                   min: {
@@ -108,6 +110,7 @@ const RoomForm = ({ editar, titulo }) => {
             <Form.Group className="mb-3 text-light" controlId="tipoHabitacion">
               <Form.Label>Tipo Habitación:*</Form.Label>
               <Form.Select
+              className="myInputSel"
                 {...register("tipoHabitacion", {
                   required: "El tipo de habitación es obligatorio",
                 })}
@@ -126,6 +129,7 @@ const RoomForm = ({ editar, titulo }) => {
             <Form.Group className="mb-3 text-light" controlId="categoria">
               <Form.Label>Categoria:</Form.Label>
               <Form.Select
+              className="myInputSel"
                 {...register("categoria", {
                   required: "La categoria es obligatoria",
                 })}
@@ -140,10 +144,12 @@ const RoomForm = ({ editar, titulo }) => {
                 {errors.categoria?.message}
               </Form.Text>
             </Form.Group>
-          </Col><Col md={5}>
+          </Col>
+          <Col md={5}>
             <Form.Group className="mb-3 text-light" controlId="precio">
               <Form.Label>Precio:*</Form.Label>
               <Form.Control
+              className="myInputF"
                 type="number"
                 placeholder="5000"
                 {...register("precio", {
@@ -163,10 +169,11 @@ const RoomForm = ({ editar, titulo }) => {
               </Form.Text>
             </Form.Group>
           </Col>
-          <Col md={12} >
+          <Col md={11}>
             <Form.Group className="mb-3 text-light" controlId="descripcion">
               <Form.Label className="me-3">Descripción:*</Form.Label>
               <Form.Control
+              className="myInputF"
                 as="textarea"
                 rows={3}
                 placeholder="Ej. Habitación deluxe con 2 camas somier, con vista al mar."
@@ -189,11 +196,11 @@ const RoomForm = ({ editar, titulo }) => {
               </Form.Text>
             </Form.Group>
           </Col>
-          
-          <Col md={6}>
+          <Col md={5}>
             <Form.Group className="mb-3 text-light" controlId="imagen">
               <Form.Label>Imagen:*</Form.Label>
               <Form.Control
+              className="myInputF"
                 type="text"
                 placeholder="https://web.com/ejemplo.png"
                 {...register("imagen", {
@@ -211,10 +218,11 @@ const RoomForm = ({ editar, titulo }) => {
               </Form.Text>
             </Form.Group>
           </Col>
-          <Col md={6}>
+          <Col md={5}>
             <Form.Group className="mb-3 text-light" controlId="disponibilidad">
               <Form.Label className="me-3">Disponible:*</Form.Label>
               <Form.Select
+              className="myInputSel decorated"
                 {...register("disponibilidad", {
                   required: "La disponibilidad es obligatoria",
                 })}
@@ -228,15 +236,16 @@ const RoomForm = ({ editar, titulo }) => {
               </Form.Text>
             </Form.Group>
           </Col>
-          <Col md={5}>
+          <Col md={11} className="mt-3 text-center">
             <Form.Group className="mb-3 text-light">
               <p>Los campos que tienen * son obligatorios.</p>
-            </Form.Group><Form.Group className="mb-3">
-              <Button type="submit" variant="success" className="me-2">
-                <i className="bi bi-floppy"></i> Guardar
-              </Button>
-              <Link to="/administrador" className="btn btn-primary">
-                <i className="bi bi-arrow-bar-left"></i> Volver
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <button type="submit" className="me-2 myButtonF">
+                <i className="bi bi-floppy"></i>&nbsp;Guardar
+              </button>
+              <Link to="/administrador" className="myButtonF myButtonFDif">
+                <i className="bi bi-arrow-bar-left"></i>&nbsp;Volver
               </Link>
             </Form.Group>
           </Col>
