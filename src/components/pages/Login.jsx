@@ -10,6 +10,7 @@ const Login = ({ setUserLoggedIn }) => {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ const Login = ({ setUserLoggedIn }) => {
     } else {
       const msg = await answer.json();
       Swal.fire("Ocurrio un error", `${msg.message}`, "error");
+      reset()
     }
   };
   const scrollToTop = () => {

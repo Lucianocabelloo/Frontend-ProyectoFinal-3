@@ -131,12 +131,6 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
                 ) : (
                   false
                 )}
-                <button
-                  className="btn btn-outline-danger fw-semibold"
-                  onClick={logout}
-                >
-                  <i className="bi bi-box-arrow-left "></i> Logout
-                </button>
               </>
             ) : (
               <>
