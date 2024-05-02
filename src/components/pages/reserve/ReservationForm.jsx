@@ -73,18 +73,18 @@ const ReservationForm = ({
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Form.Group className="mb-3" controlId="nombreCompleto">
         <Form.Label className="text-dark">Nombre Completo: </Form.Label>
-        <Form.Text className="fs-5 nomFormReserva myInputF"> {nombre} </Form.Text>
+        <Form.Text className="fs-5 nomFormReserva"> {nombre} </Form.Text>
       </Form.Group>
       <Form.Group className="mb-3" controlId="email">
         <Form.Label className="text-dark">Email: </Form.Label>
-        <Form.Text className="fs-5 nomFormReserva myInputF"> {email} </Form.Text>
+        <Form.Text className="fs-5 nomFormReserva"> {email} </Form.Text>
       </Form.Group>
       <Form.Group className="mb-3 " controlId="dni">
         <Form.Label className="text-dark">DNI:*</Form.Label>
         <Form.Control
           type="number"
           placeholder="Ingrese su dni"
-          className="myInputF"
+          className="myInputR"
           {...register("dni", {
             required: "El DNI es obligatorio",
             pattern: {
@@ -100,7 +100,7 @@ const ReservationForm = ({
         <Form.Control
           type="number"
           placeholder="Ingrese su teléfono"
-          className="myInputF"
+          className="myInputR"
           {...register("telefono", {
             required: "El número de teléfono es obligatorio",
             pattern: {
@@ -119,7 +119,7 @@ const ReservationForm = ({
         <Form.Control
           type="date"
           name="fechaInicio"
-          className="myInputF"
+          className="myInputR"
           value={dates.fechaInicio}
           {...register("fechaInicio", {
             required: "La fecha de inicio es obligatoria",
@@ -135,6 +135,7 @@ const ReservationForm = ({
         <Form.Control
           type="date"
           name="fechaFin"
+          className="myInputR"
           value={dates.fechaFin}
           {...register("fechaFin", {
             required: "La fecha de fin es obligatoria",
