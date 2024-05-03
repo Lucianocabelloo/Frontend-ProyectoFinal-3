@@ -84,6 +84,7 @@ const ReservationForm = ({
         <Form.Control
           type="number"
           placeholder="Ingrese su dni"
+          className="myInputR"
           {...register("dni", {
             required: "El DNI es obligatorio",
             pattern: {
@@ -99,6 +100,7 @@ const ReservationForm = ({
         <Form.Control
           type="number"
           placeholder="Ingrese su teléfono"
+          className="myInputR"
           {...register("telefono", {
             required: "El número de teléfono es obligatorio",
             pattern: {
@@ -117,6 +119,7 @@ const ReservationForm = ({
         <Form.Control
           type="date"
           name="fechaInicio"
+          className="myInputR"
           value={dates.fechaInicio}
           {...register("fechaInicio", {
             required: "La fecha de inicio es obligatoria",
@@ -132,6 +135,7 @@ const ReservationForm = ({
         <Form.Control
           type="date"
           name="fechaFin"
+          className="myInputR"
           value={dates.fechaFin}
           {...register("fechaFin", {
             required: "La fecha de fin es obligatoria",
