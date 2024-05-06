@@ -1,9 +1,12 @@
-import { Button, Col } from "react-bootstrap";
+import { Button, Col, Modal } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { deleteReservationAPI } from "../../../helpers/reservationQueries";
 import jsPDF from "jspdf";
+import { useState } from "react";
+import ReservationForm from "./ReservationForm";
 
 const ItemReservation = ({ reservation, deleteReserveFromUser }) => {
+  const [showModalReserve, setShowModalReserve] = useState(false);
   const getDate = (fechaISO) => {
     const date = new Date(fechaISO);
     const months = [
@@ -94,31 +97,34 @@ const ItemReservation = ({ reservation, deleteReserveFromUser }) => {
       }
     });
   };
+  const handleEventReserveModal = (event) => {
+    setShowModalReserve(true);
+  };
+  const handleReserveModalClose = () => {
+    setShowModalReserve(false);
+  };
 
   const generatePDF = () => {
     const doc = new jsPDF({
       orientation: "portrait",
       unit: "in",
-      format: [3.15, 5.5], 
+      format: [3.15, 5.5],
     });
 
-    
-    doc.setFillColor("#fefffc"); 
+    doc.setFillColor("#fefffc");
     doc.rect(0, 0, 3.15, 5.5, "F");
 
-    
     doc.setFontSize(14);
-    doc.setTextColor("#f0d78d"); 
+    doc.setTextColor("#f0d78d");
     doc.text("Paradise Resort Hotel", 0.25, 0.25);
 
     // Línea divisoria
     doc.setLineWidth(0.01);
-    doc.setDrawColor("#08171e"); 
+    doc.setDrawColor("#08171e");
     doc.line(0.25, 0.35, 2.9, 0.35);
 
-    
     doc.setFontSize(10);
-    doc.setTextColor("#08171e"); 
+    doc.setTextColor("#08171e");
     doc.text(`Nombre: ${reservation.nombreCompleto}`, 0.25, 0.6);
     doc.text(`DNI: ${reservation.dni}`, 0.25, 0.8);
     doc.text(`Habitación: ${reservation.numHabitacion}`, 0.25, 1);
@@ -155,7 +161,6 @@ const ItemReservation = ({ reservation, deleteReserveFromUser }) => {
 
     doc.save("ticket_reserva.pdf");
   };
-
   return (
     <Col md={12} className="mb-4 bg-color-2 py-3">
       <h4 className="txt-details-color fs-3">
@@ -173,13 +178,40 @@ const ItemReservation = ({ reservation, deleteReserveFromUser }) => {
           <br></br>
           {fullEndDate}
         </li>
-        <Button variant="info" onClick={generatePDF} className="me-2">
+        <Button variant="info" onClick={generatePDF} className="mt-3">
           <i className="bi bi-printer"></i>
         </Button>
-        <Button variant="danger" onClick={deleteReserve}>
+        <Button
+          variant="warning"
+          onClick={handleEventReserveModal}
+          className="mx-2 mt-3"
+        >
+          <i className="bi bi-pencil"></i>
+        </Button>
+        <Button variant="danger" onClick={deleteReserve} className="mt-3">
           <i className="bi bi-trash3"></i>
         </Button>
       </ul>
+      <Modal show={showModalReserve} onHide={handleReserveModalClose}>
+        <Modal.Header closeButton>
+          <Modal.Title className="kaushan-script ">Editar Reserva</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ReservationForm
+            email={reservation.email}
+            numero={reservation.numHabitacion}
+            nombre={reservation.nombreCompleto}
+            totalRes={reservation.total}
+            dni={reservation.dni}
+            telefono={reservation.telefono}
+            fechaInicio={reservation.fechaInicio}
+            fechaFin={reservation.fechaFin}
+            resId={reservation._id}
+            editar={true}
+            setShowModalReserve={setShowModalReserve}
+          ></ReservationForm>
+        </Modal.Body>
+      </Modal>
     </Col>
   );
 };
