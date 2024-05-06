@@ -35,7 +35,6 @@ const ReservationForm = ({
     reserva.fechaInicio = dates.fechaInicio + "T10:00:00.000Z";
     reserva.fechaFin = dates.fechaFin + "T10:00:00.000Z";
     const response = await createReserveAPI(reserva);
-    console.log(reserva.fechaInicio)
     if (response.status === 201) {
       Swal.fire(
         "Reserva Creada",
@@ -69,6 +68,8 @@ const ReservationForm = ({
       setTotal(newTotal);
     }
   };
+
+  const currentDate = new Date().toISOString().split("T")[0];
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -122,7 +123,7 @@ const ReservationForm = ({
           name="fechaInicio"
           className="myInputR"
           value={dates.fechaInicio}
-          min={new Date().toISOString().split("T")[0]}
+          min={currentDate}
           {...register("fechaInicio", {
             required: "La fecha de inicio es obligatoria",
           })}
@@ -139,7 +140,7 @@ const ReservationForm = ({
           name="fechaFin"
           className="myInputR"
           value={dates.fechaFin}
-          min={new Date().toISOString().split("T")[0]}
+          min={currentDate}
           {...register("fechaFin", {
             required: "La fecha de fin es obligatoria",
           })}

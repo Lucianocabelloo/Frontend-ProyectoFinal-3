@@ -19,10 +19,8 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
   const [userReservations, setUserReservations] = useState([]);
 
   useEffect(() => {
-    if (userLoggedIn && userLoggedIn.email) {
-      getUserReservations();
-    }
-  }, [userLoggedIn]);
+    getUserReservations();
+  }, [show]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -41,6 +39,7 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
         (reserva) => reserva.email === reservasDeUsuario
       );
       setUserReservations(reservasFiltradas);
+      
     } else {
       Swal.fire({
         title: "Ocurrio un error!",
@@ -50,8 +49,8 @@ const Menu = ({ userLoggedIn, setUserLoggedIn }) => {
     }
   }
 
-  const deleteReserveFromUser = () => {
-    setUserReservations([]);
+  const deleteReserveFromUser = async () => {
+    getUserReservations()
   };
 
   return (
