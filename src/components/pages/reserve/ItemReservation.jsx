@@ -196,7 +196,7 @@ const ItemReservation = ({ reservation, deleteReserveFromUser }) => {
         <Modal.Header closeButton>
           <Modal.Title className="kaushan-script ">Editar Reserva</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="bgLightR">
           <ReservationForm
             email={reservation.email}
             numero={reservation.numHabitacion}
