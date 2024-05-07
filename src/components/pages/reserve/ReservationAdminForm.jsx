@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { getRoomsAPI } from "../../../helpers/queries";
 import {
   createReserveAPI,
+  editReservationApi,
   getReservationByIdAPI,
 } from "../../../helpers/reservationQueries";
 import Swal from "sweetalert2";
@@ -55,7 +56,21 @@ const ReservationAdminForm = ({ titulo, editar }) => {
 
   const onSubmit = async (reserva) => {
     if (editar) {
-      console.log("Aca se edita");
+      const response = await editReservationApi(id, reserva); 
+      if (response.status === 200) {
+        Swal.fire({
+          title: "La reserva fue modificada!",
+          text: `La reserva ${reserva.numero} fue modificada correctamente.`,
+          icon: "success",
+        });
+        navigation("/administrador");
+      } else {
+        Swal.fire({
+          title: "¡Ocurrió un error!",
+          text: `La reserva ${reserva.numero} no fue modificada correctamente.`,
+          icon: "error",
+        });
+      }
     } else {
       reserva.fechaInicio = dates.fechaInicio + "T10:00:00.000Z";
       reserva.fechaFin = dates.fechaFin + "T10:00:00.000Z";

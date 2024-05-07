@@ -79,7 +79,7 @@ export const deleteReservationAPI = async (id) => {
   }
 };
 
-export const editReservationApi = async (id, newReserv ) =>{
+export const editReservationApi = async (id, reserv ) =>{
   try {
     const answer = await fetch(`${URI_Reservation}/${id}`, {
       method: "PUT",
@@ -87,7 +87,7 @@ export const editReservationApi = async (id, newReserv ) =>{
         "Content-Type": "application/json",
         "x-token": JSON.parse(sessionStorage.getItem("usuarioHotel")).token,
       },
-      body: JSON.stringify(newReserv),
+      body: JSON.stringify(reserv),
     });
     return answer;
   } catch (error) {
