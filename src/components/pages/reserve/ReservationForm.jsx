@@ -69,6 +69,8 @@ const ReservationForm = ({
     }
   };
 
+  const currentDate = new Date().toISOString().split("T")[0];
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Form.Group className="mb-3" controlId="nombreCompleto">
@@ -121,6 +123,7 @@ const ReservationForm = ({
           name="fechaInicio"
           className="myInputR"
           value={dates.fechaInicio}
+          min={currentDate}
           {...register("fechaInicio", {
             required: "La fecha de inicio es obligatoria",
           })}
@@ -137,6 +140,7 @@ const ReservationForm = ({
           name="fechaFin"
           className="myInputR"
           value={dates.fechaFin}
+          min={currentDate}
           {...register("fechaFin", {
             required: "La fecha de fin es obligatoria",
           })}
