@@ -160,7 +160,7 @@ const DetailsRoom = ({ userLoggedIn }) => {
             Reservar <span className="txt-details-color">Habitación</span>
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="bgLightR">
           <ReservationForm
             email={userLoggedIn.email}
             numero={room.numero}
