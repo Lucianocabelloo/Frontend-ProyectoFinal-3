@@ -108,11 +108,9 @@ const ReservationAdminForm = ({ titulo, editar }) => {
       });
       setValue("numHabitacion", searchedReserve.numHabitacion);
 
-      console.log(rooms);
       const selectedRoom = rooms.find(
         (room) => room.numero === searchedReserve.numHabitacion
       );
-      console.log(selectedRoom);
     } else {
       Swal.fire(
         "Ocurrio un error",
