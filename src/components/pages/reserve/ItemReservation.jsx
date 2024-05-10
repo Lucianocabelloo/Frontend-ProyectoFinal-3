@@ -7,6 +7,7 @@ import ReservationForm from "./ReservationForm";
 
 const ItemReservation = ({ reservation, deleteReserveFromUser }) => {
   const [showModalReserve, setShowModalReserve] = useState(false);
+  const [precioHab, setPrecioHab] = useState(0);
   const getDate = (fechaISO) => {
     const date = new Date(fechaISO);
     const months = [
@@ -99,6 +100,7 @@ const ItemReservation = ({ reservation, deleteReserveFromUser }) => {
   };
   const handleEventReserveModal = (event) => {
     setShowModalReserve(true);
+    calcularPrecio();
   };
   const handleReserveModalClose = () => {
     setShowModalReserve(false);
@@ -161,6 +163,15 @@ const ItemReservation = ({ reservation, deleteReserveFromUser }) => {
 
     doc.save("ticket_reserva.pdf");
   };
+  const calcularPrecio = async () => {
+    const initDate = new Date(reservation.fechaInicio);
+    const finishDate = new Date(reservation.fechaFin);
+    const diffTime = Math.abs(finishDate - initDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const newPrice = reservation.total / diffDays;
+    setPrecioHab(newPrice);
+  };
+
   return (
     <Col md={12} className="mb-4 bg-color-2 py-3">
       <h4 className="txt-details-color fs-3">
@@ -208,6 +219,7 @@ const ItemReservation = ({ reservation, deleteReserveFromUser }) => {
             fechaFin={reservation.fechaFin}
             resId={reservation._id}
             editar={true}
+            precioHab={precioHab}
             setShowModalReserve={setShowModalReserve}
           ></ReservationForm>
         </Modal.Body>

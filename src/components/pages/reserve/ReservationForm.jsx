@@ -6,7 +6,6 @@ import {
   editReservationApi,
 } from "../../../helpers/reservationQueries";
 import Swal from "sweetalert2";
-import { getRoomsAPI } from "../../../helpers/queries";
 
 const ReservationForm = ({
   email,
@@ -43,13 +42,6 @@ const ReservationForm = ({
       fechaFin: fechaFin.split("T")[0],
     });
     setTotal(totalRes);
-    // const initDate = new Date(fechaInicio);
-    // const finishDate = new Date(fechaFin);
-    // const duracionEstadiaMs = finishDate.getTime() - initDate.getTime();
-    // const duracionEstadiaDias = Math.ceil(
-    //   duracionEstadiaMs / (1000 * 60 * 60 * 24)
-    // );
-    // precioHab = totalRes / duracionEstadiaDias;
   };
   useEffect(() => {
     calcularTotal();
@@ -116,7 +108,6 @@ const ReservationForm = ({
       const diffTime = Math.abs(finishDate - initDate);
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
       const newTotal = diffDays * precioHab;
-
       setTotal(newTotal);
     }
   };
