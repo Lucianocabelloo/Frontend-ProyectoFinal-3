@@ -74,7 +74,6 @@ const ReservationAdminForm = ({ titulo, editar }) => {
     } else {
       reserva.fechaInicio = dates.fechaInicio + "T10:00:00.000Z";
       reserva.fechaFin = dates.fechaFin + "T10:00:00.000Z";
-      console.log(reserva);
       const response = await createReserveAPI(reserva);
       if (response.status === 201) {
         Swal.fire(

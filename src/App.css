@@ -135,7 +135,6 @@ label {
   text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Home page STYLES  */
 .top {
   display: flex;
   align-items: end;
@@ -314,7 +313,6 @@ label {
   border: none;
 }
 
-/* LOGIN STYLES  */
 .txt-montserrat {
   font-family: "Montserrat", sans-serif;
 }
@@ -387,7 +385,6 @@ label {
   color: #f0d78d;
 }
 
-/* DETAILS ROOM STYLES  */
 .img-container-detail {
   height: 29rem;
   border: 1px solid #f0d78d;

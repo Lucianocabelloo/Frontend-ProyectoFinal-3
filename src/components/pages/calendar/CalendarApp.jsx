@@ -89,7 +89,6 @@ const CalendarApp = ({ admin, number, allReserve }) => {
     doc.setTextColor("#f0d78d");
     doc.text("Paradise Resort Hotel", 0.25, 0.25);
 
-    // Línea divisoria
     doc.setLineWidth(0.01);
     doc.setDrawColor("#08171e");
     doc.line(0.25, 0.35, 2.9, 0.35);
