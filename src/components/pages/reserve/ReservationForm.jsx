@@ -20,6 +20,7 @@ const ReservationForm = ({
   totalRes,
   editar,
   resId,
+  deleteReserveFromUser,
 }) => {
   const [dates, setDates] = useState({
     fechaInicio: "",
@@ -69,6 +70,7 @@ const ReservationForm = ({
         });
         reset();
         setShowModalReserve(false);
+        deleteReserveFromUser();
       } else {
         Swal.fire({
           title: "¡Ocurrió un error!",

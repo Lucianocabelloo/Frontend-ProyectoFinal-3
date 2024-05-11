@@ -221,6 +221,7 @@ const ItemReservation = ({ reservation, deleteReserveFromUser }) => {
             editar={true}
             precioHab={precioHab}
             setShowModalReserve={setShowModalReserve}
+            deleteReserveFromUser={deleteReserveFromUser}
           ></ReservationForm>
         </Modal.Body>
       </Modal>
