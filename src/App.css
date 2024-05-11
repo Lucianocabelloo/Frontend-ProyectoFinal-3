@@ -94,6 +94,10 @@ label {
   color: #ccc;
 }
 
+.txt-georgia{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 .btn-customized {
   background: rgba(0, 0, 0, 0.1);
   color: #fff;
@@ -117,7 +121,7 @@ label {
 
 .btn-customized-2 {
   background: #08171e;
-  color: #fff;
+  color: #fefffc;
   font-weight: 600;
   font-family: "Montserrat", sans-serif;
   padding: 10px 20px;
@@ -131,7 +135,6 @@ label {
   text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Home page STYLES  */
 .top {
   display: flex;
   align-items: end;
@@ -168,7 +171,7 @@ label {
   border-top: 4px solid #f0d78d;
 }
 
-.img-service-container{
+.img-service-container {
   height: 23rem;
   width: 100%;
   overflow: hidden;
@@ -176,21 +179,17 @@ label {
   border: 2px solid #f0d78d;
 }
 
-.img-service{
+.img-service {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .7s;
-}
-.img-service:hover{
-  transform: scale(1.3);
 }
 
-.bg-color-2{
+.bg-color-2 {
   background: #0b1d26;
 }
 
-.border-right-gold{
+.border-right-gold {
   border-right: 2px solid #f0d78d;
   padding-right: 10px;
 }
@@ -201,7 +200,7 @@ label {
   margin: 0 auto;
 }
 
-.img-person{
+.img-person {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -221,8 +220,8 @@ label {
 }
 
 .tituloPrincipal {
-  background: linear-gradient(0deg,rgba(0,0,0,0.5),rgba(0,0,0,0.2)) 
-  ,url("./assets/img/rooms.jpg");
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
+    url("./assets/img/rooms.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -230,7 +229,7 @@ label {
   align-items: center;
   height: 60vh;
   max-height: 36rem;
-  text-shadow: 3px 3px 15px rgba(0,0,0,0.2);
+  text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
 .hrRoom {
@@ -305,14 +304,15 @@ label {
 }
 
 .card-review {
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
-  background: #fffcf6 ;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  background: #fffcf6;
   padding: 30px 5px;
   border-radius: 3px;
   border: none;
 }
 
-/* LOGIN STYLES  */
 .txt-montserrat {
   font-family: "Montserrat", sans-serif;
 }
@@ -381,19 +381,10 @@ label {
   }
 }
 
-.footer-Container {
-  padding: 0px;
-}
-
-.footer-Description {
-  width: 30ch;
-}
-
-.footer-Container h3 {
+.footer-Content h3 {
   color: #f0d78d;
 }
 
-/* DETAILS ROOM STYLES  */
 .img-container-detail {
   height: 29rem;
   border: 1px solid #f0d78d;
@@ -455,7 +446,7 @@ label {
   width: 85vw;
 }
 
-.rbc-event{
+.rbc-event {
   background: #0d2531 !important;
 }
 
@@ -481,26 +472,25 @@ label {
   color: #f1f1ff !important;
 }
 
-
-.card-img-top{
+.card-img-top {
   min-height: 220px;
   object-fit: fill;
 }
-.modal-calendar{
+.modal-calendar {
   color: #08171e;
 }
 
-.list-customized{
+.list-customized {
   list-style: none;
   color: #eee;
-  font-family: 'Montserrat',sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .offcanvas-body {
   overflow-y: auto;
 }
 
-.card-room-img{
+.card-room-img {
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -518,9 +508,8 @@ label {
   font-size: 2.4rem;
 }
 
-.footer-Content {
-  flex-wrap: wrap;
-  justify-content: space-evenly !important;
+footer{
+  background: #050f14;
 }
 
 .footer-Content a {
@@ -532,17 +521,17 @@ label {
   color: #8b8b8b;
 }
 
-.nomFormReserva{
+.nomFormReserva {
   font-family: "Montserrat", sans-serif;
 }
 
-.container-Button{
+.container-Button {
   position: fixed;
   bottom: 20px;
   right: 20px;
   border-radius: 25px;
   background-color: #041016af;
-  box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
   padding: 15px 28px;
   display: flex;
   justify-content: center;
@@ -552,14 +541,13 @@ label {
   cursor: pointer;
 }
 
-.container-Button svg{
+.container-Button svg {
   color: white;
   height: 35px;
   width: 35px;
-
 }
 
-.container-Button h3{
+.container-Button h3 {
   margin-top: 6px;
 }
 
@@ -582,9 +570,8 @@ label {
     background-size: cover;
   }
 
-  .container-Button svg{
+  .container-Button svg {
     height: 25px;
     width: 25px;
-  
   }
 }

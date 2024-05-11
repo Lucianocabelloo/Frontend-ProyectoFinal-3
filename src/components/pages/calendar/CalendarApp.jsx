@@ -10,6 +10,7 @@ import {
   getReservationsAPI,
 } from "../../../helpers/reservationQueries";
 import Swal from "sweetalert2";
+import jsPDF from "jspdf";
 
 const CalendarApp = ({ admin, number, allReserve }) => {
   const localizer = dayjsLocalizer(dayjs);
@@ -74,6 +75,55 @@ const CalendarApp = ({ admin, number, allReserve }) => {
     setShowModal(false);
   };
 
+  const generatePDF = () => {
+    const doc = new jsPDF({
+      orientation: "portrait",
+      unit: "in",
+      format: [3.15, 5.5],
+    });
+
+    doc.setFillColor("#fefffc");
+    doc.rect(0, 0, 3.15, 5.5, "F");
+
+    doc.setFontSize(14);
+    doc.setTextColor("#f0d78d");
+    doc.text("Paradise Resort Hotel", 0.25, 0.25);
+
+    doc.setLineWidth(0.01);
+    doc.setDrawColor("#08171e");
+    doc.line(0.25, 0.35, 2.9, 0.35);
+
+    doc.setFontSize(10);
+    doc.setTextColor("#08171e");
+    doc.text(`Nombre: ${selectedEvent.title}`, 0.25, 0.6);
+    doc.text(`DNI: ${selectedEvent.data.dni}`, 0.25, 0.8);
+    doc.text(`Habitación: ${selectedEvent.data.numHabitacion}`, 0.25, 1);
+    doc.text(
+      `Fecha de Entrada: ${dayjs(selectedEvent.start).format("DD/MM/YYYY")}`,
+      0.25,
+      1.2
+    );
+    doc.text(
+      `Fecha de Salida: ${dayjs(selectedEvent.end).format("DD/MM/YYYY")}`,
+      0.25,
+      1.4
+    );
+    doc.line(0.25, 1.55, 2.9, 1.55);
+    doc.text(`Total: $${selectedEvent.data.total}`, 0.25, 1.7);
+
+    doc.line(0.25, 1.8, 2.9, 1.8);
+    doc.setFontSize(10);
+    doc.text("¡Muchas gracias por reservar con nosotros!", 0.2, 2);
+    doc.setFontSize(8);
+    doc.text(
+      "Este ticket no sirve como factura, solo como comprobante.",
+      0.15,
+      5
+    );
+
+    doc.save("ticket_reserva.pdf");
+  };
+
   const events =
     reservationsRoom.length > 0
       ? reservationsRoom.map((reserva) => ({
@@ -111,7 +161,9 @@ const CalendarApp = ({ admin, number, allReserve }) => {
   return (
     <>
       {Object.keys(reservationsRoom).length > 0 && (
-        <h4 className="text-center mt-2 text-dark fs-1">{reservationsRoom.mensaje}</h4>
+        <h4 className="text-center mt-2 text-dark fs-1">
+          {reservationsRoom.mensaje}
+        </h4>
       )}
       <Container fluid className="my-3 p-2 mainContainer calendarContainer">
         <Calendar
@@ -161,9 +213,9 @@ const CalendarApp = ({ admin, number, allReserve }) => {
               </p>
             </Modal.Body>
             <Modal.Footer className="text-end">
-              <Link to="/error404" className="btn btn-info">
+              <Button variant="info" onClick={generatePDF}>
                 <i className="bi bi-printer"></i>
-              </Link>
+              </Button>
             </Modal.Footer>
           </Modal>
         )}

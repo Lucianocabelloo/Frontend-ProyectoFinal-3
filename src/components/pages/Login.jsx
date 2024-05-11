@@ -10,6 +10,7 @@ const Login = ({ setUserLoggedIn }) => {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
   const navigate = useNavigate();
@@ -35,14 +36,14 @@ const Login = ({ setUserLoggedIn }) => {
         navigate("/");
       }
     } else {
-      Swal.fire(
-        "Ocurrio un error",
-        "Correo o contraseña incorrectos o usuario suspendido",
-        "error"
-      );
+      const msg = await answer.json();
+      Swal.fire("Ocurrio un error", `${msg.message}`, "error");
+      reset()
     }
   };
-
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <div className="bg-login mainContainer">
       <Container>
@@ -76,7 +77,7 @@ const Login = ({ setUserLoggedIn }) => {
                 <Form.Control
                   type="email"
                   placeholder="pedro@example.com"
-                  className="input-customized"
+                  className="myInputR"
                   {...register("email", {
                     required: "El email es obligatorio",
                     minLength: {
@@ -106,7 +107,7 @@ const Login = ({ setUserLoggedIn }) => {
                 <Form.Control
                   type="password"
                   placeholder="*******"
-                  className="input-customized"
+                  className="myInputR"
                   {...register("password", {
                     required: "La contraseña es obligatoria",
                     minLength: {
@@ -137,6 +138,7 @@ const Login = ({ setUserLoggedIn }) => {
                 </Link>
                 <button
                   type="submit"
+                  onClick={scrollToTop}
                   className="btn-customized-2 d-block m-auto mt-4 fs-5"
                 >
                   Iniciar sesión

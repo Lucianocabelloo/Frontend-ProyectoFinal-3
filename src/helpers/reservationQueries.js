@@ -78,3 +78,21 @@ export const deleteReservationAPI = async (id) => {
     });
   }
 };
+
+export const editReservationApi = async (id, reserv ) =>{
+  try {
+    const answer = await fetch(`${URI_Reservation}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "x-token": JSON.parse(sessionStorage.getItem("usuarioHotel")).token,
+      },
+      body: JSON.stringify(reserv),
+    });
+    return answer;
+  } catch (error) {
+    console.error(
+      `El siguiente error ocurrio intentando editar la reserva de la habitacion: ${error}`
+    );
+  }
+}

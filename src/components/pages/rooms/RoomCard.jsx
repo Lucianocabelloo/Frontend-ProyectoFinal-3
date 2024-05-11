@@ -12,10 +12,10 @@ const RoomCard = ({room}) => {
         />
         <Card.Body className="text-center py-4">
           <Badge pill className="badgePosition mb-3 fs-6">{room.categoria}</Badge>
-          <Card.Title className="fs-3">Habitación {room.numero}</Card.Title>
+          <Card.Title className="fs-4">Habitación {room.numero}</Card.Title>
           <Card.Text>{room.tipoHabitacion}</Card.Text>
           <p className="fw-semibold txt-details-color fs-4">${room.precio}</p>
-          <Link to={'/detalle-habitacion/'+room._id} className="btn btnCardRoom">Ver Habitación</Link>
+          <Link to={'/detalle-habitacion/'+room._id} className="btn btnCardRoom fw-semibold">Ver Habitación</Link>
         </Card.Body>
       </Card>
     </Col>
