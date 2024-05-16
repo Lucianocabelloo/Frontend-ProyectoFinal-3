@@ -91,7 +91,7 @@ const Contact = () => {
           >
             <FontAwesomeIcon icon={faLocationDot} className="myIconsC" />
             <p className="mySubtC">
-              Nuestra ubicaccion <br />
+              Nuestra ubicación <br />
               <span className="planeTextC">Puedes verla aqui.</span>
             </p>
           </Col>
@@ -153,6 +153,10 @@ const Contact = () => {
                             value: 80,
                             message:
                               "El nombre debe tener como maximo 80 caracteres",
+                          },
+                          pattern: {
+                            value: /^[A-Z]+$/i,
+                            message: "Solo puede ingresar letras",
                           },
                         })}
                       />
